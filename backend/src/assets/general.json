@@ -8,8 +8,11 @@
             "eleMat": "Everflame Seed",
             "locSpec": "Small Lamp Grass",
             "comMat": "Arrowhead",
-            "talBook": "Freedom",
-            "bossMat": "Dvalin’s Sigh"
+            "talentMat": "Freedom",
+            "bossMat": "Dvalin's Sigh",
+            "autoAttack": "Sharpshooter",
+            "eleSkill": "Explosive Puppet",
+            "eleBurst": "Fiery Rain"
         },
         {
             "name": "Barbara",
@@ -18,8 +21,11 @@
             "eleMat": "Cleansing Heart",
             "locSpec": "Philanemo Mushroom",
             "comMat": "Scroll",
-            "talBook": "Freedom",
-            "bossMat": "Ring of Boreas"
+            "talentMat": "Freedom",
+            "bossMat": "Ring of Boreas",
+            "autoAttack": "Whisper of Water",
+            "eleSkill": "Let the Show Begin",
+            "eleBurst": "Shining Miracle"
         },
         {
             "name": "Beidou",
@@ -28,8 +34,11 @@
             "eleMat": "Lightning Prism",
             "locSpec": "Noctilucous Jade",
             "comMat": "Treasure Hoarder Insignia",
-            "talBook": "Gold",
-            "bossMat": "Dvalin’s Sigh"
+            "talentMat": "Gold",
+            "bossMat": "Dvalin's Sigh",
+            "autoAttack": "Oceanborne",
+            "eleSkill": "Tidecaller",
+            "eleBurst": "Stormbreaker"
         },
         {
             "name": "Bennett",
@@ -38,8 +47,11 @@
             "eleMat": "Everflame Seed",
             "locSpec": "Windwheel Aster",
             "comMat": "Treasure Hoarder Insignia",
-            "talBook": "Resistance",
-            "bossMat": "Dvalin’s Plume"
+            "talentMat": "Resistance",
+            "bossMat": "Dvalin's Plume",
+            "autoAttack": "Strike of Fortune",
+            "eleSkill": "Passion Overload",
+            "eleBurst": "Fantastic Voyage"
         },
         {
             "name": "Chongyun",
@@ -48,8 +60,11 @@
             "eleMat": "Hoarfrost Core",
             "locSpec": "Cor Lapis",
             "comMat": "Mask",
-            "talBook": "Diligence",
-            "bossMat": "Dvalin’s Sigh"
+            "talentMat": "Diligence",
+            "bossMat": "Dvalin's Sigh",
+            "autoAttack": "Demonbane",
+            "eleSkill": "Spirit Blade: Chonghua's Layered Frost",
+            "eleBurst": "Spirit Blade: Cloud-Parting Star"
         },
         {
             "name": "Diluc",
@@ -58,8 +73,11 @@
             "eleMat": "Everflame Seed",
             "locSpec": "Small Lamp Grass",
             "comMat": "Fatui Insignia",
-            "talBook": "Resistance",
-            "bossMat": "Dvalin’s Plume"
+            "talentMat": "Resistance",
+            "bossMat": "Dvalin's Plume",
+            "autoAttack": "Tempered Sword",
+            "eleSkill": "Searing Onslaught",
+            "eleBurst": "Dawn"
         },
         {
             "name": "Fischl",
@@ -68,8 +86,11 @@
             "eleMat": "Lightning Prism",
             "locSpec": "Small Lamp Grass",
             "comMat": "Arrowhead",
-            "talBook": "Ballad",
-            "bossMat": "Spirit Locket of Boreas"
+            "talentMat": "Ballad",
+            "bossMat": "Spirit Locket of Boreas",
+            "autoAttack": "Bolts of Downfall",
+            "eleSkill": "Nightrider",
+            "eleBurst": "Midnight Phantasmagoria"
         },
         {
             "name": "Jean",
@@ -78,8 +99,11 @@
             "eleMat": "Hurricane Seed",
             "locSpec": "Dandelion Seed",
             "comMat": "Mask",
-            "talBook": "Resistance",
-            "bossMat": "Dvalin's Plume"
+            "talentMat": "Resistance",
+            "bossMat": "Dvalin's Plume",
+            "autoAttack": "Favonius Bladework",
+            "eleSkill": "Gale Blade",
+            "eleBurst": "Dandelion Breeze"
         },
         {
             "name": "Kaeya",
@@ -88,8 +112,11 @@
             "eleMat": "Hoarfrost Core",
             "locSpec": "Calla Lily",
             "comMat": "Treasure Hoarder Insignia",
-            "talBook": "Ballad",
-            "bossMat": "Spirit Locket of Boreas"
+            "talentMat": "Ballad",
+            "bossMat": "Spirit Locket of Boreas",
+            "autoAttack": "Ceremonial Bladework",
+            "eleSkill": "Frostgnaw",
+            "eleBurst": "Glacial Waltz"
         },
         {
             "name": "Keqing",
@@ -98,8 +125,11 @@
             "eleMat": "Lightning Prism",
             "locSpec": "Cor Lapis",
             "comMat": "Nectar",
-            "talBook": "Prosperity",
-            "bossMat": "Ring of Boreas"
+            "talentMat": "Prosperity",
+            "bossMat": "Ring of Boreas",
+            "autoAttack": "Yunlai Swordsmanship",
+            "eleSkill": "Stellar Restoration",
+            "eleBurst": "Starward Sword"
         },
         {
             "name": "Klee",
@@ -108,8 +138,11 @@
             "eleMat": "Everflame Seed",
             "locSpec": "Philanemo Mushroom",
             "comMat": "Scroll",
-            "talBook": "Freedom",
-            "bossMat": "Ring of Boreas"
+            "talentMat": "Freedom",
+            "bossMat": "Ring of Boreas",
+            "autoAttack": "Kaboom!",
+            "eleSkill": "Jumpy Dumpty",
+            "eleBurst": "Sparks 'n' Splash"
         },
         {
             "name": "Lisa",
@@ -118,8 +151,11 @@
             "eleMat": "Lightning Prism",
             "locSpec": "Valberry",
             "comMat": "Slime",
-            "talBook": "Ballad",
-            "bossMat": "Dvalin's Claw"
+            "talentMat": "Ballad",
+            "bossMat": "Dvalin's Claw",
+            "autoAttack": "Lightning Touch",
+            "eleSkill": "Violet Arc",
+            "eleBurst": "Lightning Rose"
         },
         {
             "name": "Mona",
@@ -128,8 +164,11 @@
             "eleMat": "Cleansing Heart",
             "locSpec": "Philanemo Mushroom",
             "comMat": "Nectar",
-            "talBook": "Resistance",
-            "bossMat": "Ring of Boreas"
+            "talentMat": "Resistance",
+            "bossMat": "Ring of Boreas",
+            "autoAttack": "Ripple of Fate",
+            "eleSkill": "Mirror Reflection of Doom",
+            "eleBurst": "Illusory Torrent"
         },
         {
             "name": "Ningguang",
@@ -138,8 +177,11 @@
             "eleMat": "Basalt Pillar",
             "locSpec": "Glaze Lily",
             "comMat": "Fatui Insignia",
-            "talBook": "Prosperity",
-            "bossMat": "Spirit Locket of Boreas"
+            "talentMat": "Prosperity",
+            "bossMat": "Spirit Locket of Boreas",
+            "autoAttack": "Sparkling Scatter",
+            "eleSkill": "Jade Screen",
+            "eleBurst": "Starshatter"
         },
         {
             "name": "Noelle",
@@ -148,8 +190,11 @@
             "eleMat": "Basalt Pillar",
             "locSpec": "Valberry",
             "comMat": "Mask",
-            "talBook": "Resistance",
-            "bossMat": "Dvalin's Claw"
+            "talentMat": "Resistance",
+            "bossMat": "Dvalin's Claw",
+            "autoAttack": "Favonius Bladework - Maid",
+            "eleSkill": "Breastplate",
+            "eleBurst": "Sweeping Time"
         },
         {
             "name": "Qiqi",
@@ -158,8 +203,11 @@
             "eleMat": "Hoarfrost Core",
             "locSpec": "Violetgrass",
             "comMat": "Scroll",
-            "talBook": "Prosperity",
-            "bossMat": "Tail of Boreas"
+            "talentMat": "Prosperity",
+            "bossMat": "Tail of Boreas",
+            "autoAttack": "Ancient Sword Art",
+            "eleSkill": "Adeptus Art: Herald of Frost",
+            "eleBurst": "Adeptus Art: Preserver of Fortune"
         },
         {
             "name": "Razor",
@@ -168,8 +216,11 @@
             "eleMat": "Lightning Prism",
             "locSpec": "Wolfhook",
             "comMat": "Mask",
-            "talBook": "Resistance",
-            "bossMat": "Dvalin's Claw"
+            "talentMat": "Resistance",
+            "bossMat": "Dvalin's Claw",
+            "autoAttack": "Steel Fang",
+            "eleSkill": "Claw and Thunder",
+            "eleBurst": "Lightning Fang"
         },
         {
             "name": "Sucrose",
@@ -178,8 +229,11 @@
             "eleMat": "Hurricane Seed",
             "locSpec": "Windwheel Aster",
             "comMat": "Nectar",
-            "talBook": "Freedom",
-            "bossMat": "Spirit Locket of Boreas"
+            "talentMat": "Freedom",
+            "bossMat": "Spirit Locket of Boreas",
+            "autoAttack": "Wind Spirit Creation",
+            "eleSkill": "Astable Anemohypostasis Creation - 6308",
+            "eleBurst": "Forbidden Creation - Isomer 75 / Type II"
         },
         {
             "name": "Venti",
@@ -188,8 +242,11 @@
             "eleMat": "Hurricane Seed",
             "locSpec": "Cecilia",
             "comMat": "Slime",
-            "talBook": "Ballad",
-            "bossMat": "Tail of Boreas"
+            "talentMat": "Ballad",
+            "bossMat": "Tail of Boreas",
+            "autoAttack": "Divine Marksmanship",
+            "eleSkill": "Skyward Sonnet",
+            "eleBurst": "Wind's Grand Ode"
         },
         {
             "name": "Xiangling",
@@ -198,8 +255,11 @@
             "eleMat": "Everflame Seed",
             "locSpec": "Jueyun Chili",
             "comMat": "Slime",
-            "talBook": "Diligence",
-            "bossMat": "Dvalin's Claw"
+            "talentMat": "Diligence",
+            "bossMat": "Dvalin's Claw",
+            "autoAttack": "Dough-Fu",
+            "eleSkill": "Guoba Attack",
+            "eleBurst": "Pyronado"
         },
         {
             "name": "Xingqiu",
@@ -208,8 +268,11 @@
             "eleMat": "Cleansing Heart",
             "locSpec": "Silk Flower",
             "comMat": "Mask",
-            "talBook": "Gold",
-            "bossMat": "Tail of Boreas"
+            "talentMat": "Gold",
+            "bossMat": "Tail of Boreas",
+            "autoAttack": "Guhua Style",
+            "eleSkill": "Guhua Sword: Fatal Rainscreen",
+            "eleBurst": "Guhua Sword: Raincutter"
         },
         {
             "name": "Tartaglia",
@@ -218,8 +281,11 @@
             "eleMat": "Cleansing Heart",
             "locSpec": "Starconch",
             "comMat": "Fatui Insignia",
-            "talBook": "Freedom",
-            "bossMat": "Shard of a Foul Legacy"
+            "talentMat": "Freedom",
+            "bossMat": "Shard of a Foul Legacy",
+            "autoAttack": "Cutting Torrent",
+            "eleSkill": "Foul Legacy: Raging Tide",
+            "eleBurst": "Havoc: Obliteration"
         },
         {
             "name": "Zhongli",
@@ -228,8 +294,11 @@
             "eleMat": "Basalt Pillar",
             "locSpec": "Cor Lapis",
             "comMat": "Slime",
-            "talBook": "Gold",
-            "bossMat": "Tusk of Monoceros Caeli"
+            "talentMat": "Gold",
+            "bossMat": "Tusk of Monoceros Caeli",
+            "autoAttack": "Rain of Stone",
+            "eleSkill": "Dominus Lapidis",
+            "eleBurst": "Planet Befall"
         },
         {
             "name": "Diona",
@@ -238,8 +307,11 @@
             "eleMat": "Hoarfrost Core",
             "locSpec": "Calla Lily",
             "comMat": "Arrowhead",
-            "talBook": "Freedom",
-            "bossMat": "Shard of a Foul Legacy"
+            "talentMat": "Freedom",
+            "bossMat": "Shard of a Foul Legacy",
+            "autoAttack": "Kätzlein Style",
+            "eleSkill": "Icy Paws",
+            "eleBurst": "Signature Mix"
         },
         {
             "name": "Xinyan",
@@ -248,8 +320,11 @@
             "eleMat": "Everflame Seed",
             "locSpec": "Violetgrass",
             "comMat": "Treasure Hoarder Insignia",
-            "talBook": "Gold",
-            "bossMat": "Tusk of Monoceros Caeli"
+            "talentMat": "Gold",
+            "bossMat": "Tusk of Monoceros Caeli",
+            "autoAttack": "Dance on Fire",
+            "eleSkill": "Sweeping Fervor",
+            "eleBurst": "Riff Revolution"
         }
     ],
     "charAscension": [
@@ -315,6 +390,11 @@
         }
     ],
     "charLevel": [
+        {
+            "level": 1,
+            "cumulMora": 0,
+            "cumulExp": 0
+        },
         {
             "level": 2,
             "cumulMora": 200,
@@ -764,8 +844,8 @@
     "talents": [
         {
             "level": 2,
-            "bookType": "green",
-            "bookNum": 3,
+            "talentMatType": "green",
+            "talentMatNum": 3,
             "comMatType": "white",
             "comMatNum": 6,
             "bossNum": 0,
@@ -774,8 +854,8 @@
         },
         {
             "level": 3,
-            "bookType": "blue",
-            "bookNum": 2,
+            "talentMatType": "blue",
+            "talentMatNum": 2,
             "comMatType": "green",
             "comMatNum": 3,
             "bossNum": 0,
@@ -784,8 +864,8 @@
         },
         {
             "level": 4,
-            "bookType": "blue",
-            "bookNum": 4,
+            "talentMatType": "blue",
+            "talentMatNum": 4,
             "comMatType": "green",
             "comMatNum": 4,
             "bossNum": 0,
@@ -794,8 +874,8 @@
         },
         {
             "level": 5,
-            "bookType": "blue",
-            "bookNum": 6,
+            "talentMatType": "blue",
+            "talentMatNum": 6,
             "comMatType": "green",
             "comMatNum": 6,
             "bossNum": 0,
@@ -804,8 +884,8 @@
         },
         {
             "level": 6,
-            "bookType": "blue",
-            "bookNum": 9,
+            "talentMatType": "blue",
+            "talentMatNum": 9,
             "comMatType": "green",
             "comMatNum": 9,
             "bossNum": 0,
@@ -814,8 +894,8 @@
         },
         {
             "level": 7,
-            "bookType": "purple",
-            "bookNum": 4,
+            "talentMatType": "purple",
+            "talentMatNum": 4,
             "comMatType": "blue",
             "comMatNum": 4,
             "bossNum": 1,
@@ -824,8 +904,8 @@
         },
         {
             "level": 8,
-            "bookType": "purple",
-            "bookNum": 6,
+            "talentMatType": "purple",
+            "talentMatNum": 6,
             "comMatType": "blue",
             "comMatNum": 6,
             "bossNum": 1,
@@ -834,8 +914,8 @@
         },
         {
             "level": 9,
-            "bookType": "purple",
-            "bookNum": 12,
+            "talentMatType": "purple",
+            "talentMatNum": 12,
             "comMatType": "blue",
             "comMatNum": 9,
             "bossNum": 2,
@@ -844,8 +924,8 @@
         },
         {
             "level": 10,
-            "bookType": "purple",
-            "bookNum": 16,
+            "talentMatType": "purple",
+            "talentMatNum": 16,
             "comMatType": "blue",
             "comMatNum": 12,
             "bossNum": 2,
@@ -859,720 +939,720 @@
             "type": "Sword",
             "stars": 5,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "Aquila Favonia",
             "type": "Sword",
             "stars": 5,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Blackcliff Longsword",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Royal Longsword",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Favonius Sword",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "The Black Sword",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "The Flute",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "Prototype Rancour",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Lion's Roar",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Iron Sting",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Nectar"
+            "eliteMat": "Bone Shard",
+            "comMat": "Nectar"
         },
         {
             "name": "Sword of Descension",
             "type": "Sword",
             "stars": 4,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Ley Line",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Skyrider Sword",
             "type": "Sword",
             "stars": 3,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Bone Shard",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Fillet Blade",
             "type": "Sword",
             "stars": 3,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Traveler's Handy Sword",
             "type": "Sword",
             "stars": 3,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Scroll"
+            "eliteMat": "Chaos",
+            "comMat": "Scroll"
         },
         {
             "name": "Harbinger of Dawn",
             "type": "Sword",
             "stars": 3,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "Dark Iron Sword",
             "type": "Sword",
             "stars": 3,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Mask"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Mask"
         },
         {
             "name": "Cool Steel",
             "type": "Sword",
             "stars": 3,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Silver Sword",
             "type": "Sword",
             "stars": 2,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Dull Blade",
             "type": "Sword",
             "stars": 1,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Wolf's Gravestone",
             "type": "Claymore",
             "stars": 5,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Scroll"
+            "eliteMat": "Chaos",
+            "comMat": "Scroll"
         },
         {
             "name": "The Unforged",
             "type": "Claymore",
             "stars": 5,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Skyward Pride",
             "type": "Claymore",
             "stars": 5,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "The Bell",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Nectar"
+            "eliteMat": "Horn",
+            "comMat": "Nectar"
         },
         {
             "name": "Sacrificial Greatsword",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Ley Line",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Blackcliff Slasher",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Serpent Spine",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Nectar"
+            "eliteMat": "Bone Shard",
+            "comMat": "Nectar"
         },
         {
             "name": "Whiteblind",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Royal Greatsword",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Slime"
+            "eliteMat": "Chaos",
+            "comMat": "Slime"
         },
         {
             "name": "Rainslasher",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Scroll"
+            "eliteMat": "Mist Grass",
+            "comMat": "Scroll"
         },
         {
             "name": "Prototype Aminus",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Mask"
+            "eliteMat": "Bone Shard",
+            "comMat": "Mask"
         },
         {
             "name": "Favonius Greatsword",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Chaos",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Skyrider Greatsword",
             "type": "Claymore",
             "stars": 3,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Bone Shard",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "White Iron Greatsword",
             "type": "Claymore",
             "stars": 3,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Slime"
+            "eliteMat": "Chaos",
+            "comMat": "Slime"
         },
         {
             "name": "Ferrous Shadow",
             "type": "Claymore",
             "stars": 3,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Nectar"
+            "eliteMat": "Horn",
+            "comMat": "Nectar"
         },
         {
             "name": "Debate Club",
             "type": "Claymore",
             "stars": 3,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Mask"
+            "eliteMat": "Mist Grass",
+            "comMat": "Mask"
         },
         {
             "name": "Bloodtainted Greatsword",
             "type": "Claymore",
             "stars": 3,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Ley Line",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Old Merc's Pal",
             "type": "Claymore",
             "stars": 2,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "Waster Greatsword",
             "type": "Claymore",
             "stars": 1,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "Primordial Jade Winged-Spear",
             "type": "Polearm",
             "stars": 5,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Skyward Spine",
             "type": "Polearm",
             "stars": 5,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Scroll"
+            "eliteMat": "Chaos",
+            "comMat": "Scroll"
         },
         {
             "name": "Vortex Vanquisher",
             "type": "Polearm",
             "stars": 5,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Treasuer Hoarder Insignia"
+            "eliteMat": "Bone Shard",
+            "comMat": "Treasuer Hoarder Insignia"
         },
         {
             "name": "Crescent Pike",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Blackcliff Pole",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Dragon's Bane",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Scroll"
+            "eliteMat": "Mist Grass",
+            "comMat": "Scroll"
         },
         {
             "name": "Prototype Grudge",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Mask"
+            "eliteMat": "Bone Shard",
+            "comMat": "Mask"
         },
         {
             "name": "Deathmatch",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Nectar"
+            "eliteMat": "Ley Line",
+            "comMat": "Nectar"
         },
         {
             "name": "Favonius Lance",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Slime"
+            "eliteMat": "Chaos",
+            "comMat": "Slime"
         },
         {
             "name": "Royal Spear",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Black Tassel",
             "type": "Polearm",
             "stars": 3,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Bone Shard",
+            "comMat": "Arrowhead"
         },
         {
             "name": "White Tassel",
             "type": "Polearm",
             "stars": 3,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Halberd",
             "type": "Polearm",
             "stars": 3,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Nectar"
+            "eliteMat": "Mist Grass",
+            "comMat": "Nectar"
         },
         {
             "name": "Iron Point",
             "type": "Polearm",
             "stars": 2,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Scroll"
+            "eliteMat": "Chaos",
+            "comMat": "Scroll"
         },
         {
             "name": "Beginner's Protector",
             "type": "Polearm",
             "stars": 1,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Scroll"
+            "eliteMat": "Chaos",
+            "comMat": "Scroll"
         },
         {
             "name": "Lost Prayer to the Sacred Winds",
             "type": "Catalyst",
             "stars": 5,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Slime"
+            "eliteMat": "Chaos",
+            "comMat": "Slime"
         },
         {
             "name": "Skyward Atlas",
             "type": "Catalyst",
             "stars": 5,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Ley Line",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Memory of Dust",
             "type": "Catalyst",
             "stars": 5,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Mask"
+            "eliteMat": "Bone Shard",
+            "comMat": "Mask"
         },
         {
             "name": "Favonius Codex",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Scroll"
+            "eliteMat": "Horn",
+            "comMat": "Scroll"
         },
         {
             "name": "Eye of Perception",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Mask"
+            "eliteMat": "Mist Grass",
+            "comMat": "Mask"
         },
         {
             "name": "Prototype Malice",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Mist Grass",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Royal Grimoire",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Horn",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Sacrificial Fragments",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Chaos",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Solar Pearl",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Nectar"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Nectar"
         },
         {
             "name": "The Widsith",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Mask"
+            "eliteMat": "Ley Line",
+            "comMat": "Mask"
         },
         {
             "name": "Blackcliff Amulet",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Scroll"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Scroll"
         },
         {
             "name": "Mappa Mare",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Slime"
+            "eliteMat": "Bone Shard",
+            "comMat": "Slime"
         },
         {
             "name": "Otherworldly Story",
             "type": "Catalyst",
             "stars": 3,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Mask"
+            "eliteMat": "Chaos",
+            "comMat": "Mask"
         },
         {
             "name": "Twin Nephrite",
             "type": "Catalyst",
             "stars": 3,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Magic Guide",
             "type": "Catalyst",
             "stars": 3,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Slime"
+            "eliteMat": "Horn",
+            "comMat": "Slime"
         },
         {
             "name": "Thrilling Tales of Dragon Slayers",
             "type": "Catalyst",
             "stars": 3,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Scroll"
+            "eliteMat": "Ley Line",
+            "comMat": "Scroll"
         },
         {
             "name": "Emerald Orb",
             "type": "Catalyst",
             "stars": 3,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Pocket Grimoire",
             "type": "Catalyst",
             "stars": 2,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Mask"
+            "eliteMat": "Horn",
+            "comMat": "Mask"
         },
         {
             "name": "Apprentice's Notes",
             "type": "Catalyst",
             "stars": 3,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Mask"
+            "eliteMat": "Horn",
+            "comMat": "Mask"
         },
         {
             "name": "Amos' Bow",
             "type": "Bow",
             "stars": 5,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Slime"
+            "eliteMat": "Chaos",
+            "comMat": "Slime"
         },
         {
             "name": "Skyward Hard",
             "type": "Bow",
             "stars": 5,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Ley Line",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Compound Bow",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Aerosiderite",
-            "comMat1": "Bone Shard",
-            "comMat2": "Fatui Insignia"
+            "eliteMat": "Bone Shard",
+            "comMat": "Fatui Insignia"
         },
         {
             "name": "Blackcliff Warbow",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "The Viridescent Hunt",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Prototype Crescent",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Sacrificial Bow",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "Rust",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Mask"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Mask"
         },
         {
             "name": "The Stringless",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Royal Bow",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Slime"
+            "eliteMat": "Chaos",
+            "comMat": "Slime"
         },
         {
             "name": "Favonius Warbow",
             "type": "Bow",
             "stars": 4,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Nectar"
+            "eliteMat": "Chaos",
+            "comMat": "Nectar"
         },
         {
             "name": "Sharpshooter's Oath",
             "type": "Bow",
             "stars": 3,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Slime"
+            "eliteMat": "Ley Line",
+            "comMat": "Slime"
         },
         {
             "name": "Slingshot",
             "type": "Bow",
             "stars": 3,
             "weaponMat": "Guyun",
-            "comMat1": "Sacrificial Knife",
-            "comMat2": "Mask"
+            "eliteMat": "Sacrificial Knife",
+            "comMat": "Mask"
         },
         {
             "name": "Raven Bow",
             "type": "Bow",
             "stars": 3,
             "weaponMat": "Decarabian",
-            "comMat1": "Horn",
-            "comMat2": "Arrowhead"
+            "eliteMat": "Horn",
+            "comMat": "Arrowhead"
         },
         {
             "name": "Messenger",
             "type": "Bow",
             "stars": 3,
             "weaponMat": "Mist Veiled",
-            "comMat1": "Mist Grass",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Mist Grass",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Recurve Bow",
             "type": "Bow",
             "stars": 3,
             "weaponMat": "Dandelion Gladiator",
-            "comMat1": "Chaos",
-            "comMat2": "Scroll"
+            "eliteMat": "Chaos",
+            "comMat": "Scroll"
         },
         {
             "name": "Seasoned Hunter's Bow",
             "type": "Bow",
             "stars": 2,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Ley Line",
+            "comMat": "Treasure Hoarder Insignia"
         },
         {
             "name": "Hunter's Bow",
             "type": "Bow",
             "stars": 1,
             "weaponMat": "Boreal Wolf",
-            "comMat1": "Ley Line",
-            "comMat2": "Treasure Hoarder Insignia"
+            "eliteMat": "Ley Line",
+            "comMat": "Treasure Hoarder Insignia"
         }
     ],
     "weaponAscension": [
@@ -1583,60 +1663,60 @@
                     "level": 20,
                     "weaponMatType": "green",
                     "weaponMatNum": 5,
-                    "comMat1Type": "green",
-                    "comMat1Num": 5,
-                    "comMat2Type": "white",
-                    "comMat2Num": 3,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 5,
+                    "comMatType": "white",
+                    "comMatNum": 3,
                     "mora": 10000
                 },
                 {
                     "level": 40,
                     "weaponMatType": "blue",
                     "weaponMatNum": 5,
-                    "comMat1Type": "green",
-                    "comMat1Num": 18,
-                    "comMat2Type": "white",
-                    "comMat2Num": 12,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 18,
+                    "comMatType": "white",
+                    "comMatNum": 12,
                     "mora": 20000
                 },
                 {
                     "level": 50,
                     "weaponMatType": "blue",
                     "weaponMatNum": 9,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 9,
-                    "comMat2Type": "green",
-                    "comMat2Num": 9,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 9,
+                    "comMatType": "green",
+                    "comMatNum": 9,
                     "mora": 30000
                 },
                 {
                     "level": 60,
                     "weaponMatType": "purple",
                     "weaponMatNum": 5,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 18,
-                    "comMat2Type": "green",
-                    "comMat2Num": 14,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 18,
+                    "comMatType": "green",
+                    "comMatNum": 14,
                     "mora": 45000
                 },
                 {
                     "level": 70,
                     "weaponMatType": "purple",
                     "weaponMatNum": 9,
-                    "comMat1Type": "purple",
-                    "comMat1Num": 14,
-                    "comMat2Type": "blue",
-                    "comMat2Num": 9,
+                    "eliteMatType": "purple",
+                    "eliteMatNum": 14,
+                    "comMatType": "blue",
+                    "comMatNum": 9,
                     "mora": 55000
                 },
                 {
                     "level": 80,
                     "weaponMatType": "gold",
                     "weaponMatNum": 6,
-                    "comMat1Type": "purple",
-                    "comMat1Num": 27,
-                    "comMat2Type": "blue",
-                    "comMat2Num": 18,
+                    "eliteMatType": "purple",
+                    "eliteMatNum": 27,
+                    "comMatType": "blue",
+                    "comMatNum": 18,
                     "mora": 65000
                 }
             ]
@@ -1648,60 +1728,60 @@
                     "level": 20,
                     "weaponMatType": "green",
                     "weaponMatNum": 3,
-                    "comMat1Type": "green",
-                    "comMat1Num": 3,
-                    "comMat2Type": "white",
-                    "comMat2Num": 2,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 3,
+                    "comMatType": "white",
+                    "comMatNum": 2,
                     "mora": 5000
                 },
                 {
                     "level": 40,
                     "weaponMatType": "blue",
                     "weaponMatNum": 3,
-                    "comMat1Type": "green",
-                    "comMat1Num": 12,
-                    "comMat2Type": "white",
-                    "comMat2Num": 8,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 12,
+                    "comMatType": "white",
+                    "comMatNum": 8,
                     "mora": 15000
                 },
                 {
                     "level": 50,
                     "weaponMatType": "blue",
                     "weaponMatNum": 6,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 6,
-                    "comMat2Type": "green",
-                    "comMat2Num": 6,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 6,
+                    "comMatType": "green",
+                    "comMatNum": 6,
                     "mora": 20000
                 },
                 {
                     "level": 60,
                     "weaponMatType": "purple",
                     "weaponMatNum": 3,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 12,
-                    "comMat2Type": "green",
-                    "comMat2Num": 9,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 12,
+                    "comMatType": "green",
+                    "comMatNum": 9,
                     "mora": 30000
                 },
                 {
                     "level": 70,
                     "weaponMatType": "purple",
                     "weaponMatNum": 6,
-                    "comMat1Type": "purple",
-                    "comMat1Num": 9,
-                    "comMat2Type": "blue",
-                    "comMat2Num": 6,
+                    "eliteMatType": "purple",
+                    "eliteMatNum": 9,
+                    "comMatType": "blue",
+                    "comMatNum": 6,
                     "mora": 35000
                 },
                 {
                     "level": 80,
                     "weaponMatType": "gold",
                     "weaponMatNum": 4,
-                    "comMat1Type": "purple",
-                    "comMat1Num": 18,
-                    "comMat2Type": "blue",
-                    "comMat2Num": 12,
+                    "eliteMatType": "purple",
+                    "eliteMatNum": 18,
+                    "comMatType": "blue",
+                    "comMatNum": 12,
                     "mora": 45000
                 }
             ]
@@ -1713,60 +1793,60 @@
                     "level": 20,
                     "weaponMatType": "green",
                     "weaponMatNum": 2,
-                    "comMat1Type": "green",
-                    "comMat1Num": 2,
-                    "comMat2Type": "white",
-                    "comMat2Num": 1,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 2,
+                    "comMatType": "white",
+                    "comMatNum": 1,
                     "mora": 5000
                 },
                 {
                     "level": 40,
                     "weaponMatType": "blue",
                     "weaponMatNum": 2,
-                    "comMat1Type": "green",
-                    "comMat1Num": 8,
-                    "comMat2Type": "white",
-                    "comMat2Num": 5,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 8,
+                    "comMatType": "white",
+                    "comMatNum": 5,
                     "mora": 10000
                 },
                 {
                     "level": 50,
                     "weaponMatType": "blue",
                     "weaponMatNum": 4,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 4,
-                    "comMat2Type": "green",
-                    "comMat2Num": 4,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 4,
+                    "comMatType": "green",
+                    "comMatNum": 4,
                     "mora": 15000
                 },
                 {
                     "level": 60,
                     "weaponMatType": "purple",
                     "weaponMatNum": 2,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 8,
-                    "comMat2Type": "green",
-                    "comMat2Num": 6,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 8,
+                    "comMatType": "green",
+                    "comMatNum": 6,
                     "mora": 20000
                 },
                 {
                     "level": 70,
                     "weaponMatType": "purple",
                     "weaponMatNum": 4,
-                    "comMat1Type": "purple",
-                    "comMat1Num": 6,
-                    "comMat2Type": "blue",
-                    "comMat2Num": 4,
+                    "eliteMatType": "purple",
+                    "eliteMatNum": 6,
+                    "comMatType": "blue",
+                    "comMatNum": 4,
                     "mora": 25000
                 },
                 {
                     "level": 80,
                     "weaponMatType": "gold",
                     "weaponMatNum": 3,
-                    "comMat1Type": "purple",
-                    "comMat1Num": 12,
-                    "comMat2Type": "blue",
-                    "comMat2Num": 8,
+                    "eliteMatType": "purple",
+                    "eliteMatNum": 12,
+                    "comMatType": "blue",
+                    "comMatNum": 8,
                     "mora": 30000
                 }
             ]
@@ -1778,40 +1858,40 @@
                     "level": 20,
                     "weaponMatType": "green",
                     "weaponMatNum": 1,
-                    "comMat1Type": "green",
-                    "comMat1Num": 1,
-                    "comMat2Type": "white",
-                    "comMat2Num": 1,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 1,
+                    "comMatType": "white",
+                    "comMatNum": 1,
                     "mora": 5000
                 },
                 {
                     "level": 40,
                     "weaponMatType": "blue",
                     "weaponMatNum": 1,
-                    "comMat1Type": "green",
-                    "comMat1Num": 5,
-                    "comMat2Type": "white",
-                    "comMat2Num": 4,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 5,
+                    "comMatType": "white",
+                    "comMatNum": 4,
                     "mora": 5000
                 },
                 {
                     "level": 50,
                     "weaponMatType": "blue",
                     "weaponMatNum": 3,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 3,
-                    "comMat2Type": "green",
-                    "comMat2Num": 3,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 3,
+                    "comMatType": "green",
+                    "comMatNum": 3,
                     "mora": 10000
                 },
                 {
                     "level": 60,
                     "weaponMatType": "purple",
                     "weaponMatNum": 1,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 5,
-                    "comMat2Type": "green",
-                    "comMat2Num": 4,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 5,
+                    "comMatType": "green",
+                    "comMatNum": 4,
                     "mora": 15000
                 }
             ]
@@ -1823,40 +1903,40 @@
                     "level": 20,
                     "weaponMatType": "green",
                     "weaponMatNum": 1,
-                    "comMat1Type": "green",
-                    "comMat1Num": 1,
-                    "comMat2Type": "white",
-                    "comMat2Num": 1,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 1,
+                    "comMatType": "white",
+                    "comMatNum": 1,
                     "mora": 0
                 },
                 {
                     "level": 40,
                     "weaponMatType": "blue",
                     "weaponMatNum": 1,
-                    "comMat1Type": "green",
-                    "comMat1Num": 4,
-                    "comMat2Type": "white",
-                    "comMat2Num": 2,
+                    "eliteMatType": "green",
+                    "eliteMatNum": 4,
+                    "comMatType": "white",
+                    "comMatNum": 2,
                     "mora": 5000
                 },
                 {
                     "level": 50,
                     "weaponMatType": "blue",
                     "weaponMatNum": 2,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 2,
-                    "comMat2Type": "green",
-                    "comMat2Num": 2,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 2,
+                    "comMatType": "green",
+                    "comMatNum": 2,
                     "mora": 5000
                 },
                 {
                     "level": 60,
                     "weaponMatType": "purple",
                     "weaponMatNum": 1,
-                    "comMat1Type": "blue",
-                    "comMat1Num": 4,
-                    "comMat2Type": "green",
-                    "comMat2Num": 3,
+                    "eliteMatType": "blue",
+                    "eliteMatNum": 4,
+                    "comMatType": "green",
+                    "comMatNum": 3,
                     "mora": 10000
                 }
             ]
@@ -1866,6 +1946,11 @@
         {
             "stars": 5,
             "weaponStarLevel": [
+                {
+                    "level": 1,
+                    "cumulMora": 0,
+                    "cumulExp": 0
+                },
                 {
                     "level": 2,
                     "cumulMora": 60,
@@ -2317,6 +2402,11 @@
             "stars": 4,
             "weaponStarLevel": [
                 {
+                    "level": 1,
+                    "cumulMora": 0,
+                    "cumulExp": 0
+                },
+                {
                     "level": 2,
                     "cumulMora": 40,
                     "cumulExp": 400
@@ -2766,6 +2856,11 @@
         {
             "stars": 3,
             "weaponStarLevel": [
+                {
+                    "level": 1,
+                    "cumulMora": 0,
+                    "cumulExp": 0
+                },
                 {
                     "level": 2,
                     "cumulMora": 28,
@@ -3217,6 +3312,11 @@
             "stars": 2,
             "weaponStarLevel": [
                 {
+                    "level": 1,
+                    "cumulMora": 0,
+                    "cumulExp": 0
+                },
+                {
                     "level": 2,
                     "cumulMora": 18,
                     "cumulExp": 175
@@ -3566,6 +3666,11 @@
         {
             "stars": 1,
             "weaponStarLevel": [
+                {
+                    "level": 1,
+                    "cumulMora": 0,
+                    "cumulExp": 0
+                },
                 {
                     "level": 2,
                     "cumulMora": 13,
@@ -4021,7 +4126,9 @@
                 "blue": "Energy Nectar",
                 "purple": null,
                 "gold": null
-            },
+            }
+        ],
+        "eliteMat": [
             {
                 "name": "Horn",
                 "white": null,
@@ -4071,7 +4178,7 @@
                 "gold": null
             }
         ],
-        "talentBook": [
+        "talentMat": [
             {
                 "name": "Freedom",
                 "white": null,
@@ -4163,7 +4270,7 @@
                 "gold": "Mist Veiled Primo Elixir"
             },
             {
-                "name ": "Aerosiderite",
+                "name": "Aerosiderite",
                 "white": null,
                 "green": "Grain of Aerosiderite",
                 "blue": "Piece of Aerosiderite",
@@ -5201,75 +5308,75 @@
         },
         {
             "name": "Guide to Ballad",
-            "imgPath": "/api/materials/talentbook/guide_to_ballad.png"
+            "imgPath": "/api/materials/talentMat/guide_to_ballad.png"
         },
         {
             "name": "Guide to Diligence",
-            "imgPath": "/api/materials/talentbook/guide_to_diligence.png"
+            "imgPath": "/api/materials/talentMat/guide_to_diligence.png"
         },
         {
             "name": "Guide to Freedom",
-            "imgPath": "/api/materials/talentbook/guide_to_freedom.png"
+            "imgPath": "/api/materials/talentMat/guide_to_freedom.png"
         },
         {
             "name": "Guide to Gold",
-            "imgPath": "/api/materials/talentbook/guide_to_gold.png"
+            "imgPath": "/api/materials/talentMat/guide_to_gold.png"
         },
         {
             "name": "Guide to Prosperity",
-            "imgPath": "/api/materials/talentbook/guide_to_prosperity.png"
+            "imgPath": "/api/materials/talentMat/guide_to_prosperity.png"
         },
         {
             "name": "Guide to Resistance",
-            "imgPath": "/api/materials/talentbook/guide_to_resistance.png"
+            "imgPath": "/api/materials/talentMat/guide_to_resistance.png"
         },
         {
             "name": "Philosophies of Ballad",
-            "imgPath": "/api/materials/talentbook/philosophies_of_ballad.png"
+            "imgPath": "/api/materials/talentMat/philosophies_of_ballad.png"
         },
         {
             "name": "Philosophies of Diligence",
-            "imgPath": "/api/materials/talentbook/philosophies_of_diligence.png"
+            "imgPath": "/api/materials/talentMat/philosophies_of_diligence.png"
         },
         {
             "name": "Philosophies of Freedom",
-            "imgPath": "/api/materials/talentbook/philosophies_of_freedom.png"
+            "imgPath": "/api/materials/talentMat/philosophies_of_freedom.png"
         },
         {
             "name": "Philosophies of Gold",
-            "imgPath": "/api/materials/talentbook/philosophies_of_gold.png"
+            "imgPath": "/api/materials/talentMat/philosophies_of_gold.png"
         },
         {
             "name": "Philosophies of Prosperity",
-            "imgPath": "/api/materials/talentbook/philosophies_of_prosperity.png"
+            "imgPath": "/api/materials/talentMat/philosophies_of_prosperity.png"
         },
         {
             "name": "Philosophies of Resistance",
-            "imgPath": "/api/materials/talentbook/philosophies_of_resistance.png"
+            "imgPath": "/api/materials/talentMat/philosophies_of_resistance.png"
         },
         {
             "name": "Teachings of Ballad",
-            "imgPath": "/api/materials/talentbook/teachings_of_ballad.png"
+            "imgPath": "/api/materials/talentMat/teachings_of_ballad.png"
         },
         {
             "name": "Teachings of Diligence",
-            "imgPath": "/api/materials/talentbook/teachings_of_diligence.png"
+            "imgPath": "/api/materials/talentMat/teachings_of_diligence.png"
         },
         {
             "name": "Teachings of Freedom",
-            "imgPath": "/api/materials/talentbook/teachings_of_freedom.png"
+            "imgPath": "/api/materials/talentMat/teachings_of_freedom.png"
         },
         {
             "name": "Teachings of Gold",
-            "imgPath": "/api/materials/talentbook/teachings_of_gold.png"
+            "imgPath": "/api/materials/talentMat/teachings_of_gold.png"
         },
         {
             "name": "Teachings of Prosperity",
-            "imgPath": "/api/materials/talentbook/teachings_of_prosperity.png"
+            "imgPath": "/api/materials/talentMat/teachings_of_prosperity.png"
         },
         {
             "name": "Teachings of Resistance",
-            "imgPath": "/api/materials/talentbook/teachings_of_resistance.png"
+            "imgPath": "/api/materials/talentMat/teachings_of_resistance.png"
         },
         {
             "name": "Bit of Aerosiderite",
@@ -5366,6 +5473,30 @@
         {
             "name": "Tile of the Decarabian's Tower",
             "imgPath": "/api/materials/weaponmat/tile_of_the_decrabian_tower.png"
+        },
+        {
+            "name": "Adventurer's Experience",
+            "imgPath": "/api/materials/expmat/adventurer_experience.png"
+        },
+        {
+            "name": "Enhancement Ore",
+            "imgPath": "/api/materials/expmat/enhancement_ore.png"
+        },
+        {
+            "name": "Fine Enhancement Ore",
+            "imgPath": "/api/materials/expmat/fine_enhancement_ore.png"
+        },
+        {
+            "name": "Hero's Wit",
+            "imgPath": "/api/materials/expmat/hero_wit.png"
+        },
+        {
+            "name": "Mystic Enhancement Ore",
+            "imgPath": "/api/materials/expmat/mystic_enhancement_ore.png"
+        },
+        {
+            "name": "Wanderer's Advice",
+            "imgPath": "/api/materials/expmat/wanderer_advice.png"
         }
     ],
     "miscData": {
@@ -5445,7 +5576,8 @@
             "multiType": [
                 "eleCrys",
                 "comMat",
-                "talentBook",
+                "eliteMat",
+                "talentMat",
                 "weaponMat"
             ],
             "singleType": [
@@ -5453,6 +5585,56 @@
                 "locSpec",
                 "bossMat",
                 "misc"
+            ]
+        },
+        "rarType": [
+            "white",
+            "green",
+            "blue",
+            "purple",
+            "gold"
+        ],
+        "shortNames": {
+            "eleCrys": [
+                "Agnidus Agate",
+                "Varunada Lazurite",
+                "Vajrada Amethyst",
+                "Shivada Jade",
+                "Vayuda Turquoise",
+                "Prithiva Topaz"
+            ],
+            "comMat": [
+                "Slime",
+                "Mask",
+                "Arrowhead",
+                "Scroll",
+                "Treasure Hoarder Insignia",
+                "Fatui Insignia",
+                "Nectar"
+            ],
+            "eliteMat": [
+                "Horn",
+                "Ley Line",
+                "Bone Shard",
+                "Mist Grass",
+                "Sacrificial Knife",
+                "Chaos"
+            ],
+            "talentMat": [
+                "Freedom",
+                "Resistance",
+                "Ballad",
+                "Prosperity",
+                "Diligence",
+                "Gold"
+            ],
+            "weaponMat": [
+                "Decarabian",
+                "Boreal Wolf",
+                "Dandelion Gladiator",
+                "Guyun",
+                "Mist Veiled",
+                "Aerosiderite"
             ]
         }
     }
