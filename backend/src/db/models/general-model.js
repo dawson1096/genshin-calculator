@@ -10,6 +10,9 @@ const Character = new Schema({
     comMat: { type: String, required: true },
     talBook: { type: String, required: true },
     bossMat: { type: String, required: true },
+    autoAttack: { type: String, required: true },
+    eleSkill: { type: String, required: true },
+    eleBurst: { type: String, required: true },
 });
 
 const CharAscension = new Schema({
@@ -31,8 +34,10 @@ const CharLevel = new Schema({
 
 const Talent = new Schema({
     level: { type: Number, required: true },
-    bookType: { type: String, required: true },
-    bookNum: {type: Number, required: true },
+    talentMatType: { type: String, required: true },
+    talentMatNum: {type: Number, required: true },
+    comMatType: { type: String, required: true },
+    comMatNum: { type: Number, required: true },
     bossNum: { type: Number, required: true },
     crownNum: { type: Number, required: true},
     mora: { type: Number, required: true },
@@ -42,18 +47,18 @@ const Weapon = new Schema({
     name: { type: String, required: true },
     stars: { type: Number, required: true },
     weaponMat: { type: String, required: true },
-    comMat1: { type: String, required: true },
-    comMat2: { type: String, required: true },
+    comMat: { type: String, required: true },
+    eliteMat: { type: String, required: true },
 });
 
 const WeaponStarAscen = new Schema({
     level: { type: Number, required: true },
     weaponMatType: { type: String, required: true },
     weaponMatNum: { type: Number, required: true },
-    comMat1Type: { type: String, required: true },
-    comMat1Num: { type: Number, required: true },
-    comMat2Type: { type: String, required: true },
-    comMat2Num: { type: Number, required: true },
+    eliteMatType: { type: String, required: true },
+    eliteMatNum: { type: Number, required: true },
+    comMatType: { type: String, required: true },
+    comMatNum: { type: Number, required: true },
     mora: { type: Number, required: true },
 });
 
@@ -121,11 +126,21 @@ const MatType = new Schema({
     singleType: { type: [String], required: true },
 })
 
+const ShortNames = new Schema({
+    eleCrys: { type: [String], required: true },
+    comMat: { type: [String], required: true },
+    eliteMat: { type: [String], required: true },
+    talentMat: { type: [String], required: true },
+    weaponMat: { type: [String], required: true },
+});
+
 const MiscData = new Schema({
     charAscenLevels: { type: [Number], required: true },
     talentLevels: { type: [Number], required: true },
     weaponStars: [WeaponStars],
     matType: MatType,
+    rarType: { type: [String], required: true },
+    shortNames: ShortNames
 });
 
 const General = new Schema({

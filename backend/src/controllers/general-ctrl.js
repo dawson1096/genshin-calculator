@@ -518,7 +518,7 @@ function getWeaponReq(name, curLvl, reqLvl) {
         if (curLvl < genWeaponReq.ascenReq[i].level && reqLvl > genWeaponReq.ascenReq[i].level) {
             let curWeaponMatType = genWeaponReq.ascenReq[i].weaponMatType;
             let cureliteMatType = genWeaponReq.ascenReq[i].eliteMatType;
-            let curcomMatType = genWeaponReq.ascenReq[i].comMatType;
+            let curComMatType = genWeaponReq.ascenReq[i].comMatType;
 
             while (curWeaponMatType !== weaponReq.weaponMat[weaponMatCount].type && weaponMatCount < weaponReq.weaponMat.length) {
                 weaponMatCount ++;
@@ -528,9 +528,7 @@ function getWeaponReq(name, curLvl, reqLvl) {
                 eliteMatCount ++;
             }
 
-            let weirdError = weaponReq.comMat[comMatCount].type
-
-            while (curcomMatType !== weirdError && comMatCount < weaponReq.comMat.length) {
+            while (curComMatType !== weaponReq.comMat[comMatCount].type && comMatCount < weaponReq.comMat.length) {
                 comMatCount ++;
             }
 
@@ -889,7 +887,7 @@ function getAllTalentReq(charList) {
         let character = searchArray(charList[i].name, generalData.charList);
 
         for (let talent in charList[i]) {
-            if (talent !== "name") {
+            if (talent === "auttoAttack" || talent === "eleSkill" || talent === "eleBurst") {
                 let curTalent = getTalentReq(charList[i].name, charList[i][talent].curLvl, charList[i][talent].reqLvl);
 
                 let talentMat = searchArray(character.talentMat, allTalentReq.talentMat);
@@ -917,6 +915,8 @@ function getAllTalentReq(charList) {
 
 module.exports = {
     generalData,
+    searchArray,
+    getMatNameType,
     getGenCharReq,
     getGenWeaponReq,
     getCharReq,

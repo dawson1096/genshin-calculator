@@ -1,0 +1,1258 @@
+{
+    "userData": {
+        "_id": "5fe1051554322c7bfd468d92",
+        "charList": [
+            {
+                "name": "Amber",
+                "stars": 4,
+                "curLvl": 1,
+                "reqLvl": 80,
+                "auttoAttack": {
+                    "curLvl": 1,
+                    "reqLvl": 3,
+                    "imgPath": "/api/characters/amber.png"
+                },
+                "eleSkill": {
+                    "curLvl": 1,
+                    "reqLvl": 3,
+                    "imgPath": "/api/characters/amber.png"
+                },
+                "eleBurst": {
+                    "curLvl": 1,
+                    "reqLvl": 3,
+                    "imgPath": "/api/characters/amber.png"
+                },
+                "imgPath": "/api/characters/amber.png"
+            }
+        ],
+        "weaponList": [ 
+            {
+                "name": "Skyward Blade",
+                "stars": 5,
+                "number": 1,
+                "curLvl": 1,
+                "reqLvl": 90,
+                "imgPath": "/api/weapons/skyward_blade.png"
+            }
+        ],
+        "materials": {
+            "_id": "5fe1051554322c7bfd468d93",
+            "eleCrys": [
+                {
+                    "_id": "5fe1051554322c7bfd468d94",
+                    "name": "Agnidus Agate",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468d95",
+                            "name": "Agnidus Agate Silver",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/agnidus_agate_silver.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468d96",
+                            "name": "Agnidus Agate Fragment",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/agnidus_agate_fragment.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468d97",
+                            "name": "Agnidus Agate Chunk",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/agnidus_agate_chunk.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468d98",
+                            "name": "Agnidus Agate Gemstone",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/agnidus_agate_gemstone.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468d99",
+                    "name": "Varunada Lazurite",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468d9a",
+                            "name": "Varunada Lazurite Silver",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/varunada_lazurite_silver.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468d9b",
+                            "name": "Varunada Lazurite Fragment",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/varunada_lazurite_fragment.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468d9c",
+                            "name": "Varunada Lazurite Chunk",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/varunada_lazurite_chunk.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468d9d",
+                            "name": "Varunada Lazurite Gemstone",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/varunada_lazurite_gemstone.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468d9e",
+                    "name": "Vajrada Amethyst",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468d9f",
+                            "name": "Vajrada Amethyst Silver",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vajrada_amethyst_silver.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468da0",
+                            "name": "Vajrada Amethyst Fragment",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vajrada_amethyst_fragment.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468da1",
+                            "name": "Vajrada Amethyst Chunk",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vajrada_amethyst_chunk.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468da2",
+                            "name": "Vajrada Amethyst Gemstone",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vajrada_amethyst_gemstone.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468da3",
+                    "name": "Shivada Jade",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468da4",
+                            "name": "Shivada Jade Silver",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/shivada_jade_silver.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468da5",
+                            "name": "Shivada Jade Fragment",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/shivada_jade_fragment.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468da6",
+                            "name": "Shivada Jade Chunk",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/shivada_jade_chunk.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468da7",
+                            "name": "Shivada Jade Gemstone",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/shivada_jade_gemstone.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468da8",
+                    "name": "Vayuda Turquoise",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468da9",
+                            "name": "Vayuda Turquoise Silver",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vayuda_turquoise_silver.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468daa",
+                            "name": "Vayuda Turquoise Fragment",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vayuda_turquoise_fragment.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dab",
+                            "name": "Vayuda Turquoise Chunk",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vayuda_turquoise_chunk.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dac",
+                            "name": "Vayuda Turquoise Gemstone",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/vayuda_turquoise_gemstone.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dad",
+                    "name": "Prithiva Topaz",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468dae",
+                            "name": "Prithiva Topaz Silver",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/prithiva_topaz_silver.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468daf",
+                            "name": "Prithiva Topaz Fragment",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/prithiva_topaz_fragment.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468db0",
+                            "name": "Prithiva Topaz Chunk",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/prithiva_topaz_chunk.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468db1",
+                            "name": "Prithiva Topaz Gemstone",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/prithiva_topaz_gemstone.png"
+                        }
+                    ]
+                }
+            ],
+            "eleMat": [
+                {
+                    "_id": "5fe1051554322c7bfd468db2",
+                    "name": "Basalt Pillar",
+                    "type": "purple",
+                    "number": 0,
+                    "imgPath": "/api/materials/elemental/basalt_pillar.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468db3",
+                    "name": "Cleansing Heart",
+                    "type": "purple",
+                    "number": 0,
+                    "imgPath": "/api/materials/elemental/cleansing_heart.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468db4",
+                    "name": "Everflame Seed",
+                    "type": "purple",
+                    "number": 0,
+                    "imgPath": "/api/materials/elemental/everflame_seed.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468db5",
+                    "name": "Hoarfrost Core",
+                    "type": "purple",
+                    "number": 0,
+                    "imgPath": "/api/materials/elemental/hoarfrost_core.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468db6",
+                    "name": "Hurricane Seed",
+                    "type": "purple",
+                    "number": 0,
+                    "imgPath": "/api/materials/elemental/hurricane_seed.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468db7",
+                    "name": "Lightning Prism",
+                    "type": "purple",
+                    "number": 0,
+                    "imgPath": "/api/materials/elemental/lightning_prism.png"
+                }
+            ],
+            "locSpec": [
+                {
+                    "_id": "5fe1051554322c7bfd468db8",
+                    "name": "Calla Lily",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/calla_lily.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468db9",
+                    "name": "Cecilia",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/cecilia.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dba",
+                    "name": "Cor Lapis",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/cor_lapis.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dbb",
+                    "name": "Dandelion Seed",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/dandelion_seed.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dbc",
+                    "name": "Glaze Lily",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/glaze_lily.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dbd",
+                    "name": "Jueyun Chili",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/jueyun_chili.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dbe",
+                    "name": "Noctilucous Jade",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/noctilucous_jade.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dbf",
+                    "name": "Philanemo Mushroom",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/philanemo_mushroom.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc0",
+                    "name": "Qingxin",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/qingxin.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc1",
+                    "name": "Silk Flower",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/silk_flower.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc2",
+                    "name": "Small Lamp Grass",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/small_lamp_grass.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc3",
+                    "name": "Starconch",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/starconch.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc4",
+                    "name": "Valberry",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/valberry.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc5",
+                    "name": "Violetgrass",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/violetgrass.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc6",
+                    "name": "Windwheel Aster",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/windwheel_aster.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dc7",
+                    "name": "Wolfhook",
+                    "type": "white",
+                    "number": 0,
+                    "imgPath": "/api/materials/locspec/wolfhook.png"
+                }
+            ],
+            "comMat": [
+                {
+                    "_id": "5fe1051554322c7bfd468dc8",
+                    "name": "Slime",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468dc9",
+                            "name": "Slime Condensate",
+                            "type": "white",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/slime_condensate.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dca",
+                            "name": "Slime Secretions",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/slime_secretions.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dcb",
+                            "name": "Slime Concentrate",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/slime_concentrate.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dcc",
+                    "name": "Mask",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468dcd",
+                            "name": "Damaged Mask",
+                            "type": "white",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/damaged_mask.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dce",
+                            "name": "Stained Mask",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/stained_mask.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dcf",
+                            "name": "Ominous Mask",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/ominous_mask.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dd0",
+                    "name": "Arrowhead",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468dd1",
+                            "name": "Firm Arrowhead",
+                            "type": "white",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/firm_arrowhead.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dd2",
+                            "name": "Sharp Arrowhead",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/sharp_arrowhead.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dd3",
+                            "name": "Weathered Arrowhead",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/weathered_arrowhead.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dd4",
+                    "name": "Scroll",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468dd5",
+                            "name": "Divining Scroll",
+                            "type": "white",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/divining_scroll.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dd6",
+                            "name": "Sealed Scroll",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/sealed_scroll.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dd7",
+                            "name": "Forbidden Curse Scroll",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/forbidden_curse_scroll.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dd8",
+                    "name": "Treasure Hoarder Insignia",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468dd9",
+                            "name": "Treasure Hoarder Insignia",
+                            "type": "white",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/treasure_hoarder_insignia.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dda",
+                            "name": "Silver Raven Insignia",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/silver_raven_insignia.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468ddb",
+                            "name": "Golden Raven Insignia",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/golden_raven_insignia.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468ddc",
+                    "name": "Fatui Insignia",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468ddd",
+                            "name": "Recruit's Insignia",
+                            "type": "white",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/recruit_insignia.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dde",
+                            "name": "Sergeant's Insignia",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/sergeant_insignia.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468ddf",
+                            "name": "Lieutenant's Insignia",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/lieutenant_insignia.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468de0",
+                    "name": "Nectar",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468de1",
+                            "name": "Whopperflower Nectar",
+                            "type": "white",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/whopperflower_nectar.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468de2",
+                            "name": "Shimmering Nectar",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/shimmering_nectar.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468de3",
+                            "name": "Energy Nectar",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/energy_nectar.png"
+                        }
+                    ]
+                }
+            ],
+            "eliteMat": [
+                {
+                    "_id": "5fe1051554322c7bfd468de4",
+                    "name": "Horn",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468de5",
+                            "name": "Heavy Horn",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/heavy_horn.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468de6",
+                            "name": "Black Bronze Horn",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/black_bronze_horn.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468de7",
+                            "name": "Black Crystal Horn",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/black_crystal_horn.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468de8",
+                    "name": "Ley Line",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468de9",
+                            "name": "Dead Ley Line Branch",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/dead_ley_line_branch.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dea",
+                            "name": "Dead Ley Line Leaves",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/dead_ley_line_leaves.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468deb",
+                            "name": "Ley Line Sprouts",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/ley_line_sprout.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dec",
+                    "name": "Bone Shard",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468ded",
+                            "name": "Fragile Bone Shard",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/fragile_bone_shard.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dee",
+                            "name": "Sturdy Bone Shard",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/sturdy_bone_shard.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468def",
+                            "name": "Fossilized Bone Shard",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/fossilized_bone_shard.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468df0",
+                    "name": "Mist Grass",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468df1",
+                            "name": "Mist Grass Pollen",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/mist_grass_pollen.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468df2",
+                            "name": "Mist Grass",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/mist_grass.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468df3",
+                            "name": "Mist Grass Wick",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/mist_grass_wick.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468df4",
+                    "name": "Sacrificial Knife",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468df5",
+                            "name": "Hunter's Sacrificial Knife",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/hunter_sacrificial_knife.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468df6",
+                            "name": "Agent's Sacrificial Knife",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/agent_sacrificial_knife.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468df7",
+                            "name": "Inspector's Sacrificial Knife",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/inspector_sacrificial_knife.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468df8",
+                    "name": "Chaos",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468df9",
+                            "name": "Chaos Device",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/chaos_device.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dfa",
+                            "name": "Chaos Circuit",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/chaos_circuit.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468dfb",
+                            "name": "Chaos Core",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/common/chaos_core.png"
+                        }
+                    ]
+                }
+            ],
+            "bossMat": [
+                {
+                    "_id": "5fe1051554322c7bfd468dfc",
+                    "name": "Dvalin's Claw",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/dvalin_claw.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dfd",
+                    "name": "Dvalin's Plume",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/dvalin_plume.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dfe",
+                    "name": "Dvalin's Sigh",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/dvalin_sigh.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468dff",
+                    "name": "Ring of Boreas",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/ring_of_boreaas.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e00",
+                    "name": "Shadow of the Warrior",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/shadow_of_the_warrior.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e01",
+                    "name": "Shard of Foul Legacy",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/shard_of_foul_legacy.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e02",
+                    "name": "Spirit Locket of Boreas",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/spirit_locket_of_boreas.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e03",
+                    "name": "Tail of Boreas",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/tail_of_boreas.png"
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e04",
+                    "name": "Tusk of Monoceros Caeli",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/bossmat/tusk_of_monoceros_caeli.png"
+                }
+            ],
+            "talentMat": [
+                {
+                    "_id": "5fe1051554322c7bfd468e05",
+                    "name": "Freedom",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e06",
+                            "name": "Teachings of Freedom",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/teachings_of_freedom.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e07",
+                            "name": "Guide to Freedom",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/guide_to_freedom.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e08",
+                            "name": "Philosophies of Freedom",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/philosophies_of_freedom.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e09",
+                    "name": "Resistance",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e0a",
+                            "name": "Teachings of Resistance",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/teachings_of_resistance.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e0b",
+                            "name": "Guide to Resistance",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/guide_to_resistance.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e0c",
+                            "name": "Philosophies of Resistance",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/philosophies_of_resistance.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e0d",
+                    "name": "Ballad",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e0e",
+                            "name": "Teachings of Ballad",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/teachings_of_ballad.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e0f",
+                            "name": "Guide to Ballad",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/guide_to_ballad.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e10",
+                            "name": "Philosophies of Ballad",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/philosophies_of_ballad.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e11",
+                    "name": "Prosperity",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e12",
+                            "name": "Teachings of Prosperity",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/teachings_of_prosperity.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e13",
+                            "name": "Guide to Prosperity",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/guide_to_prosperity.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e14",
+                            "name": "Philosophies of Prosperity",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/philosophies_of_prosperity.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e15",
+                    "name": "Diligence",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e16",
+                            "name": "Teachings of Diligence",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/teachings_of_diligence.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e17",
+                            "name": "Guide to Diligence",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/guide_to_diligence.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e18",
+                            "name": "Philosophies of Diligence",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/philosophies_of_diligence.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e19",
+                    "name": "Gold",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e1a",
+                            "name": "Teachings of Gold",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/teachings_of_gold.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e1b",
+                            "name": "Guide to Gold",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/guide_to_gold.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e1c",
+                            "name": "Philosophies of Gold",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/talentMat/philosophies_of_gold.png"
+                        }
+                    ]
+                }
+            ],
+            "weaponMat": [
+                {
+                    "_id": "5fe1051554322c7bfd468e1d",
+                    "name": "Decarabian",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e1e",
+                            "name": "Tile of Decarabian's Tower",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/tile_of_the_decrabian_tower.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e1f",
+                            "name": "Debris of Decarabian's City",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/debris_of_decarabian_city.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e20",
+                            "name": "Fragment of Decarabian's Epic",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/fragment_of_decarabian_epic.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e21",
+                            "name": "Scattered Piece of Decarabian's Dream",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/scattered_piece_of_decarabian_dream.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e22",
+                    "name": "Boreal Wolf",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e23",
+                            "name": "Boreal Wolf's Milk Tooth",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/boreal_wolf_milk_tooth.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e24",
+                            "name": "Boreal Wolf's Cracked Tooth",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/boreal_wolf_cracked_tooth.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e25",
+                            "name": "Boreal Wolf's Broken Fang",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/boreal_wolf_broken_fang.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e26",
+                            "name": "Boreal Wolf's Nostalgia",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/boreal_wolf_nostalgia.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e27",
+                    "name": "Dandelion Gladiator",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e28",
+                            "name": "Fetters of the Dandelion Gladiator",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/fetters_of_the_dandelion_gladiator.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e29",
+                            "name": "Chains of the Dandelion Gladiator",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/chains_of_the_dandelion_gladiator.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e2a",
+                            "name": "Shackles of the Dandelion Gladiator",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/shackles_of_the_dandelion_gladiator.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e2b",
+                            "name": "Dream of the Dandelion Gladiator",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/dream_of_the_dandelion_gladiator.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e2c",
+                    "name": "Guyun",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e2d",
+                            "name": "Luminous Sands from Guyun",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/luminous_sands_from_guyun.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e2e",
+                            "name": "Lustrous Stone from Guyun",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/lustrous_stone_from_guyun.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e2f",
+                            "name": "Relic from Guyun",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/relic_from_guyun.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e30",
+                            "name": "Divine Body from Guyun",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/divine_body_from_guyun.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e31",
+                    "name": "Mist Veiled",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e32",
+                            "name": "Mist Veiled Lead Elixir",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/mist_veiled_lead_elixir.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e33",
+                            "name": "Mist Veiled Mercury Elixir",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/mist_veiled_mercury_elixir.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e34",
+                            "name": "Mist Veiled Gold Elixir",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/mist_veiled_gold_elixir.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e35",
+                            "name": "Mist Veiled Primo Elixir",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/mist_veiled_primo_elixir.png"
+                        }
+                    ]
+                },
+                {
+                    "_id": "5fe1051554322c7bfd468e36",
+                    "name": "Aerosiderite",
+                    "matList": [
+                        {
+                            "_id": "5fe1051554322c7bfd468e37",
+                            "name": "Grain of Aerosiderite",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/grain_of_aerosiderite.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e38",
+                            "name": "Piece of Aerosiderite",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/piece_of_aerosiderite.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e39",
+                            "name": "Bit of Aerosiderite",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/bit_of_aerosiderite.png"
+                        },
+                        {
+                            "_id": "5fe1051554322c7bfd468e3a",
+                            "name": "Chunk of Aerosiderite",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/weaponmat/chunk_of_aerosiderite.png"
+                        }
+                    ]
+                }
+            ],
+            "weaponExp": {
+                "_id": "5fe1051554322c7bfd468e3b",
+                "mat": [
+                    {
+                        "_id": "5fe1051554322c7bfd468e3c",
+                        "name": "Mystic Enhancement Ore",
+                        "type": "blue",
+                        "number": 0,
+                        "exp": 10000,
+                        "imgPath": "/api/materials/expmat/mystic_enhancement_ore.png"
+                    },
+                    {
+                        "_id": "5fe1051554322c7bfd468e3d",
+                        "name": "Fine Enhancement Ore",
+                        "type": "green",
+                        "number": 0,
+                        "exp": 2000,
+                        "imgPath": "/api/materials/expmat/fine_enhancement_ore.png"
+                    },
+                    {
+                        "_id": "5fe1051554322c7bfd468e3e",
+                        "name": "Enhancement Ore",
+                        "type": "white",
+                        "number": 0,
+                        "exp": 400,
+                        "imgPath": "/api/materials/expmat/enhancement_ore.png"
+                    }
+                ],
+                "wastedExp": 0
+            },
+            "charExp": {
+                "_id": "5fe1051554322c7bfd468e3f",
+                "mat": [
+                    {
+                        "_id": "5fe1051554322c7bfd468e40",
+                        "name": "Hero's Wit",
+                        "type": "purple",
+                        "number": 0,
+                        "exp": 20000,
+                        "imgPath": "/api/materials/expmat/hero_wit.png"
+                    },
+                    {
+                        "_id": "5fe1051554322c7bfd468e41",
+                        "name": "Adventurer's Experience",
+                        "type": "blue",
+                        "number": 0,
+                        "exp": 5000,
+                        "imgPath": "/api/materials/expmat/adventurer_experience.png"
+                    },
+                    {
+                        "_id": "5fe1051554322c7bfd468e42",
+                        "name": "Wanderer's Advice",
+                        "type": "green",
+                        "number": 0,
+                        "exp": 1000,
+                        "imgPath": "/api/materials/expmat/wanderer_advice.png"
+                    }
+                ],
+                "wastedExp": 0
+            },
+            "crownNum": 0,
+            "mora": 0
+        }
+    }
+}
