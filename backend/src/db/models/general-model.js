@@ -13,6 +13,7 @@ const Character = new Schema({
     autoAttack: { type: String, required: true },
     eleSkill: { type: String, required: true },
     eleBurst: { type: String, required: true },
+    isTraveler: { type: Boolean, required: true },
 });
 
 const CharAscension = new Schema({
@@ -134,7 +135,20 @@ const ShortNames = new Schema({
     weaponMat: { type: [String], required: true },
 });
 
+const TravTalent = new Schema({
+    talentMat: { type: [String], required: true },
+    comMat: { type: String, required: true },
+    bossMat: { type: String, required: true },
+});
+
+const TravEle = new Schema ({
+    autoAttack: TravTalent,
+    eleSkill: TravTalent,
+    eleBurst: TravTalent,
+});
+
 const MiscData = new Schema({
+    traveler: TravEle,
     charAscenLevels: { type: [Number], required: true },
     talentLevels: { type: [Number], required: true },
     weaponStars: [WeaponStars],
@@ -152,6 +166,7 @@ const General = new Schema({
     weaponList: [Weapon],
     weaponAscension: [WeaponAscension],
     weaponLevel: [WeaponLevel],
+    dropRates: [AR],
     materials: Materials,
     img: [Image],
     miscData: MiscData,

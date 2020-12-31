@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const { getAllTalentReq } = require("../../controllers/general-ctrl");
 const Schema = mongoose.Schema;
 
 const TalentReq = new Schema({
+    name: { type: String, required: true },
     curLvl: { type: Number, required: true },
     reqLvl: { type: Number, required: true },
     imgPath: { type: String, required: true},
@@ -13,7 +13,7 @@ const Character = new Schema({
     stars: { type: Number, required: true },
     curLvl: { type: Number, required: true },
     reqLvl: { type: Number, required: true },
-    auttoAttack: TalentReq,
+    autoAttack: TalentReq,
     eleSkill: TalentReq,
     eleBurst: TalentReq,
     imgPath: { type: String, required: true },
@@ -29,28 +29,23 @@ const Weapon = new Schema({
 });
 
 const Mat = new Schema({
-    name: { type: String, required: true },
-    type: { type: String, required: true },
-    number: { type: Number, required: true },
-    imgPath: { type: String, required: true },
+    name: String,
+    type: String,
+    number: Number,
+    imgPath: String,
 });
 
 const MultiMat = new Schema({
-    name: { type: String, required: true },
+    name: String,
     matList: [Mat],
 });
 
 const ExpMat = new Schema({
-    name: { type: String, required: true },
-    type: { type: String, required: true },
-    number: { type: Number, required: true },
-    exp: { type: Number, required: true },
-    imgPath: { type: String, required: true },
-});
-
-const Exp = new Schema({
-    mat: [ExpMat],
-    wastedExp: { type: Number, required: false },
+    name: String,
+    type: String,
+    number: String,
+    exp: Number,
+    imgPath: String,
 });
 
 const Materials = new Schema({
@@ -62,10 +57,9 @@ const Materials = new Schema({
     bossMat: [Mat],
     talentMat: [MultiMat],
     weaponMat: [MultiMat],
-    weaponExp: Exp,
-    charExp: Exp,
-    crownNum: { type: Number, required: true },
-    mora: { type: Number, required: true },
+    weaponExp: [ExpMat],
+    charExp: [ExpMat],
+    misc: [Mat],
 });
 
 const Data = new Schema({

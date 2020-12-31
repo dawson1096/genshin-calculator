@@ -5,7 +5,6 @@ const isEmpty = require("is-empty");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { secretOrKey } = require("../config/config");
-const { init } = require("../db/models/user-model");
 
 function validateRegisterInput(data) {
     let errors = {};
@@ -64,106 +63,42 @@ function validateLoginInput(data) {
     };
 }
 
-function initializeData() {
-    let data = {
-        charList: [],
-        weaponList: [],
-        materials: {
-            eleCrys: [],
-            eleMat: [],
-            locSpec: [],
-            comMat: [],
-            eliteMat: [],
-            bossMat: [],
-            talentMat: [],
-            weaponMat: [],
-            weaponExp: {
-                mat: [],
-                wastedExp: 0,
-            },
-            charExp: {
-                mat: [],
-                wastedExp: 0,
-            },
-            crownNum: 0,
-            mora: 0,
-        },
-    };
-    let miscData = GeneralCtrl.generalData.miscData;
-    let multiMat = miscData.matType.multiType;
-    let singleMat = miscData.matType.singleType;
-    let rarTypes = miscData.rarType;
+function convertToName(name) {
+    conName = name.replace("%27", "'");
+    conName = conName.replace("_", " ");
+    return conName;
+}
 
-    for (let i=0; i<multiMat.length; i++) {
-        let shortNames = miscData.shortNames[multiMat[i]];
-        for (let j=0; j<shortNames.length; j++) {
-            let matCat = {
-                name: shortNames[j],
-                matList: [],
-            }
-            for (let k=0; k<rarTypes.length; k++) {
-                let mat = GeneralCtrl.getMatNameType(shortNames[j], multiMat[i], rarTypes[k]);
-                if (mat !== null) {
-                    console.log(mat.name);
-                    let imgPath = GeneralCtrl.searchArray(mat.name, GeneralCtrl.generalData.img).imgPath;
-                    let insertMat = {
-                        name: mat.name,
-                        type: mat.type,
-                        number: 0,
-                        imgPath: imgPath,
-                    };
-                    matCat.matList.push(insertMat);
+function addObjects(...objs) {
+    let retObj = objs.reduce((req1, req2) => {
+        for (key in req2) {
+            if (key in req1) {
+                for(let i=0; i<req2[key].length; i++) {
+                    let curMat = GeneralCtrl.searchArray(req2[key][i].name, req1[key]);
+                    if (curMat === null) {
+                        req1[key].push(req2[key][i]);
+                    } else {
+                        if ("matList" in curMat) {
+                            for (let j=0; j<curMat.matList.length; j++) {
+                                curMat.matList[j].reqNum += req2[key][i].matList[j].reqNum;
+                            }
+                        } else {
+                            curMat.reqNum += req2[key][i].reqNum;
+                        }
+                    }
                 }
-            }
-            data.materials[multiMat[i]].push(matCat);
-        }
-    }
-
-    for (let i=0; i<singleMat.length; i++) {
-        let names = GeneralCtrl.generalData.materials[singleMat[i]];
-        if (singleMat[i] in data.materials){
-            for (let j=0; j<names.length; j++) {
-                let imgPath = GeneralCtrl.searchArray(names[j].name, GeneralCtrl.generalData.img).imgPath;
-                let mat = {
-                    name: names[j].name,
-                    type: names[j].type,
-                    number: 0,
-                    imgPath: imgPath,
-                };
-                data.materials[singleMat[i]].push(mat);
+            } else {
+                req1[key] = req2[key];
             }
         }
-    }
+        return req1;
+    });
 
-    let charExp = GeneralCtrl.generalData.materials.charExp;
-    let weaponExp = GeneralCtrl.generalData.materials.weaponExp;
+    return retObj;
+}
 
-    for (let i=0; i<charExp.length; i++) {
-        let imgPath = GeneralCtrl.searchArray(charExp[i].name, GeneralCtrl.generalData.img).imgPath;
-        let mat = {
-            name: charExp[i].name,
-            type: charExp[i].type,
-            number: 0,
-            exp: charExp[i].exp,
-            imgPath: imgPath,
-        };
-        data.materials.charExp.mat.push(mat);
-    }
+function conUserData() {
 
-    for (let i=0; i<weaponExp.length; i++) {
-        let imgPath = GeneralCtrl.searchArray(weaponExp[i].name, GeneralCtrl.generalData.img).imgPath;
-        let mat = {
-            name: weaponExp[i].name,
-            type: weaponExp[i].type,
-            number: 0,
-            exp: weaponExp[i].exp,
-            imgPath: imgPath,
-        }
-
-        data.materials.weaponExp.mat.push(mat);
-    }
-
-    return data;
 }
 
 createUser = (req, res) => {
@@ -177,8 +112,12 @@ createUser = (req, res) => {
         if (user) {
             return res.status(400).json({ email: "Email already exists" });
         }
-        
-        let data = initializeData();
+
+        let data = {
+            charList: [],
+            weaponList: [],
+            materials: {},
+        }
 
         const newUser = new User({
         username: req.body.username,
@@ -186,7 +125,7 @@ createUser = (req, res) => {
         password: req.body.password,
         userData: data,
         });
-    // Hash password before saving in database
+        // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
                 if (err) throw err;
@@ -216,8 +155,107 @@ loginUser = (req, res) => {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
         // Check password
-        bcrypt.compare(password, user.password).then(isMatch => {
+        bcrypt.compare(password, user.password).then(async isMatch => {
             if (isMatch) {
+                let materials = GeneralCtrl.generalData.materials;
+                let userData = user.userData.materials;
+
+                for (let key in materials) {
+                    if (key in userData) {
+                        for (let i=0; i<materials[key].length; i++) {
+                            if ("type" in materials[key][i]) {
+                                let curMat = GeneralCtrl.searchArray(materials[key][i].name, userData[key]);
+                                let imgPath = GeneralCtrl.searchArray(materials[key][i].name, GeneralCtrl.generalData.img).imgPath;
+                                if (curMat !== null) {
+                                    curMat.imgPath = imgPath;
+                                    if (key === "weaponExp" || key === "charExp") {
+                                        curMat.exp = materials[key][i].exp;
+                                    }
+                                } else {
+                                    let insert = {
+                                        ...materials[key][i],
+                                        number: 0,
+                                        imgPath: imgPath,
+                                    };
+                                    userData[key].push(insert);
+                                }
+                            } else {
+                                let curMatShort = GeneralCtrl.searchArray(materials[key][i].name, userData[key]);
+                                if (curMatShort !== null) {
+                                    for (let type in materials[key][i]) {
+                                        if (type !== "name" && materials[key][i][type] !== null) {
+                                            let curMat = GeneralCtrl.searchArray(materials[key][i][type], curMatShort.matList);
+                                            let imgPath = GeneralCtrl.searchArray(materials[key][i][type], GeneralCtrl.generalData.img).imgPath;
+                                            if (curMat !== null) {
+                                                curMat.imgPath = imgPath;
+                                            } else {
+                                                let insert = {
+                                                    name: materials[key][i][type],
+                                                    type: type,
+                                                    number: 0,
+                                                    imgPath: imgPath,
+                                                };
+                                                curMatShort.matList.push(insert);
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    let insert = {
+                                        name: materials[key][i].name,
+                                        matList: [],
+                                    };
+                                    for (let type in materials[key][i]) {
+                                        if (type !== "name" && materials[key][i][type] !== null) {
+                                            let imgPath = GeneralCtrl.searchArray(materials[key][i][type], GeneralCtrl.generalData.img).imgPath;
+                                            let matInsert = {
+                                                name: materials[key][i][type],
+                                                type: type,
+                                                number: 0,
+                                                imgPath: imgPath,
+                                            };
+                                            insert.matList.push(matInsert);
+                                        }
+                                    }
+                                    userData[key].push(insert);
+                                }
+                            }
+                        }
+                    } else {
+                        userData[key] = [];
+                        for (let i=0; i<materials[key].length; i++) {
+                            if ("type" in materials[key][i]) {
+                                let imgPath = GeneralCtrl.searchArray(materials[key][i].name, GeneralCtrl.generalData.img).imgPath;
+                                let insert = {
+                                    ...materials[key][i],
+                                    number: 0,
+                                    imgPath: imgPath,
+                                };
+                                userData[key].push(insert);
+                            } else {
+                                let insert = {
+                                    name: materials[key][i].name,
+                                    matList: [],
+                                };
+                                for (let type in materials[key][i]) {
+                                    if (type !== "name" && materials[key][i][type] !== null) {
+                                        let imgPath = GeneralCtrl.searchArray(materials[key][i][type], GeneralCtrl.generalData.img).imgPath;
+                                        let matInsert = {
+                                            name: materials[key][i][type],
+                                            type: type,
+                                            number: 0,
+                                            imgPath: imgPath,
+                                        };
+                                        insert.matList.push(matInsert);
+                                    }
+                                }
+                                userData[key].push(insert);
+                            }
+                        }
+                    }
+                    
+                }
+
+                await User.updateOne({ email: user.email }, { $set: { "userData.materials": userData } });
                 // User matched
                 // Create JWT Payload
                 const payload = {
@@ -237,8 +275,8 @@ loginUser = (req, res) => {
                     .status(400)
                     .json({ passwordincorrect: "Password incorrect" });
             }
-        });
-    });
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 }
 
 checkToken = (req, res, next) => {
@@ -266,12 +304,41 @@ updateUserData = (req, res) => {
             console.log("ERROR: Could not connect to the protected route");
             return res.status(500).json({ error: "Could not connect"});
         }
+
+        let newData = req.body.userData;
+
+        if ("weaponList" in newData) {
+            for (let i=0; i<newData.weaponList.length; i++) {
+                if ("imgPath" in newData.weaponList[i]) continue;
+                newData.weaponList[i]["imgPath"] = GeneralCtrl.searchArray(newData.weaponList[i].name, GeneralCtrl.generalData.img).imgPath;
+            }
+        }
+
+        if ("charList" in newData) {
+            for (let i=0; i<newData.charList.length; i++) {
+                if (!("imgPath" in newData.charList[i].autoAttack)) {
+                    newData.charList[i].autoAttack["imgPath"] = GeneralCtrl.searchArray(newData.charList[i].autoAttack.name, GeneralCtrl.generalData.img).imgPath;
+                }
+                if (!("imgPath" in newData.charList[i].eleSkill)) {
+                    newData.charList[i].eleSkill["imgPath"] = GeneralCtrl.searchArray(newData.charList[i].eleSkill.name, GeneralCtrl.generalData.img).imgPath;
+                }
+                if (!("imgPath" in newData.charList[i].eleBurst)) {
+                    newData.charList[i].eleBurst["imgPath"] = GeneralCtrl.searchArray(newData.charList[i].eleBurst.name, GeneralCtrl.generalData.img).imgPath;
+                }
+                if ("imgPath" in newData.charList[i]) continue;
+                newData.charList[i]["imgPath"] = GeneralCtrl.searchArray(newData.charList[i].name, GeneralCtrl.generalData.img).imgPath;
+            }
+        }
+
         User.updateOne(
             { email: data.email },
-            { $set: { userData: req.body.userData } }
+            { $set: { userData: newData } }
         )
             .then(() => res.json({ success: true }))
-            .catch(err => res.json({ error: "Could not update user data" }));
+            .catch(err => {
+                console.log(err);
+                return res.json({ error: "Could not update user data" })
+            });
     });
 }
 
@@ -316,108 +383,62 @@ getAllReq = (req, res) => {
             return res.status(500).json({ error: "Could not connect"});
         }
         User.findOne({ email: data.email }).then(user => {
-            let data = initializeData().materials;
             let charReq = GeneralCtrl.getAllCharReq(user.userData.charList);
-            data.mora += charReq.mora;
-            data.charExp.wastedExp += charReq.exp.wastedExp;
-
-            for (let key in charReq) {
-                if (key !== "exp" && key !== "mora") {
-                    for (let i=0; i<charReq[key].length; i++) {
-                        if ("matList" in charReq[key][i]) {
-                            for (let j=0; j<charReq[key][i].matList.length; j++) {
-                                data[key][i]["matList"][j].number += charReq[key][i]["matList"][j].reqNum;
-                            }
-                        } else {
-                            data[key][i].number += charReq[key][i].reqNum;
-                        }
-                    }
-                } else if (key === "exp") {
-                    for (let i=0; i<charReq[key].mat.length; i++) {
-                        data.charExp.mat[i].number += charReq.exp.mat[i].reqNum;
-                    }
-
-                }
-            }
-
             let weaponReq = GeneralCtrl.getAllWeaponReq(user.userData.weaponList);
-            data.mora += weaponReq.mora;
-            data.weaponExp.wastedExp += weaponReq.exp.wastedExp;
-
-            for (let key in weaponReq) {
-                if (key !== "exp" && key !== "mora") {
-                    for (let i=0; i<weaponReq[key].length; i++) {
-                        if ("matList" in weaponReq[key][i]) {
-                            for (let j=0; j<weaponReq[key][i]["matList"].length; j++) {
-                                data[key][i]["matList"][j].number += weaponReq[key][i]["matList"][j].reqNum;
-                            }
-                        } else {
-                            data[key][i].number += weaponReq[key][i].reqNum;
-                        }
-                    }
-                } else if (key === "exp") {
-                    for (let i=0; i<weaponReq[key].mat.length; i++) {
-                        data.weaponExp.mat[i].number += weaponReq.exp.mat[i].reqNum;
-                    }   
-                }
-            }
-
             let talentReq = GeneralCtrl.getAllTalentReq(user.userData.charList);
-            data.mora += talentReq.mora;
-            data.mora += talentReq.crownNum;
+            let allReq = addObjects(charReq, weaponReq, talentReq);
 
-            for (let key in talentReq) {
-                if (key !== "crownNum" && key !== "mora") {
-                    for (let i=0; i<talentReq[key].length; i++) {
-                        if ("matList" in talentReq[key][i]) {
-                            for (let j=0; j<talentReq[key][i]["matList"].length; j++) {
-                                data[key][i]["matList"][j].number += talentReq[key][i]["matList"][j].reqNum;
-                            }
-                        } else {
-                            data[key][i].number += talentReq[key][i].reqNum;
+            
+            for (let key in allReq) {
+                if (key === "weaponExp" || key === "charExp") {
+                    for (let i=0; i<allReq[key].mat.length; i++) {
+                        let userMat = GeneralCtrl.searchArray(allReq[key].mat[i].name, user.userData.materials[key]);
+                        if (userMat === null) {
+                            allReq[key].mat[i]["imgPath"] = GeneralCtrl.searchArray(allReq[key].mat[i].name, GeneralCtrl.generalData.img).imgPath;
+                            continue;
                         }
+                        if (allReq[key].mat[i].reqNum < userMat.number) {
+                            allReq[key].mat[i].reqNum = 0;
+                        } else {
+                            allReq[key].mat[i].reqNum -= userMat.number;
+                        }
+                        allReq[key].mat[i]["imgPath"] = userMat.imgPath;
                     }
-                }
-            }
-
-            for (let key in data) {
-                if (key !== "crownNum" && key !== "mora") {
-                    for (let i=0; i<data[key].length; i++) {
-                        if ("matList" in data[key][i]) {
-                            for (let j=0; j<data[key][i].matList.length; j++) {
-                                if (data[key][i]["matList"][j].number < user.userData.materials[key][i]["matList"][j].number) {
-                                    data[key][i]["matList"][j].number = 0;
+                } else {
+                    for (let i=0; i<allReq[key].length; i++) {
+                        let userMat = GeneralCtrl.searchArray(allReq[key][i].name, user.userData.materials[key]);
+                        if ("matList" in allReq[key][i]) {
+                            for (let j=0; j<allReq[key][i].matList.length; j++) {
+                                let userInnerMat = GeneralCtrl.searchArray(allReq[key][i].matList[j].name, userMat.matList);
+                                if (userInnerMat === null) {
+                                    allReq[key][i].matList[j]["imgPath"] = GeneralCtrl.searchArray(allReq[key][i].matList[j].name, GeneralCtrl.generalData.img).imgPath;
+                                    continue;
+                                };
+                                if (allReq[key][i].matList[j].reqNum < userInnerMat.number) {
+                                    allReq[key][i].matList[j].reqNum = 0;
                                 } else {
-                                    data[key][i]["matList"][j].number -= user.userData.materials[key][i]["matList"][j].number;
+                                    allReq[key][i].matList[j].reqNum -= userInnerMat.number;
                                 }
+                                allReq[key][i].matList[j]["imgPath"] = userInnerMat.imgPath;
                             }
                         } else {
-                            if (data[key][i].number < user.userData.materials[key][i].number) {
-                                data[key][i].number = 0;
+                            if (userMat === null) {
+                                allReq[key][i]["imgPath"] = GeneralCtrl.searchArray(allReq[key][i].name, GeneralCtrl.generalData.img).imgPath;
+                                continue;
+                            }
+                            if (allReq[key][i].reqNum < userMat.number) {
+                                allReq[key][i].reqNum = 0;
                             } else {
-                                data[key][i].number -= user.userData.materials[key][i].number;
+                                allReq[key][i].reqNum -= userMat.number;
                             }
+                            allReq[key][i]["imgPath"] = userMat.imgPath;
                         }
-                    }
-                } else if (key === "charExp" || key === "weaponExp") {
-                    for (let i=0; i<data[key].mat.length; i++) {
-                        if (data[key].mat[i].number < user.userData.materials[key][i].number) {
-                            data[key].mat[i].number = 0;
-                        } else {
-                            data[key].mat[i].number -= user.userData.materials[key][i].number;
-                        }
-                    }
-                } else if (key === "mora") {
-                    if (data.mora < user.userData.materials.mora) {
-                        data.mora = 0;
-                    } else {
-                        data.mora -= user.userData.materials.mora;
                     }
                 }
             }
 
-            return res.json(data);
-        });
+            return res.json(allReq);
+        }).catch(err => console.log(err));
     });
 }
 
@@ -434,117 +455,110 @@ getCalcAllCharReq = (req, res) => {
         }
 
         User.findOne({ email: data.email }).then(user => {
-            let data = initializeData().materials;
-            let charReq = GeneralCtrl.getAllCharReq(user.userData.charList);
-
-            for (let key in charReq) {
-                if (key !== "exp" && key !== "mora") {
-                    for (let i=0; i<charReq[key].length; i++) {
-                        if ("matList" in charReq[key][i]) {
-                            for (let j=0; j<charReq[key][i].matList.length; j++) {
-                                data[key][i]["matList"][j].number += charReq[key][i]["matList"][j].reqNum;
-                            }
-                        } else {
-                            data[key][i].number += charReq[key][i].reqNum;
-                        }
-                    }
-                } else if (key === "exp") {
-                    for (let i=0; i<charReq[key].mat.length; i++) {
-                        data.charExp.mat[i].number += charReq.exp.mat[i].reqNum;
-                    }
-                    data.charExp.wastedExp += charReq.exp.wastedExp;
-                } else if (key === "mora") {
-                    data.mora += charReq.mora;
-                }
-            }
+            let allCharReq = GeneralCtrl.getAllCharReq(user.userData.charList);
+            Object.defineProperty(allCharReq, "charExp", Object.getOwnPropertyDescriptor(allCharReq, "exp"));
+            delete allCharReq["exp"];
 
             let talentReq = GeneralCtrl.getAllTalentReq(user.userData.charList);
+            allCharReq.mora += talentReq.mora;
 
             for (let key in talentReq) {
-                if (key !== "exp" && key !== "mora") {
+                if (key === "comMat") {
                     for (let i=0; i<talentReq[key].length; i++) {
-                        if ("matList" in talentReq[key][i]) {
-                            for (let j=0; j<talentReq[key][i]["matList"].length; j++) {
-                                data[key][i]["matList"][j].number += talentReq[key][i]["matList"][j].reqNum;
-                            }
-                        } else {
-                            data[key][i].number += talentReq[key][i].reqNum;
+                        for (let j=0; j<talentReq[key][i]["matList"].length; j++) {
+                            allCharReq[key][i]["matList"][j].reqNum += talentReq[key][i]["matList"][j].reqNum;
                         }
                     }
-                } else if (key === "mora") {
-                    data.mora += talentReq.mora;
+                } else if (key !== "mora") {
+                    allCharReq[key] = talentReq[key];
                 }
             }
+            allCharReq["misc"] = [
+                {
+                    name: "Mora",
+                    type: "None",
+                    reqNum: allCharReq.mora,
+                },
+                {
+                    name: "Crown of Insight",
+                    type: "gold",
+                    reqNum: allCharReq.crownNum,
+                }
+            ];
 
-            for (let key in data) {
-                if (key !== "crownNum" && key !== "mora") {
-                    for (let i=0; i<data[key].length; i++) {
-                        if ("matList" in data[key][i]) {
-                            for (let j=0; j<data[key][i].matList.length; j++) {
-                                if (data[key][i]["matList"][j].number < user.userData.materials[key][i]["matList"][j].number) {
-                                    data[key][i]["matList"][j].number = 0;
+            delete allCharReq["mora"];
+            delete allCharReq["crownNum"];
+
+            for (let key in allCharReq) {
+                if (key === "charExp") {
+                    for (let i=0; i<allCharReq[key].mat.length; i++) {
+                        let userMat = GeneralCtrl.searchArray(allCharReq[key].mat[i].name, user.userData.materials[key]);
+                        if (userMat === null) {
+                            allCharReq[key].mat[i]["imgPath"] = GeneralCtrl.searchArray(allCharReq[key].mat[i].name, GeneralCtrl.generalData.img).imgPath;
+                            continue;
+                        }
+                        if (allCharReq[key].mat[i].reqNum < userMat.number) {
+                            allCharReq[key].mat[i].reqNum = 0;
+                        } else {
+                            allCharReq[key].mat[i].reqNum -= userMat.number;
+                        }
+                        allCharReq[key].mat[i]["imgPath"] = userMat.imgPath;
+                    }
+                } else {
+                    for (let i=0; i<allCharReq[key].length; i++) {
+                        let userMat = GeneralCtrl.searchArray(allCharReq[key][i].name, user.userData.materials[key]);
+                        if ("matList" in allCharReq[key][i]) {
+                            for (let j=0; j<allCharReq[key][i].matList.length; j++) {
+                                let userInnerMat = GeneralCtrl.searchArray(allCharReq[key][i].matList[j].name, userMat.matList);
+                                if (userInnerMat === null) {
+                                    allCharReq[key][i].matList[j]["imgPath"] = GeneralCtrl.searchArray(allCharReq[key][i].matList[j].name, GeneralCtrl.generalData.img).imgPath;
+                                    continue;
+                                };
+                                if (allCharReq[key][i].matList[j].reqNum < userInnerMat.number) {
+                                    allCharReq[key][i].matList[j].reqNum = 0;
                                 } else {
-                                    data[key][i]["matList"][j].number -= user.userData.materials[key][i]["matList"][j].number;
+                                    allCharReq[key][i].matList[j].reqNum -= userInnerMat.number;
                                 }
+                                allCharReq[key][i].matList[j]["imgPath"] = userInnerMat.imgPath;
                             }
                         } else {
-                            if (data[key][i].number < user.userData.materials[key][i].number) {
-                                data[key][i].number = 0;
+                            if (userMat === null) {
+                                allCharReq[key][i]["imgPath"] = GeneralCtrl.searchArray(allCharReq[key][i].name, GeneralCtrl.generalData.img).imgPath;
+                                continue;
+                            }
+                            if (allCharReq[key][i].reqNum < userMat.number) {
+                                allCharReq[key][i].reqNum = 0;
                             } else {
-                                data[key][i].number -= user.userData.materials[key][i].number;
+                                allCharReq[key][i].reqNum -= userMat.number;
                             }
+                            allCharReq[key][i]["imgPath"] = userMat.imgPath;
                         }
-                    }
-                } else if (key === "charExp" || key === "weaponExp") {
-                    for (let i=0; i<data[key].mat.length; i++) {
-                        if (data[key].mat[i].number < user.userData.materials[key][i].number) {
-                            data[key].mat[i].number = 0;
-                        } else {
-                            data[key].mat[i].number -= user.userData.materials[key][i].number;
-                        }
-                    }
-                } else if (key === "mora") {
-                    if (data.mora < user.userData.materials.mora) {
-                        data.mora = 0;
-                    } else {
-                        data.mora -= user.userData.materials.mora;
                     }
                 }
             }
 
-            delete data["eliteMat"];
-            delete data["weaponMat"];
-            delete data["weaponExp"];
-            Object.defineProperty(data, "exp", Object.getOwnPropertyDescriptor(data, "charExp"));
-            delete data["charExp"];
-
-
-            return res.json(data);
-        });
+            return res.json(allCharReq);
+        }).catch(err => console.log(err));
     });
 }
 
 // Gets all requirements for single character and all character's talents
 getCalcCharReq = (req, res) => {
     if (req.token === "Unauthorized") {
-        let charReq = GeneralCtrl.getCharReq(req.params.name, 1, 90);
-        for (let key in charReq) {
-            if (key !== "exp" && key !== "mora") {
-                for (let i=0; i<charReq[key].length; i++) {
-                    if ("matList" in charReq[key][i]) {
-                        for (let j=0; j<charReq[key][i].matList.length; j++) {
-                            charReq[key][i]["matList"][j]["imgPath"] = GeneralCtrl.searchArray(charReq[key][i]["matList"][j].name, GeneralCtrl.generalData.img).imgPath;
-                        }
-                    } else {
-                        charReq[key][i]["imgPath"] = GeneralCtrl.searchArray(charReq[key][i].name, GeneralCtrl.generalData.img).imgPath;
-                    }
-                }
-            } else if (key === "exp") {
-                for (let i=0; i<charReq[key].mat.length; i++) {
-                    charReq.exp.mat[i]["imgPath"] = GeneralCtrl.searchArray(charReq.exp.mat[i].name, GeneralCtrl.generalData.img).imgPath;;
-                }
-            }
-        }
+        let charReq = GeneralCtrl.getCharReq(convertToName(req.params.name), 1, 90);
+        Object.defineProperty(charReq, "charExp", Object.getOwnPropertyDescriptor(charReq, "exp"));
+        delete charReq["exp"];
+
+        charReq["misc"] = [
+            {
+                name: "Mora",
+                type: "None",
+                reqNum: charReq.mora,
+            },
+        ];
+
+        delete charReq["mora"];
+
         return res.json(charReq);
     }
 
@@ -555,48 +569,98 @@ getCalcCharReq = (req, res) => {
         }
 
         User.findOne({ email: data.email }).then(user => {
-            let character = GeneralCtrl.searchArray(req.params.name, GeneralCtrl.generalData.charList);
-            let lvlReq = GeneralCtrl.searchArray(req.params.name, user.userData.charList);
-            let charReq = GeneralCtrl.getCharReq(req.params.name, lvlReq.curLvl, lvlReq.reqLvl);
+            let character = GeneralCtrl.searchArray(convertToName(req.params.name), GeneralCtrl.generalData.charList);
+            let lvlReq = GeneralCtrl.searchArray(character.name, user.userData.charList);
+            let charReq = GeneralCtrl.getCharReq(character.name, lvlReq.curLvl, lvlReq.reqLvl);
 
             let talentReq = GeneralCtrl.getAllTalentReq([lvlReq]);
 
-            let talentMatReq = GeneralCtrl.searchArray(character.talentMat, talentReq.talentMat).matList;
-            let talentMat = GeneralCtrl.searchArray(character.talentMat, user.userData.materials.talentMat).matList;
-            for (let i=0; i<talentMatReq.length; i++) {
-                talentMatReq[i]["imgPath"] = talentMat[i].imgPath;
-                if (talentMatReq[i].reqNum < talentMat[i].number) {
-                    talentMatReq[i].reqNum = 0;
-                } else {
-                    talentMatReq[i].reqNum -= talentMat[i].number;
+            if (character.isTraveler) {
+                let talentMatReq = [];
+                for (let i=0; i<talentReq.talentMat.length; i++) {
+                    for (let j=0; j<talentReq.talentMat[i].matList.length; j++) {
+                        if (talentReq.talentMat[i].matList[j].number > 0) {
+                            if (talentReq.talentMat[i].matList[j].number < user.userData.materials.talentMat[i].matList[j].number) {
+                                talentReq.talentMat[i].matList[j].number = 0;
+                            } else {
+                                talentReq.talentMat[i].matList[j].number -= user.userData.materials.talentMat[i].matList[j].number;
+                            }
+                            talentReq.talentMat[i].matList[j]["imgPath"] = user.userData.materials.talentMat[i].matList[j].imgPath;
+                            talentMatReq.push(talentReq.talentMat[i].matList[j]);
+                        }
+                    }
                 }
-                Object.defineProperty(talentMatReq[i], "number", Object.getOwnPropertyDescriptor(talentMatReq[i], "reqNum"));
-                delete talentMatReq[i]["reqNum"];
-            }
-            charReq["talentMat"] = talentMatReq;
+                charReq["talentMat"] = talentMatReq;
 
-            let talentComMat = GeneralCtrl.searchArray(character.comMat, talentReq.comMat).matList;
-            let comMat = GeneralCtrl.searchArray(character.comMat, user.userData.materials.comMat).matList;
-            for (let i=0; i<comMat.length; i++) {
-                charReq.comMat[i].reqNum += talentComMat[i].reqNum;
-                charReq.comMat[i]["imgPath"] = comMat[i].imgPath;
-                if (charReq.comMat[i].reqNum < comMat[i].number) {
-                    charReq.comMat[i].reqNum = 0;
-                } else {
-                    charReq.comMat[i].reqNum -= comMat[i].number;
+                let comMatReq = [];
+                for (let i=0; i<talentReq.comMat.length; i++) {
+                    for (let j=0; j<talentReq.comMat[i].matList.length; j++) {
+                        if (talentReq.comMat[i].matList[j].number > 0) {
+                            if (talentReq.comMat[i].matList[j].number < user.userData.materials.comMat[i].matList[j].number) {
+                                talentReq.comMat[i].matList[j].number = 0;
+                            } else {
+                                talentReq.comMat[i].matList[j].number -= user.userData.materials.comMat[i].matList[j].number;
+                            }
+                            talentReq.comMat[i].matList[j]["imgPath"] = user.userData.materials.comMat[i].matList[j].imgPath;
+                            comMatReq.push(talentReq.comMat[i].matList[j]);
+                        }
+                    }
                 }
-                Object.defineProperty(charReq.comMat[i], "number", Object.getOwnPropertyDescriptor(charReq.comMat[i], "reqNum"));
-                delete charReq.comMat[i]["reqNum"];
+                charReq["comMat"] = comMatReq;
+
+                let bossMatReq = [];
+                for (let i=0; i<talentReq.bossMat.length; i++) {
+                    if (talentReq.bossMat[i].number > 0) {
+                        if (talentReq.bossMat[i].number < user.userData.materials.bossMat[i].number) {
+                            talentReq.bossMat[i].number = 0;
+                        } else {
+                            talentReq.bossMat[i].number -= user.userData.materials.bossMat[i].number;
+                        }
+                        talentReq.bossMat[i]["imgPath"] = user.userData.materials.bossMat[i].imgPath;
+                        bossMatReq.push(talentReq.bossMat[i]);
+                    }
+                }
+                charReq["bossMat"] = bossMatReq;
+
+            } else {
+                let talentMatReq = GeneralCtrl.searchArray(character.talentMat, talentReq.talentMat).matList;
+                let talentMat = GeneralCtrl.searchArray(character.talentMat, user.userData.materials.talentMat).matList;
+                for (let i=0; i<talentMatReq.length; i++) {
+                    talentMatReq[i]["imgPath"] = talentMat[i].imgPath;
+                    if (talentMatReq[i].reqNum < talentMat[i].number) {
+                        talentMatReq[i].reqNum = 0;
+                    } else {
+                        talentMatReq[i].reqNum -= talentMat[i].number;
+                    }
+                    Object.defineProperty(talentMatReq[i], "number", Object.getOwnPropertyDescriptor(talentMatReq[i], "reqNum"));
+                    delete talentMatReq[i]["reqNum"];
+                }
+                charReq["talentMat"] = talentMatReq;
+
+                let talentComMat = GeneralCtrl.searchArray(character.comMat, talentReq.comMat).matList;
+                let comMat = GeneralCtrl.searchArray(character.comMat, user.userData.materials.comMat).matList;
+                for (let i=0; i<comMat.length; i++) {
+                    charReq.comMat[i].reqNum += talentComMat[i].reqNum;
+                    charReq.comMat[i]["imgPath"] = comMat[i].imgPath;
+                    if (charReq.comMat[i].reqNum < comMat[i].number) {
+                        charReq.comMat[i].reqNum = 0;
+                    } else {
+                        charReq.comMat[i].reqNum -= comMat[i].number;
+                    }
+                    Object.defineProperty(charReq.comMat[i], "number", Object.getOwnPropertyDescriptor(charReq.comMat[i], "reqNum"));
+                    delete charReq.comMat[i]["reqNum"];
+                }
+
+                let bossMat = GeneralCtrl.searchArray(character.bossMat, user.userData.materials.bossMat);
+                let bossMatReq = GeneralCtrl.searchArray(character.bossMat, talentReq.bossMat);
+                charReq["bossMat"] = [{
+                    name: bossMat.name,
+                    number: bossMatReq.reqNum < bossMat.number ? 0 : bossMatReq.reqNum - bossMat.number,
+                    imgPath: bossMat.imgPath,
+                }];
             }
 
-            let bossMat = GeneralCtrl.searchArray(character.bossMat, user.userData.materials.bossMat);
-            let bossMatReq = GeneralCtrl.searchArray(character.bossMat, talentReq.bossMat);
-            charReq["bossMat"] = bossMat.name;
-            charReq["bossMatType"] = bossMat.type;
-            charReq["bossMatNum"] = bossMatReq.reqNum < bossMat.number ? 0 : bossMatReq.reqNum - bossMat.number;
-            charReq["bossMatImgPath"] = bossMat.imgPath;
-
-
+            console.log(character)
             let eleCrys = GeneralCtrl.searchArray(character.eleCrys, user.userData.materials.eleCrys).matList;
             for (let i=0; i<eleCrys.length; i++) {
                 charReq.eleCrys[i]["imgPath"] = eleCrys[i].imgPath;
@@ -669,29 +733,57 @@ getCalcTalentReq = (req, res) => {
         }
 
         User.findOne({ email: data.email }).then(user => {
-            let lvlReq = GeneralCtrl.searchArray(req.params.name, user.userData.charList);
+            let lvlReq = GeneralCtrl.searchArray(convertToName(req.params.name), user.userData.charList);
             let talentReq = {
-                auttoAttack: null,
+                autoAttack: null,
                 eleSkill: null,
                 eleBurst: null,
             }
-            let character = GeneralCtrl.searchArray(req.params.name, GeneralCtrl.generalData.charList);
+            let character = GeneralCtrl.searchArray(lvlReq.name, GeneralCtrl.generalData.charList);
 
             for (let talent in talentReq) {
-                let curReq = GeneralCtrl.getTalentReq(req.params.name, lvlReq[talent].curLvl, lvlReq[talent].reqLvl);
-                let talentMat = GeneralCtrl.searchArray(character.talentMat, user.userData.materials.talentMat).matList;
-                for (let i=0; i<curReq.talentMat; i++) {
-                    talentMatReq[i]["imgPath"] = talentMat[i].imgPath;
-                    if (curReq.talentMat[i].reqNum < talentMat[i].number) {
-                        curReq.talentMat[i].reqNum = 0;
-                    } else {
-                        curReq.talentMat[i].reqNum -= talentMat[i].number;
+                let curReq = GeneralCtrl.getTalentReq(lvlReq.name, lvlReq[talent].curLvl, lvlReq[talent].reqLvl, talent);
+
+                if (character.isTraveler) {
+                    for (let i=0; i<curReq.talentMat.length; i++) {
+                        let curName = curReq.talentMat[i].name;
+                        for (k=0; k<user.userData.materials.talentMat.length; k++) {
+                            for (l=0; l<user.userData.materials.talentMat[k].matList.length; l++) {
+                                if (curName === user.userData.materials.talentMat[k].matList[l].name) {
+                                    curReq.talentMat[i]["imgPath"] = user.userData.materials.talentMat[k].matList[l].imgPath;
+                                    if (curReq.talentMat[i].reqNum < user.userData.materials.talentMat[k].matList[l].number) {
+                                        curReq.talentMat[i].reqNum = 0;
+                                    } else {
+                                        curReq.talentMat[i].reqNum -= user.userData.materials.talentMat[k].matList[l].number;
+                                    }
+                                    Object.defineProperty(curReq.talentMat[i], "number", Object.getOwnPropertyDescriptor(curReq.talentMat[i], "reqNum"));
+                                    delete curReq.talentMat[i]["reqNum"];
+                                }
+                            }
+                        }
                     }
-                    Object.defineProperty(curReq.talentMat[i], "number", Object.getOwnPropertyDescriptor(curReq.talentMat[i], "reqNum"));
-                    delete curReq.talentMat[i]["reqNum"];
+                } else {
+                    let talentMat = GeneralCtrl.searchArray(character.talentMat, user.userData.materials.talentMat).matList;
+                    for (let i=0; i<curReq.talentMat.length; i++) {
+                        curReq.talentMat[i]["imgPath"] = talentMat[i].imgPath;
+                        if (curReq.talentMat[i].reqNum < talentMat[i].number) {
+                            curReq.talentMat[i].reqNum = 0;
+                        } else {
+                            curReq.talentMat[i].reqNum -= talentMat[i].number;
+                        }
+                        Object.defineProperty(curReq.talentMat[i], "number", Object.getOwnPropertyDescriptor(curReq.talentMat[i], "reqNum"));
+                        delete curReq.talentMat[i]["reqNum"];
+                    }
                 }
 
-                let comMat = GeneralCtrl.searchArray(character.comMat, user.userData.materials.comMat).matList;
+                let ele;
+                if (character.isTraveler) {
+                    ele = character.name.split(' ')[1].toLowerCase();
+                }
+
+                let comName = !character.isTraveler ? character.comMat : GeneralCtrl.generalData.miscData.traveler[ele][talent].comMat;
+                let comMat = GeneralCtrl.searchArray(comName, user.userData.materials.comMat).matList;
+
                 for (let i=0; i<curReq.comMat.length; i++) {
                     curReq.comMat[i]["imgPath"] = comMat[i].imgPath;
                     if (curReq.comMat[i].reqNum < comMat[i].number) {
@@ -703,7 +795,8 @@ getCalcTalentReq = (req, res) => {
                     delete curReq.comMat[i]["reqNum"];
                 }
 
-                let bossMat = GeneralCtrl.searchArray(character.bossMat, user.userData.materials.bossMat);
+                let bossName = character.bossMat ? character.bossMat : GeneralCtrl.generalData.miscData.traveler[ele][talent].bossMat;
+                let bossMat = GeneralCtrl.searchArray(bossName, user.userData.materials.bossMat);
                 if (curReq.bossMatNum < bossMat.number) {
                     curReq.bossMatNum= 0;
                 } else {
@@ -799,12 +892,6 @@ getCalcAllWeaponReq = (req, res) => {
     });
 }
 
-function convertToName(name) {
-    conName = name.replace("%27", "'");
-    conName = conName.replace("_", " ");
-    return conName;
-}
-
 // Gets all requirements for single weapon
 getCalcWeaponReq = (req, res) => {
     if (req.token === "Unauthorized") {
@@ -828,7 +915,6 @@ getCalcWeaponReq = (req, res) => {
                 }
             }
         }
-        console.log(weaponReq)
         return res.json(weaponReq);
     }
 
@@ -841,7 +927,7 @@ getCalcWeaponReq = (req, res) => {
         User.findOne({ email: data.email }).then(user => {
             let weapon = GeneralCtrl.searchArray(convertToName(req.params.name), GeneralCtrl.generalData.weaponList);
             let lvlReq = GeneralCtrl.searchArray(weapon.name, user.userData.weaponList);
-            let weaponReq = GeneralCtrl.getWeaponReq(weapon.name, lvlReq.curLvl, lvlReq.reqLvl);
+            let weaponReq = GeneralCtrl.getWeaponReq(weapon.name,lvlReq.curLvl, lvlReq.reqLvl, weapon.number);
             for (let key in weaponReq) {
                 if (key === "weaponMat" || key === "eliteMat" || key === "comMat") {
                     for (let i=0; i<weaponReq[key].length; i++) {

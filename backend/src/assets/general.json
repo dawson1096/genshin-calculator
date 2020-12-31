@@ -2,6 +2,34 @@
     "name": "general",
     "charList": [
         {
+            "name": "Traveler Geo",
+            "stars": 5,
+            "eleCrys": "Brilliant Diamond",
+            "eleMat": null,
+            "locSpec": "Windwheel Aster",
+            "comMat": "Mask",
+            "talentMat": null,
+            "bossMat": null,
+            "autoAttack": "Foreign Rockblade",
+            "eleSkill": "Starfell Sword",
+            "eleBurst": "Wake of Earth",
+            "isTraveler": true
+        },
+        {
+            "name": "Traveler Anemo",
+            "stars": 5,
+            "eleCrys": "Brilliant Diamond",
+            "eleMat": null,
+            "locSpec": "Windwheel Aster",
+            "comMat": "Mask",
+            "talentMat": null,
+            "bossMat": null,
+            "autoAttack": "Foreign Ironwind",
+            "eleSkill": "Palm Vortex",
+            "eleBurst": "Gust Surge",
+            "isTraveler": true
+        },
+        {
             "name": "Amber",
             "stars": 4,
             "eleCrys": "Agnidus Agate",
@@ -12,7 +40,8 @@
             "bossMat": "Dvalin's Sigh",
             "autoAttack": "Sharpshooter",
             "eleSkill": "Explosive Puppet",
-            "eleBurst": "Fiery Rain"
+            "eleBurst": "Fiery Rain",
+            "isTraveler": false
         },
         {
             "name": "Barbara",
@@ -25,7 +54,8 @@
             "bossMat": "Ring of Boreas",
             "autoAttack": "Whisper of Water",
             "eleSkill": "Let the Show Begin",
-            "eleBurst": "Shining Miracle"
+            "eleBurst": "Shining Miracle",
+            "isTraveler": false
         },
         {
             "name": "Beidou",
@@ -38,7 +68,8 @@
             "bossMat": "Dvalin's Sigh",
             "autoAttack": "Oceanborne",
             "eleSkill": "Tidecaller",
-            "eleBurst": "Stormbreaker"
+            "eleBurst": "Stormbreaker",
+            "isTraveler": false
         },
         {
             "name": "Bennett",
@@ -51,7 +82,8 @@
             "bossMat": "Dvalin's Plume",
             "autoAttack": "Strike of Fortune",
             "eleSkill": "Passion Overload",
-            "eleBurst": "Fantastic Voyage"
+            "eleBurst": "Fantastic Voyage",
+            "isTraveler": false
         },
         {
             "name": "Chongyun",
@@ -64,7 +96,8 @@
             "bossMat": "Dvalin's Sigh",
             "autoAttack": "Demonbane",
             "eleSkill": "Spirit Blade - Chonghua's Layered Frost",
-            "eleBurst": "Spirit Blade - Cloud-Parting Star"
+            "eleBurst": "Spirit Blade - Cloud-Parting Star",
+            "isTraveler": false
         },
         {
             "name": "Diluc",
@@ -77,7 +110,8 @@
             "bossMat": "Dvalin's Plume",
             "autoAttack": "Tempered Sword",
             "eleSkill": "Searing Onslaught",
-            "eleBurst": "Dawn"
+            "eleBurst": "Dawn",
+            "isTraveler": false
         },
         {
             "name": "Fischl",
@@ -90,7 +124,8 @@
             "bossMat": "Spirit Locket of Boreas",
             "autoAttack": "Bolts of Downfall",
             "eleSkill": "Nightrider",
-            "eleBurst": "Midnight Phantasmagoria"
+            "eleBurst": "Midnight Phantasmagoria",
+            "isTraveler": false
         },
         {
             "name": "Jean",
@@ -103,7 +138,8 @@
             "bossMat": "Dvalin's Plume",
             "autoAttack": "Favonius Bladework",
             "eleSkill": "Gale Blade",
-            "eleBurst": "Dandelion Breeze"
+            "eleBurst": "Dandelion Breeze",
+            "isTraveler": false
         },
         {
             "name": "Kaeya",
@@ -116,7 +152,8 @@
             "bossMat": "Spirit Locket of Boreas",
             "autoAttack": "Ceremonial Bladework",
             "eleSkill": "Frostgnaw",
-            "eleBurst": "Glacial Waltz"
+            "eleBurst": "Glacial Waltz",
+            "isTraveler": false
         },
         {
             "name": "Keqing",
@@ -129,7 +166,8 @@
             "bossMat": "Ring of Boreas",
             "autoAttack": "Yunlai Swordsmanship",
             "eleSkill": "Stellar Restoration",
-            "eleBurst": "Starward Sword"
+            "eleBurst": "Starward Sword",
+            "isTraveler": false
         },
         {
             "name": "Klee",
@@ -142,7 +180,8 @@
             "bossMat": "Ring of Boreas",
             "autoAttack": "Kaboom!",
             "eleSkill": "Jumpy Dumpty",
-            "eleBurst": "Sparks 'n' Splash"
+            "eleBurst": "Sparks 'n' Splash",
+            "isTraveler": false
         },
         {
             "name": "Lisa",
@@ -155,7 +194,8 @@
             "bossMat": "Dvalin's Claw",
             "autoAttack": "Lightning Touch",
             "eleSkill": "Violet Arc",
-            "eleBurst": "Lightning Rose"
+            "eleBurst": "Lightning Rose",
+            "isTraveler": false
         },
         {
             "name": "Mona",
@@ -168,7 +208,8 @@
             "bossMat": "Ring of Boreas",
             "autoAttack": "Ripple of Fate",
             "eleSkill": "Mirror Reflection of Doom",
-            "eleBurst": "Stellaris Phantasm"
+            "eleBurst": "Stellaris Phantasm",
+            "isTraveler": false
         },
         {
             "name": "Ningguang",
@@ -181,7 +222,8 @@
             "bossMat": "Spirit Locket of Boreas",
             "autoAttack": "Sparkling Scatter",
             "eleSkill": "Jade Screen",
-            "eleBurst": "Starshatter"
+            "eleBurst": "Starshatter",
+            "isTraveler": false
         },
         {
             "name": "Noelle",
@@ -194,7 +236,8 @@
             "bossMat": "Dvalin's Claw",
             "autoAttack": "Favonius Bladework - Maid",
             "eleSkill": "Breastplate",
-            "eleBurst": "Sweeping Time"
+            "eleBurst": "Sweeping Time",
+            "isTraveler": false
         },
         {
             "name": "Qiqi",
@@ -207,7 +250,8 @@
             "bossMat": "Tail of Boreas",
             "autoAttack": "Ancient Sword Art",
             "eleSkill": "Adeptus Art - Herald of Frost",
-            "eleBurst": "Adeptus Art - Preserver of Fortune"
+            "eleBurst": "Adeptus Art - Preserver of Fortune",
+            "isTraveler": false
         },
         {
             "name": "Razor",
@@ -220,7 +264,8 @@
             "bossMat": "Dvalin's Claw",
             "autoAttack": "Steel Fang",
             "eleSkill": "Claw and Thunder",
-            "eleBurst": "Lightning Fang"
+            "eleBurst": "Lightning Fang",
+            "isTraveler": false
         },
         {
             "name": "Sucrose",
@@ -233,7 +278,8 @@
             "bossMat": "Spirit Locket of Boreas",
             "autoAttack": "Wind Spirit Creation",
             "eleSkill": "Astable Anemohypostasis Creation - 6308",
-            "eleBurst": "Forbidden Creation - Isomer 75 / Type II"
+            "eleBurst": "Forbidden Creation - Isomer 75 / Type II",
+            "isTraveler": false
         },
         {
             "name": "Venti",
@@ -246,7 +292,8 @@
             "bossMat": "Tail of Boreas",
             "autoAttack": "Divine Marksmanship",
             "eleSkill": "Skyward Sonnet",
-            "eleBurst": "Wind's Grand Ode"
+            "eleBurst": "Wind's Grand Ode",
+            "isTraveler": false
         },
         {
             "name": "Xiangling",
@@ -259,7 +306,8 @@
             "bossMat": "Dvalin's Claw",
             "autoAttack": "Dough-Fu",
             "eleSkill": "Guoba Attack",
-            "eleBurst": "Pyronado"
+            "eleBurst": "Pyronado",
+            "isTraveler": false
         },
         {
             "name": "Xingqiu",
@@ -272,7 +320,8 @@
             "bossMat": "Tail of Boreas",
             "autoAttack": "Guhua Style",
             "eleSkill": "Guhua Sword - Fatal Rainscreen",
-            "eleBurst": "Guhua Sword - Raincutter"
+            "eleBurst": "Guhua Sword - Raincutter",
+            "isTraveler": false
         },
         {
             "name": "Tartaglia",
@@ -285,7 +334,8 @@
             "bossMat": "Shard of a Foul Legacy",
             "autoAttack": "Cutting Torrent",
             "eleSkill": "Foul Legacy - Raging Tide",
-            "eleBurst": "Havoc - Obliteration"
+            "eleBurst": "Havoc - Obliteration",
+            "isTraveler": false
         },
         {
             "name": "Zhongli",
@@ -298,7 +348,8 @@
             "bossMat": "Tusk of Monoceros Caeli",
             "autoAttack": "Rain of Stone",
             "eleSkill": "Dominus Lapidis",
-            "eleBurst": "Planet Befall"
+            "eleBurst": "Planet Befall",
+            "isTraveler": false
         },
         {
             "name": "Diona",
@@ -311,7 +362,8 @@
             "bossMat": "Shard of a Foul Legacy",
             "autoAttack": "Kätzlein Style",
             "eleSkill": "Icy Paws",
-            "eleBurst": "Signature Mix"
+            "eleBurst": "Signature Mix",
+            "isTraveler": false
         },
         {
             "name": "Xinyan",
@@ -324,7 +376,8 @@
             "bossMat": "Tusk of Monoceros Caeli",
             "autoAttack": "Dance on Fire",
             "eleSkill": "Sweeping Fervor",
-            "eleBurst": "Riff Revolution"
+            "eleBurst": "Riff Revolution",
+            "isTraveler": false
         }
     ],
     "charAscension": [
@@ -848,7 +901,7 @@
             "talentMatNum": 3,
             "comMatType": "white",
             "comMatNum": 6,
-            "bossNum": 0,
+            "bossMatNum": 0,
             "crownNum": 0,
             "mora": 12500
         },
@@ -858,7 +911,7 @@
             "talentMatNum": 2,
             "comMatType": "green",
             "comMatNum": 3,
-            "bossNum": 0,
+            "bossMatNum": 0,
             "crownNum": 0,
             "mora": 17500
         },
@@ -868,7 +921,7 @@
             "talentMatNum": 4,
             "comMatType": "green",
             "comMatNum": 4,
-            "bossNum": 0,
+            "bossMatNum": 0,
             "crownNum": 0,
             "mora": 25000
         },
@@ -878,7 +931,7 @@
             "talentMatNum": 6,
             "comMatType": "green",
             "comMatNum": 6,
-            "bossNum": 0,
+            "bossMatNum": 0,
             "crownNum": 0,
             "mora": 30000
         },
@@ -888,9 +941,9 @@
             "talentMatNum": 9,
             "comMatType": "green",
             "comMatNum": 9,
-            "bossNum": 0,
+            "bossMatNum": 0,
             "crownNum": 0,
-            "mora": 35000
+            "mora": 37500
         },
         {
             "level": 7,
@@ -898,7 +951,7 @@
             "talentMatNum": 4,
             "comMatType": "blue",
             "comMatNum": 4,
-            "bossNum": 1,
+            "bossMatNum": 1,
             "crownNum": 0,
             "mora": 120000
         },
@@ -908,7 +961,7 @@
             "talentMatNum": 6,
             "comMatType": "blue",
             "comMatNum": 6,
-            "bossNum": 1,
+            "bossMatNum": 1,
             "crownNum": 0,
             "mora": 260000
         },
@@ -918,7 +971,7 @@
             "talentMatNum": 12,
             "comMatType": "blue",
             "comMatNum": 9,
-            "bossNum": 2,
+            "bossMatNum": 2,
             "crownNum": 0,
             "mora": 450000
         },
@@ -928,7 +981,7 @@
             "talentMatNum": 16,
             "comMatType": "blue",
             "comMatNum": 12,
-            "bossNum": 2,
+            "bossMatNum": 2,
             "crownNum": 1,
             "mora": 700000
         }
@@ -1167,7 +1220,7 @@
             "comMat": "Scroll"
         },
         {
-            "name": "Prototype Aminus",
+            "name": "Prototype Archaic",
             "type": "Claymore",
             "stars": 4,
             "weaponMat": "Aerosiderite",
@@ -1287,7 +1340,7 @@
             "comMat": "Scroll"
         },
         {
-            "name": "Prototype Grudge",
+            "name": "Prototype Starglitter",
             "type": "Polearm",
             "stars": 4,
             "weaponMat": "Aerosiderite",
@@ -1399,7 +1452,7 @@
             "comMat": "Mask"
         },
         {
-            "name": "Prototype Malice",
+            "name": "Prototype Amber",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Mist Veiled",
@@ -1439,7 +1492,7 @@
             "comMat": "Mask"
         },
         {
-            "name": "Blackcliff Amulet",
+            "name": "Blackcliff Agate",
             "type": "Catalyst",
             "stars": 4,
             "weaponMat": "Guyun",
@@ -4068,6 +4121,14 @@
                 "blue": "Prithiva Topaz Fragment",
                 "purple": "Prithiva Topaz Chunk",
                 "gold": "Prithiva Topaz Gemstone"
+            },
+            {
+                "name": "Brilliant Diamond",
+                "white": null,
+                "green": "Brilliant Diamond Silver",
+                "blue": "Brilliant Diamond Fragment",
+                "purple": "Brilliant Diamond Chunk",
+                "gold": "Brilliant Diamond Gemstone"
             }
         ],
         "comMat": [
@@ -4444,11 +4505,15 @@
         ],
         "misc": [
             {
-                "name": "Crown of Sagehood",
+                "name": "Crown of Insight",
                 "type": "gold"
             },
             {
                 "name": "Fragile Resin",
+                "type": "None"
+            },
+            {
+                "name": "Mora",
                 "type": "None"
             }
         ]
@@ -4575,8 +4640,8 @@
             "imgPath": "/api/weapons/black_tassel.png"
         },
         {
-            "name": "Blackcliff Amulet",
-            "imgPath": "/api/weapons/blackcliff_amulet.png"
+            "name": "Blackcliff Agate",
+            "imgPath": "/api/weapons/blackcliff_agate.png"
         },
         {
             "name": "Blackcliff Longsword",
@@ -4727,20 +4792,20 @@
             "imgPath": "/api/weapons/primordial_jade_winged-spear.png"
         },
         {
-            "name": "Prototype Aminus",
-            "imgPath": "/api/weapons/prototype_aminus.png"
+            "name": "Prototype Archaic",
+            "imgPath": "/api/weapons/prototype_archaic.png"
         },
         {
             "name": "Prototype Crescent",
             "imgPath": "/api/weapons/prototype_crescent.png"
         },
         {
-            "name": "Prototype Grudge",
-            "imgPath": "/api/weapons/prototype_grudge.png"
+            "name": "Prototype Starglitter",
+            "imgPath": "/api/weapons/prototype_starglitter.png"
         },
         {
-            "name": "Prototype Malice",
-            "imgPath": "/api/weapons/prototype_malice.png"
+            "name": "Prototype Amber",
+            "imgPath": "/api/weapons/prototype_amber.png"
         },
         {
             "name": "Prototype Rancour",
@@ -5207,6 +5272,22 @@
             "imgPath": "/api/materials/crystal/vayuda_turquoise_silver.png"
         },
         {
+            "name": "Brilliant Diamond Silver",
+            "imgPath": "/api/materials/crystal/brilliant_diamond_silver.png"
+        },
+        {
+            "name": "Brilliant Diamond Fragment",
+            "imgPath": "/api/materials/crystal/brilliant_diamond_fragment.png"
+        },
+        {
+            "name": "Brilliant Diamond Chunk",
+            "imgPath": "/api/materials/crystal/brilliant_diamond_chunk.png"
+        },
+        {
+            "name": "Brilliant Diamond Gemstone",
+            "imgPath": "/api/materials/crystal/brilliant_diamond_gemstone.png"
+        },
+        {
             "name": "Basalt Pillar",
             "imgPath": "/api/materials/elemental/basalt_pillar.png"
         },
@@ -5295,8 +5376,8 @@
             "imgPath": "/api/materials/locspec/wolfhook.png"
         },
         {
-            "name": "Crown of Sagehood",
-            "imgPath": "/api/materials/misc/crown_of_sagehood.png"
+            "name": "Crown of Insight",
+            "imgPath": "/api/materials/misc/crown_of_insight.png"
         },
         {
             "name": "Fragile Resin",
@@ -5551,11 +5632,339 @@
             "imgPath": "/api/talents/demonbane.png"
         },
         {
-            "name": "Demonbane",
-            "imgPath": "/api/talents/demonbane.png"
+            "name": "Divine Marksmanship",
+            "imgPath": "/api/talents/divine_marksmanship.png"
         },
+        {
+            "name": "Dominus Lapidis",
+            "imgPath": "/api/talents/dominus_lapidis.png"
+        },
+        {
+            "name": "Dough-Fu",
+            "imgPath": "/api/talents/dough-fu.png"
+        },
+        {
+            "name": "Explosive Puppet",
+            "imgPath": "/api/talents/explosive_puppet.png"
+        },
+        {
+            "name": "Fantastic Voyage",
+            "imgPath": "/api/talents/fantastic_voyage.png"
+        },
+        {
+            "name": "Favonius Bladework - Maid",
+            "imgPath": "/api/talents/favonius_bladework-maid.png"
+        },
+        {
+            "name": "Favonius Bladework",
+            "imgPath": "/api/talents/favonius_bladework.png"
+        },
+        {
+            "name": "Fiery Rain",
+            "imgPath": "/api/talents/fiery_rain.png"
+        },
+        {
+            "name": "Forbidden Creation - Isomer 75 / Type II",
+            "imgPath": "/api/talents/forbidden_creation-isomer_75_type_II.png"
+        },
+        {
+            "name": "Foul Legacy - Raging Tide",
+            "imgPath": "/api/talents/foul_legacy-raging_tide.png"
+        },
+        {
+            "name": "Frostgnaw",
+            "imgPath": "/api/talents/frostgnaw.png"
+        },
+        {
+            "name": "Gale Blade",
+            "imgPath": "/api/talents/gale_blade.png"
+        },
+        {
+            "name": "Glacial Waltz",
+            "imgPath": "/api/talents/glacial_waltz.png"
+        },
+        {
+            "name": "Guhua Style",
+            "imgPath": "/api/talents/guhua_style.png"
+        },
+        {
+            "name": "Guhua Sword - Fatal Rainscreen",
+            "imgPath": "/api/talents/guhua_sword-fatal_rainscreen.png"
+        },
+        {
+            "name": "Guhua Sword - Raincutter",
+            "imgPath": "/api/talents/guhua_sword-raincutter.png"
+        },
+        {
+            "name": "Guoba Attack",
+            "imgPath": "/api/talents/guoba_attack.png"
+        },
+        {
+            "name": "Havoc - Obliteration",
+            "imgPath": "/api/talents/havoc-obliteration.png"
+        },
+        {
+            "name": "Icy Paws",
+            "imgPath": "/api/talents/icy_paws.png"
+        },
+        {
+            "name": "Jade Screen",
+            "imgPath": "/api/talents/jade_screen.png"
+        },
+        {
+            "name": "Jumpy Dumpty",
+            "imgPath": "/api/talents/jumpy_dumpty.png"
+        },
+        {
+            "name": "Kätzlein Style",
+            "imgPath": "/api/talents/katzlein_style.png"
+        },
+        {
+            "name": "Kaboom!",
+            "imgPath": "/api/talents/kaboom.png"
+        },
+        {
+            "name": "Let the Show Begin",
+            "imgPath": "/api/talents/let_the_show_begin.png"
+        },
+        {
+            "name": "Lightning Fang",
+            "imgPath": "/api/talents/lightning_fang.png"
+        },
+        {
+            "name": "Lightning Rose",
+            "imgPath": "/api/talents/lightning_rose.png"
+        },
+        {
+            "name": "Lightning Touch",
+            "imgPath": "/api/talents/lightning_touch.png"
+        },
+        {
+            "name": "Midnight Phantasmagoria",
+            "imgPath": "/api/talents/midnight_phantasmagoria.png"
+        },
+        {
+            "name": "Mirror Reflection of Doom",
+            "imgPath": "/api/talents/mirror_reflection_of_doom.png"
+        },
+        {
+            "name": "Nightrider",
+            "imgPath": "/api/talents/nightrider.png"
+        },
+        {
+            "name": "Oceanborne",
+            "imgPath": "/api/talents/oceanborne.png"
+        },
+        {
+            "name": "Passion Overload",
+            "imgPath": "/api/talents/passion_overload.png"
+        },
+        {
+            "name": "Planet Befall",
+            "imgPath": "/api/talents/planet_befall.png"
+        },
+        {
+            "name": "Pyronado",
+            "imgPath": "/api/talents/pyronado.png"
+        },
+        {
+            "name": "Rain of Stone",
+            "imgPath": "/api/talents/rain_of_stone.png"
+        },
+        {
+            "name": "Riff Revolution",
+            "imgPath": "/api/talents/riff_revolution.png"
+        },
+        {
+            "name": "Ripple of Fate",
+            "imgPath": "/api/talents/ripple_of_fate.png"
+        },
+        {
+            "name": "Searing Onslaught",
+            "imgPath": "/api/talents/searing_onslaught.png"
+        },
+        {
+            "name": "Sharpshooter",
+            "imgPath": "/api/talents/sharpshooter.png"
+        },
+        {
+            "name": "Shining Miracle",
+            "imgPath": "/api/talents/shining_miracle.png"
+        },
+        {
+            "name": "Signature Mix",
+            "imgPath": "/api/talents/signature_mix.png"
+        },
+        {
+            "name": "Skyward Sonnet",
+            "imgPath": "/api/talents/skyward_sonnet.png"
+        },
+        {
+            "name": "Sparkling Scatter",
+            "imgPath": "/api/talents/sparkling_scatter.png"
+        },
+        {
+            "name": "Sparks 'n' Splash",
+            "imgPath": "/api/talents/sparks_n_splash.png"
+        },
+        {
+            "name": "Spirit Blade - Chonghua's Layered Frost",
+            "imgPath": "/api/talents/spirit_blade-chonghua_layered_frost.png"
+        },
+        {
+            "name": "Spirit Blade - Cloud-Parting Star",
+            "imgPath": "/api/talents/spirit_blade-cloud-parting_star.png"
+        },
+        {
+            "name": "Starshatter",
+            "imgPath": "/api/talents/starshatter.png"
+        },
+        {
+            "name": "Starward Sword",
+            "imgPath": "/api/talents/starward_sword.png"
+        },
+        {
+            "name": "Steel Fang",
+            "imgPath": "/api/talents/steel_fang.png"
+        },
+        {
+            "name": "Stellar Restoration",
+            "imgPath": "/api/talents/stellar_restoration.png"
+        },
+        {
+            "name": "Stellaris Phantasm",
+            "imgPath": "/api/talents/stellaris_phantasm.png"
+        },
+        {
+            "name": "Stormbreaker",
+            "imgPath": "/api/talents/stormbreaker.png"
+        },
+        {
+            "name": "Strike of Fortune",
+            "imgPath": "/api/talents/strike_of_fortune.png"
+        },
+        {
+            "name": "Sweeping Fervor",
+            "imgPath": "/api/talents/sweeping_fervor.png"
+        },
+        {
+            "name": "Sweeping Time",
+            "imgPath": "/api/talents/sweeping_time.png"
+        },
+        {
+            "name": "Tempered Sword",
+            "imgPath": "/api/talents/tempered_sword.png"
+        },
+        {
+            "name": "Tidecaller",
+            "imgPath": "/api/talents/tidecaller.png"
+        },
+        {
+            "name": "Violet Arc",
+            "imgPath": "/api/talents/violet_arc.png"
+        },
+        {
+            "name": "Whisper of Water",
+            "imgPath": "/api/talents/whisper_of_water.png"
+        },
+        {
+            "name": "Wind Spirit Creation",
+            "imgPath": "/api/talents/wind_spirit_creation.png"
+        },
+        {
+            "name": "Wind's Grand Ode",
+            "imgPath": "/api/talents/wind_grand_ode.png"
+        },
+        {
+            "name": "Yunlai Swordsmanship",
+            "imgPath": "/api/talents/yunlai_swordsmanship.png"
+        },
+        {
+            "name": "Foreign Rockblade",
+            "imgPath": "/api/talents/foreign_rockblade.png"
+        },
+        {
+            "name": "Starfell Sword",
+            "imgPath": "/api/talents/starfell_sword.png"
+        },
+        {
+            "name": "Wake of Earth",
+            "imgPath": "/api/talents/wake_of_earth.png"
+        },
+        {
+            "name": "Foreign Ironwind",
+            "imgPath": "/api/talents/foreign_ironwind.png"
+        },
+        {
+            "name": "Palm Vortex",
+            "imgPath": "/api/talents/palm_vortex.png"
+        },
+        {
+            "name": "Gust Surge",
+            "imgPath": "/api/talents/gust_surge.png"
+        }
     ],
     "miscData": {
+        "traveler": {
+            "anemo" : {
+                "autoAttack": {
+                    "talentMat": [
+                        "Freedom",
+                        "Resistance",
+                        "Ballad"
+                    ],
+                    "comMat": "Scroll",
+                    "bossMat": "Dvalin's Sigh"
+                },
+                "eleSkill": {
+                    "talentMat": [
+                        "Freedom",
+                        "Resistance",
+                        "Ballad"
+                    ],
+                    "comMat": "Scroll",
+                    "bossMat": "Dvalin's Sigh"
+                },
+                "eleBurst": {
+                    "talentMat": [
+                        "Freedom",
+                        "Resistance",
+                        "Ballad"
+                    ],
+                    "comMat": "Scroll",
+                    "bossMat": "Dvalin's Sigh"
+                }
+            },
+            "geo": {
+                "autoAttack": {
+                    "talentMat": [
+                        "Freedom",
+                        "Resistance",
+                        "Ballad"
+                    ],
+                    "comMat": "Scroll",
+                    "bossMat": "Dvalin's Sigh"
+                },
+                "eleSkill": {
+                    "talentMat": [
+                        "Prosperity",
+                        "Diligence",
+                        "Gold"
+                    ],
+                    "comMat": "Arrowhead",
+                    "bossMat": "Tail of Boreas"
+                },
+                "eleBurst": {
+                    "talentMat": [
+                        "Prosperity",
+                        "Diligence",
+                        "Gold"
+                    ],
+                    "comMat": "Arrowhead",
+                    "bossMat": "Tail of Boreas"
+                }
+            }
+        },
         "charAscenLevels": [
             20,
             40,
@@ -5657,7 +6066,8 @@
                 "Vajrada Amethyst",
                 "Shivada Jade",
                 "Vayuda Turquoise",
-                "Prithiva Topaz"
+                "Prithiva Topaz",
+                "Brilliant Diamond"
             ],
             "comMat": [
                 "Slime",

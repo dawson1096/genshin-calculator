@@ -1,70 +1,89 @@
 {
     "userData": {
-        "_id": "5fe1051554322c7bfd468d92",
+        "_id": "5feb8b7b9ddca2bde7e3148c",
         "charList": [
             {
                 "name": "Amber",
                 "stars": 4,
                 "curLvl": 1,
-                "reqLvl": 80,
-                "auttoAttack": {
+                "reqLvl": 40.5,
+                "autoAttack": {
+                    "name": "Sharpshooter",
                     "curLvl": 1,
-                    "reqLvl": 3,
-                    "imgPath": "/api/characters/amber.png"
+                    "reqLvl": 4,
+                    "imgPath": "/api/talents/sharpshooter.png"
                 },
                 "eleSkill": {
+                    "name": "Explosive Puppet",
                     "curLvl": 1,
-                    "reqLvl": 3,
-                    "imgPath": "/api/characters/amber.png"
+                    "reqLvl": 4,
+                    "imgPath": "/api/talents/explosive_puppet.png"
                 },
                 "eleBurst": {
+                    "name": "Fiery Rain",
                     "curLvl": 1,
-                    "reqLvl": 3,
-                    "imgPath": "/api/characters/amber.png"
+                    "reqLvl": 4,
+                    "imgPath": "/api/talents/fiery_rain.png"
+                },
+                "imgPath": "/api/characters/amber.png"
+            },
+            {
+                "name": "Traveler Geo",
+                "stars": 4,
+                "curLvl": 1,
+                "reqLvl": 40.5,
+                "autoAttack": {
+                    "name": "Foreign Rockblade",
+                    "curLvl": 1,
+                    "reqLvl": 4,
+                    "imgPath": "/api/talents/foreign_rockblade.png"
+                },
+                "eleSkill": {
+                    "name": "Starfell Sword",
+                    "curLvl": 1,
+                    "reqLvl": 4,
+                    "imgPath": "/api/talents/starfell_sword.png"
+                },
+                "eleBurst": {
+                    "name": "Wake of Earth",
+                    "curLvl": 1,
+                    "reqLvl": 4,
+                    "imgPath": "/api/talents/wake_of_earth.png"
                 },
                 "imgPath": "/api/characters/amber.png"
             }
         ],
-        "weaponList": [ 
-            {
-                "name": "Skyward Blade",
-                "stars": 5,
-                "number": 1,
-                "curLvl": 1,
-                "reqLvl": 90,
-                "imgPath": "/api/weapons/skyward_blade.png"
-            }
-        ],
+        "weaponList": [],
         "materials": {
-            "_id": "5fe1051554322c7bfd468d93",
+            "_id": "5feb8b7b9ddca2bde7e3148d",
             "eleCrys": [
                 {
-                    "_id": "5fe1051554322c7bfd468d94",
+                    "_id": "5feb8b7e9ddca2bde7e31490",
                     "name": "Agnidus Agate",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468d95",
+                            "_id": "5feb8b7e9ddca2bde7e31491",
                             "name": "Agnidus Agate Silver",
                             "type": "green",
-                            "number": 0,
+                            "number": 1,
                             "imgPath": "/api/materials/crystal/agnidus_agate_silver.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468d96",
+                            "_id": "5feb8b7e9ddca2bde7e31492",
                             "name": "Agnidus Agate Fragment",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/agnidus_agate_fragment.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468d97",
+                            "_id": "5feb8b7e9ddca2bde7e31493",
                             "name": "Agnidus Agate Chunk",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/agnidus_agate_chunk.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468d98",
+                            "_id": "5feb8b7e9ddca2bde7e31494",
                             "name": "Agnidus Agate Gemstone",
                             "type": "gold",
                             "number": 0,
@@ -73,32 +92,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468d99",
+                    "_id": "5feb8b7e9ddca2bde7e31495",
                     "name": "Varunada Lazurite",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468d9a",
+                            "_id": "5feb8b7e9ddca2bde7e31496",
                             "name": "Varunada Lazurite Silver",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/varunada_lazurite_silver.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468d9b",
+                            "_id": "5feb8b7e9ddca2bde7e31497",
                             "name": "Varunada Lazurite Fragment",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/varunada_lazurite_fragment.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468d9c",
+                            "_id": "5feb8b7e9ddca2bde7e31498",
                             "name": "Varunada Lazurite Chunk",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/varunada_lazurite_chunk.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468d9d",
+                            "_id": "5feb8b7e9ddca2bde7e31499",
                             "name": "Varunada Lazurite Gemstone",
                             "type": "gold",
                             "number": 0,
@@ -107,32 +126,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468d9e",
+                    "_id": "5feb8b7e9ddca2bde7e3149a",
                     "name": "Vajrada Amethyst",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468d9f",
+                            "_id": "5feb8b7e9ddca2bde7e3149b",
                             "name": "Vajrada Amethyst Silver",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/vajrada_amethyst_silver.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468da0",
+                            "_id": "5feb8b7e9ddca2bde7e3149c",
                             "name": "Vajrada Amethyst Fragment",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/vajrada_amethyst_fragment.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468da1",
+                            "_id": "5feb8b7e9ddca2bde7e3149d",
                             "name": "Vajrada Amethyst Chunk",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/vajrada_amethyst_chunk.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468da2",
+                            "_id": "5feb8b7e9ddca2bde7e3149e",
                             "name": "Vajrada Amethyst Gemstone",
                             "type": "gold",
                             "number": 0,
@@ -141,32 +160,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468da3",
+                    "_id": "5feb8b7e9ddca2bde7e3149f",
                     "name": "Shivada Jade",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468da4",
+                            "_id": "5feb8b7e9ddca2bde7e314a0",
                             "name": "Shivada Jade Silver",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/shivada_jade_silver.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468da5",
+                            "_id": "5feb8b7e9ddca2bde7e314a1",
                             "name": "Shivada Jade Fragment",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/shivada_jade_fragment.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468da6",
+                            "_id": "5feb8b7e9ddca2bde7e314a2",
                             "name": "Shivada Jade Chunk",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/shivada_jade_chunk.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468da7",
+                            "_id": "5feb8b7e9ddca2bde7e314a3",
                             "name": "Shivada Jade Gemstone",
                             "type": "gold",
                             "number": 0,
@@ -175,32 +194,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468da8",
+                    "_id": "5feb8b7e9ddca2bde7e314a4",
                     "name": "Vayuda Turquoise",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468da9",
+                            "_id": "5feb8b7e9ddca2bde7e314a5",
                             "name": "Vayuda Turquoise Silver",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/vayuda_turquoise_silver.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468daa",
+                            "_id": "5feb8b7e9ddca2bde7e314a6",
                             "name": "Vayuda Turquoise Fragment",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/vayuda_turquoise_fragment.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dab",
+                            "_id": "5feb8b7e9ddca2bde7e314a7",
                             "name": "Vayuda Turquoise Chunk",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/vayuda_turquoise_chunk.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dac",
+                            "_id": "5feb8b7e9ddca2bde7e314a8",
                             "name": "Vayuda Turquoise Gemstone",
                             "type": "gold",
                             "number": 0,
@@ -209,78 +228,112 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dad",
+                    "_id": "5feb8b7e9ddca2bde7e314a9",
                     "name": "Prithiva Topaz",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468dae",
+                            "_id": "5feb8b7e9ddca2bde7e314aa",
                             "name": "Prithiva Topaz Silver",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/prithiva_topaz_silver.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468daf",
+                            "_id": "5feb8b7e9ddca2bde7e314ab",
                             "name": "Prithiva Topaz Fragment",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/prithiva_topaz_fragment.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468db0",
+                            "_id": "5feb8b7e9ddca2bde7e314ac",
                             "name": "Prithiva Topaz Chunk",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/prithiva_topaz_chunk.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468db1",
+                            "_id": "5feb8b7e9ddca2bde7e314ad",
                             "name": "Prithiva Topaz Gemstone",
                             "type": "gold",
                             "number": 0,
                             "imgPath": "/api/materials/crystal/prithiva_topaz_gemstone.png"
                         }
                     ]
+                },
+                {
+                    "_id": "5feb8b7e9ddca2bde7e314ae",
+                    "name": "Brilliant Diamond",
+                    "matList": [
+                        {
+                            "_id": "5feb8b7e9ddca2bde7e314af",
+                            "name": "Brilliant Diamond Silver",
+                            "type": "green",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/brilliant_diamond_silver.png"
+                        },
+                        {
+                            "_id": "5feb8b7e9ddca2bde7e314b0",
+                            "name": "Brilliant Diamond Fragment",
+                            "type": "blue",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/brilliant_diamond_fragment.png"
+                        },
+                        {
+                            "_id": "5feb8b7e9ddca2bde7e314b1",
+                            "name": "Brilliant Diamond Chunk",
+                            "type": "purple",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/brilliant_diamond_chunk.png"
+                        },
+                        {
+                            "_id": "5feb8b7e9ddca2bde7e314b2",
+                            "name": "Brilliant Diamond Gemstone",
+                            "type": "gold",
+                            "number": 0,
+                            "imgPath": "/api/materials/crystal/brilliant_diamond_gemstone.png"
+                        }
+                    ]
                 }
             ],
             "eleMat": [
                 {
-                    "_id": "5fe1051554322c7bfd468db2",
+                    "_id": "5feb8b7e9ddca2bde7e3151d",
                     "name": "Basalt Pillar",
                     "type": "purple",
                     "number": 0,
                     "imgPath": "/api/materials/elemental/basalt_pillar.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468db3",
+                    "_id": "5feb8b7e9ddca2bde7e3151e",
                     "name": "Cleansing Heart",
                     "type": "purple",
                     "number": 0,
                     "imgPath": "/api/materials/elemental/cleansing_heart.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468db4",
+                    "_id": "5feb8b7e9ddca2bde7e3151f",
                     "name": "Everflame Seed",
                     "type": "purple",
                     "number": 0,
                     "imgPath": "/api/materials/elemental/everflame_seed.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468db5",
+                    "_id": "5feb8b7e9ddca2bde7e31520",
                     "name": "Hoarfrost Core",
                     "type": "purple",
                     "number": 0,
                     "imgPath": "/api/materials/elemental/hoarfrost_core.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468db6",
+                    "_id": "5feb8b7e9ddca2bde7e31521",
                     "name": "Hurricane Seed",
                     "type": "purple",
                     "number": 0,
                     "imgPath": "/api/materials/elemental/hurricane_seed.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468db7",
+                    "_id": "5feb8b7e9ddca2bde7e31522",
                     "name": "Lightning Prism",
                     "type": "purple",
                     "number": 0,
@@ -289,112 +342,112 @@
             ],
             "locSpec": [
                 {
-                    "_id": "5fe1051554322c7bfd468db8",
+                    "_id": "5feb8b7e9ddca2bde7e31523",
                     "name": "Calla Lily",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/calla_lily.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468db9",
+                    "_id": "5feb8b7e9ddca2bde7e31524",
                     "name": "Cecilia",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/cecilia.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dba",
+                    "_id": "5feb8b7e9ddca2bde7e31525",
                     "name": "Cor Lapis",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/cor_lapis.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dbb",
+                    "_id": "5feb8b7e9ddca2bde7e31526",
                     "name": "Dandelion Seed",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/dandelion_seed.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dbc",
+                    "_id": "5feb8b7e9ddca2bde7e31527",
                     "name": "Glaze Lily",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/glaze_lily.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dbd",
+                    "_id": "5feb8b7e9ddca2bde7e31528",
                     "name": "Jueyun Chili",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/jueyun_chili.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dbe",
+                    "_id": "5feb8b7e9ddca2bde7e31529",
                     "name": "Noctilucous Jade",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/noctilucous_jade.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dbf",
+                    "_id": "5feb8b7e9ddca2bde7e3152a",
                     "name": "Philanemo Mushroom",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/philanemo_mushroom.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc0",
+                    "_id": "5feb8b7e9ddca2bde7e3152b",
                     "name": "Qingxin",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/qingxin.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc1",
+                    "_id": "5feb8b7e9ddca2bde7e3152c",
                     "name": "Silk Flower",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/silk_flower.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc2",
+                    "_id": "5feb8b7e9ddca2bde7e3152d",
                     "name": "Small Lamp Grass",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/small_lamp_grass.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc3",
+                    "_id": "5feb8b7e9ddca2bde7e3152e",
                     "name": "Starconch",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/starconch.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc4",
+                    "_id": "5feb8b7e9ddca2bde7e3152f",
                     "name": "Valberry",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/valberry.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc5",
+                    "_id": "5feb8b7e9ddca2bde7e31530",
                     "name": "Violetgrass",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/violetgrass.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc6",
+                    "_id": "5feb8b7e9ddca2bde7e31531",
                     "name": "Windwheel Aster",
                     "type": "white",
                     "number": 0,
                     "imgPath": "/api/materials/locspec/windwheel_aster.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dc7",
+                    "_id": "5feb8b7e9ddca2bde7e31532",
                     "name": "Wolfhook",
                     "type": "white",
                     "number": 0,
@@ -403,25 +456,25 @@
             ],
             "comMat": [
                 {
-                    "_id": "5fe1051554322c7bfd468dc8",
+                    "_id": "5feb8b7e9ddca2bde7e314b3",
                     "name": "Slime",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468dc9",
+                            "_id": "5feb8b7e9ddca2bde7e314b4",
                             "name": "Slime Condensate",
                             "type": "white",
                             "number": 0,
                             "imgPath": "/api/materials/common/slime_condensate.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dca",
+                            "_id": "5feb8b7e9ddca2bde7e314b5",
                             "name": "Slime Secretions",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/slime_secretions.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dcb",
+                            "_id": "5feb8b7e9ddca2bde7e314b6",
                             "name": "Slime Concentrate",
                             "type": "blue",
                             "number": 0,
@@ -430,25 +483,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dcc",
+                    "_id": "5feb8b7e9ddca2bde7e314b7",
                     "name": "Mask",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468dcd",
+                            "_id": "5feb8b7e9ddca2bde7e314b8",
                             "name": "Damaged Mask",
                             "type": "white",
                             "number": 0,
                             "imgPath": "/api/materials/common/damaged_mask.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dce",
+                            "_id": "5feb8b7e9ddca2bde7e314b9",
                             "name": "Stained Mask",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/stained_mask.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dcf",
+                            "_id": "5feb8b7e9ddca2bde7e314ba",
                             "name": "Ominous Mask",
                             "type": "blue",
                             "number": 0,
@@ -457,25 +510,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dd0",
+                    "_id": "5feb8b7e9ddca2bde7e314bb",
                     "name": "Arrowhead",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468dd1",
+                            "_id": "5feb8b7e9ddca2bde7e314bc",
                             "name": "Firm Arrowhead",
                             "type": "white",
                             "number": 0,
                             "imgPath": "/api/materials/common/firm_arrowhead.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dd2",
+                            "_id": "5feb8b7e9ddca2bde7e314bd",
                             "name": "Sharp Arrowhead",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/sharp_arrowhead.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dd3",
+                            "_id": "5feb8b7e9ddca2bde7e314be",
                             "name": "Weathered Arrowhead",
                             "type": "blue",
                             "number": 0,
@@ -484,25 +537,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dd4",
+                    "_id": "5feb8b7e9ddca2bde7e314bf",
                     "name": "Scroll",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468dd5",
+                            "_id": "5feb8b7e9ddca2bde7e314c0",
                             "name": "Divining Scroll",
                             "type": "white",
                             "number": 0,
                             "imgPath": "/api/materials/common/divining_scroll.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dd6",
+                            "_id": "5feb8b7e9ddca2bde7e314c1",
                             "name": "Sealed Scroll",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/sealed_scroll.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dd7",
+                            "_id": "5feb8b7e9ddca2bde7e314c2",
                             "name": "Forbidden Curse Scroll",
                             "type": "blue",
                             "number": 0,
@@ -511,25 +564,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dd8",
+                    "_id": "5feb8b7e9ddca2bde7e314c3",
                     "name": "Treasure Hoarder Insignia",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468dd9",
+                            "_id": "5feb8b7e9ddca2bde7e314c4",
                             "name": "Treasure Hoarder Insignia",
                             "type": "white",
                             "number": 0,
                             "imgPath": "/api/materials/common/treasure_hoarder_insignia.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dda",
+                            "_id": "5feb8b7e9ddca2bde7e314c5",
                             "name": "Silver Raven Insignia",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/silver_raven_insignia.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468ddb",
+                            "_id": "5feb8b7e9ddca2bde7e314c6",
                             "name": "Golden Raven Insignia",
                             "type": "blue",
                             "number": 0,
@@ -538,25 +591,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468ddc",
+                    "_id": "5feb8b7e9ddca2bde7e314c7",
                     "name": "Fatui Insignia",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468ddd",
+                            "_id": "5feb8b7e9ddca2bde7e314c8",
                             "name": "Recruit's Insignia",
                             "type": "white",
                             "number": 0,
                             "imgPath": "/api/materials/common/recruit_insignia.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dde",
+                            "_id": "5feb8b7e9ddca2bde7e314c9",
                             "name": "Sergeant's Insignia",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/sergeant_insignia.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468ddf",
+                            "_id": "5feb8b7e9ddca2bde7e314ca",
                             "name": "Lieutenant's Insignia",
                             "type": "blue",
                             "number": 0,
@@ -565,25 +618,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468de0",
+                    "_id": "5feb8b7e9ddca2bde7e314cb",
                     "name": "Nectar",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468de1",
+                            "_id": "5feb8b7e9ddca2bde7e314cc",
                             "name": "Whopperflower Nectar",
                             "type": "white",
                             "number": 0,
                             "imgPath": "/api/materials/common/whopperflower_nectar.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468de2",
+                            "_id": "5feb8b7e9ddca2bde7e314cd",
                             "name": "Shimmering Nectar",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/shimmering_nectar.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468de3",
+                            "_id": "5feb8b7e9ddca2bde7e314ce",
                             "name": "Energy Nectar",
                             "type": "blue",
                             "number": 0,
@@ -594,25 +647,25 @@
             ],
             "eliteMat": [
                 {
-                    "_id": "5fe1051554322c7bfd468de4",
+                    "_id": "5feb8b7e9ddca2bde7e314cf",
                     "name": "Horn",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468de5",
+                            "_id": "5feb8b7e9ddca2bde7e314d0",
                             "name": "Heavy Horn",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/heavy_horn.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468de6",
+                            "_id": "5feb8b7e9ddca2bde7e314d1",
                             "name": "Black Bronze Horn",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/common/black_bronze_horn.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468de7",
+                            "_id": "5feb8b7e9ddca2bde7e314d2",
                             "name": "Black Crystal Horn",
                             "type": "purple",
                             "number": 0,
@@ -621,25 +674,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468de8",
+                    "_id": "5feb8b7e9ddca2bde7e314d3",
                     "name": "Ley Line",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468de9",
+                            "_id": "5feb8b7e9ddca2bde7e314d4",
                             "name": "Dead Ley Line Branch",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/dead_ley_line_branch.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dea",
+                            "_id": "5feb8b7e9ddca2bde7e314d5",
                             "name": "Dead Ley Line Leaves",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/common/dead_ley_line_leaves.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468deb",
+                            "_id": "5feb8b7e9ddca2bde7e314d6",
                             "name": "Ley Line Sprouts",
                             "type": "purple",
                             "number": 0,
@@ -648,25 +701,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dec",
+                    "_id": "5feb8b7e9ddca2bde7e314d7",
                     "name": "Bone Shard",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468ded",
+                            "_id": "5feb8b7e9ddca2bde7e314d8",
                             "name": "Fragile Bone Shard",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/fragile_bone_shard.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dee",
+                            "_id": "5feb8b7e9ddca2bde7e314d9",
                             "name": "Sturdy Bone Shard",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/common/sturdy_bone_shard.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468def",
+                            "_id": "5feb8b7e9ddca2bde7e314da",
                             "name": "Fossilized Bone Shard",
                             "type": "purple",
                             "number": 0,
@@ -675,25 +728,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468df0",
+                    "_id": "5feb8b7e9ddca2bde7e314db",
                     "name": "Mist Grass",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468df1",
+                            "_id": "5feb8b7e9ddca2bde7e314dc",
                             "name": "Mist Grass Pollen",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/mist_grass_pollen.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468df2",
+                            "_id": "5feb8b7e9ddca2bde7e314dd",
                             "name": "Mist Grass",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/common/mist_grass.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468df3",
+                            "_id": "5feb8b7e9ddca2bde7e314de",
                             "name": "Mist Grass Wick",
                             "type": "purple",
                             "number": 0,
@@ -702,25 +755,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468df4",
+                    "_id": "5feb8b7e9ddca2bde7e314df",
                     "name": "Sacrificial Knife",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468df5",
+                            "_id": "5feb8b7e9ddca2bde7e314e0",
                             "name": "Hunter's Sacrificial Knife",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/hunter_sacrificial_knife.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468df6",
+                            "_id": "5feb8b7e9ddca2bde7e314e1",
                             "name": "Agent's Sacrificial Knife",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/common/agent_sacrificial_knife.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468df7",
+                            "_id": "5feb8b7e9ddca2bde7e314e2",
                             "name": "Inspector's Sacrificial Knife",
                             "type": "purple",
                             "number": 0,
@@ -729,25 +782,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468df8",
+                    "_id": "5feb8b7e9ddca2bde7e314e3",
                     "name": "Chaos",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468df9",
+                            "_id": "5feb8b7e9ddca2bde7e314e4",
                             "name": "Chaos Device",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/common/chaos_device.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dfa",
+                            "_id": "5feb8b7e9ddca2bde7e314e5",
                             "name": "Chaos Circuit",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/common/chaos_circuit.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468dfb",
+                            "_id": "5feb8b7e9ddca2bde7e314e6",
                             "name": "Chaos Core",
                             "type": "purple",
                             "number": 0,
@@ -758,63 +811,63 @@
             ],
             "bossMat": [
                 {
-                    "_id": "5fe1051554322c7bfd468dfc",
+                    "_id": "5feb8b7e9ddca2bde7e31533",
                     "name": "Dvalin's Claw",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/dvalin_claw.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dfd",
+                    "_id": "5feb8b7e9ddca2bde7e31534",
                     "name": "Dvalin's Plume",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/dvalin_plume.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dfe",
+                    "_id": "5feb8b7e9ddca2bde7e31535",
                     "name": "Dvalin's Sigh",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/dvalin_sigh.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468dff",
+                    "_id": "5feb8b7e9ddca2bde7e31536",
                     "name": "Ring of Boreas",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/ring_of_boreaas.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e00",
+                    "_id": "5feb8b7e9ddca2bde7e31537",
                     "name": "Shadow of the Warrior",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/shadow_of_the_warrior.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e01",
+                    "_id": "5feb8b7e9ddca2bde7e31538",
                     "name": "Shard of Foul Legacy",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/shard_of_foul_legacy.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e02",
+                    "_id": "5feb8b7e9ddca2bde7e31539",
                     "name": "Spirit Locket of Boreas",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/spirit_locket_of_boreas.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e03",
+                    "_id": "5feb8b7e9ddca2bde7e3153a",
                     "name": "Tail of Boreas",
                     "type": "gold",
                     "number": 0,
                     "imgPath": "/api/materials/bossmat/tail_of_boreas.png"
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e04",
+                    "_id": "5feb8b7e9ddca2bde7e3153b",
                     "name": "Tusk of Monoceros Caeli",
                     "type": "gold",
                     "number": 0,
@@ -823,25 +876,25 @@
             ],
             "talentMat": [
                 {
-                    "_id": "5fe1051554322c7bfd468e05",
+                    "_id": "5feb8b7e9ddca2bde7e314e7",
                     "name": "Freedom",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e06",
+                            "_id": "5feb8b7e9ddca2bde7e314e8",
                             "name": "Teachings of Freedom",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/teachings_of_freedom.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e07",
+                            "_id": "5feb8b7e9ddca2bde7e314e9",
                             "name": "Guide to Freedom",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/guide_to_freedom.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e08",
+                            "_id": "5feb8b7e9ddca2bde7e314ea",
                             "name": "Philosophies of Freedom",
                             "type": "purple",
                             "number": 0,
@@ -850,25 +903,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e09",
+                    "_id": "5feb8b7e9ddca2bde7e314eb",
                     "name": "Resistance",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e0a",
+                            "_id": "5feb8b7e9ddca2bde7e314ec",
                             "name": "Teachings of Resistance",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/teachings_of_resistance.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e0b",
+                            "_id": "5feb8b7e9ddca2bde7e314ed",
                             "name": "Guide to Resistance",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/guide_to_resistance.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e0c",
+                            "_id": "5feb8b7e9ddca2bde7e314ee",
                             "name": "Philosophies of Resistance",
                             "type": "purple",
                             "number": 0,
@@ -877,25 +930,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e0d",
+                    "_id": "5feb8b7e9ddca2bde7e314ef",
                     "name": "Ballad",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e0e",
+                            "_id": "5feb8b7e9ddca2bde7e314f0",
                             "name": "Teachings of Ballad",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/teachings_of_ballad.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e0f",
+                            "_id": "5feb8b7e9ddca2bde7e314f1",
                             "name": "Guide to Ballad",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/guide_to_ballad.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e10",
+                            "_id": "5feb8b7e9ddca2bde7e314f2",
                             "name": "Philosophies of Ballad",
                             "type": "purple",
                             "number": 0,
@@ -904,25 +957,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e11",
+                    "_id": "5feb8b7e9ddca2bde7e314f3",
                     "name": "Prosperity",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e12",
+                            "_id": "5feb8b7e9ddca2bde7e314f4",
                             "name": "Teachings of Prosperity",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/teachings_of_prosperity.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e13",
+                            "_id": "5feb8b7e9ddca2bde7e314f5",
                             "name": "Guide to Prosperity",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/guide_to_prosperity.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e14",
+                            "_id": "5feb8b7e9ddca2bde7e314f6",
                             "name": "Philosophies of Prosperity",
                             "type": "purple",
                             "number": 0,
@@ -931,25 +984,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e15",
+                    "_id": "5feb8b7e9ddca2bde7e314f7",
                     "name": "Diligence",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e16",
+                            "_id": "5feb8b7e9ddca2bde7e314f8",
                             "name": "Teachings of Diligence",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/teachings_of_diligence.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e17",
+                            "_id": "5feb8b7e9ddca2bde7e314f9",
                             "name": "Guide to Diligence",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/guide_to_diligence.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e18",
+                            "_id": "5feb8b7e9ddca2bde7e314fa",
                             "name": "Philosophies of Diligence",
                             "type": "purple",
                             "number": 0,
@@ -958,25 +1011,25 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e19",
+                    "_id": "5feb8b7e9ddca2bde7e314fb",
                     "name": "Gold",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e1a",
+                            "_id": "5feb8b7e9ddca2bde7e314fc",
                             "name": "Teachings of Gold",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/teachings_of_gold.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e1b",
+                            "_id": "5feb8b7e9ddca2bde7e314fd",
                             "name": "Guide to Gold",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/talentMat/guide_to_gold.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e1c",
+                            "_id": "5feb8b7e9ddca2bde7e314fe",
                             "name": "Philosophies of Gold",
                             "type": "purple",
                             "number": 0,
@@ -987,32 +1040,32 @@
             ],
             "weaponMat": [
                 {
-                    "_id": "5fe1051554322c7bfd468e1d",
+                    "_id": "5feb8b7e9ddca2bde7e314ff",
                     "name": "Decarabian",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e1e",
+                            "_id": "5feb8b7e9ddca2bde7e31500",
                             "name": "Tile of Decarabian's Tower",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/tile_of_the_decrabian_tower.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e1f",
+                            "_id": "5feb8b7e9ddca2bde7e31501",
                             "name": "Debris of Decarabian's City",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/debris_of_decarabian_city.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e20",
+                            "_id": "5feb8b7e9ddca2bde7e31502",
                             "name": "Fragment of Decarabian's Epic",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/fragment_of_decarabian_epic.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e21",
+                            "_id": "5feb8b7e9ddca2bde7e31503",
                             "name": "Scattered Piece of Decarabian's Dream",
                             "type": "gold",
                             "number": 0,
@@ -1021,32 +1074,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e22",
+                    "_id": "5feb8b7e9ddca2bde7e31504",
                     "name": "Boreal Wolf",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e23",
+                            "_id": "5feb8b7e9ddca2bde7e31505",
                             "name": "Boreal Wolf's Milk Tooth",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/boreal_wolf_milk_tooth.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e24",
+                            "_id": "5feb8b7e9ddca2bde7e31506",
                             "name": "Boreal Wolf's Cracked Tooth",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/boreal_wolf_cracked_tooth.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e25",
+                            "_id": "5feb8b7e9ddca2bde7e31507",
                             "name": "Boreal Wolf's Broken Fang",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/boreal_wolf_broken_fang.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e26",
+                            "_id": "5feb8b7e9ddca2bde7e31508",
                             "name": "Boreal Wolf's Nostalgia",
                             "type": "gold",
                             "number": 0,
@@ -1055,32 +1108,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e27",
+                    "_id": "5feb8b7e9ddca2bde7e31509",
                     "name": "Dandelion Gladiator",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e28",
+                            "_id": "5feb8b7e9ddca2bde7e3150a",
                             "name": "Fetters of the Dandelion Gladiator",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/fetters_of_the_dandelion_gladiator.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e29",
+                            "_id": "5feb8b7e9ddca2bde7e3150b",
                             "name": "Chains of the Dandelion Gladiator",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/chains_of_the_dandelion_gladiator.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e2a",
+                            "_id": "5feb8b7e9ddca2bde7e3150c",
                             "name": "Shackles of the Dandelion Gladiator",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/shackles_of_the_dandelion_gladiator.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e2b",
+                            "_id": "5feb8b7e9ddca2bde7e3150d",
                             "name": "Dream of the Dandelion Gladiator",
                             "type": "gold",
                             "number": 0,
@@ -1089,32 +1142,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e2c",
+                    "_id": "5feb8b7e9ddca2bde7e3150e",
                     "name": "Guyun",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e2d",
+                            "_id": "5feb8b7e9ddca2bde7e3150f",
                             "name": "Luminous Sands from Guyun",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/luminous_sands_from_guyun.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e2e",
+                            "_id": "5feb8b7e9ddca2bde7e31510",
                             "name": "Lustrous Stone from Guyun",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/lustrous_stone_from_guyun.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e2f",
+                            "_id": "5feb8b7e9ddca2bde7e31511",
                             "name": "Relic from Guyun",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/relic_from_guyun.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e30",
+                            "_id": "5feb8b7e9ddca2bde7e31512",
                             "name": "Divine Body from Guyun",
                             "type": "gold",
                             "number": 0,
@@ -1123,32 +1176,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e31",
+                    "_id": "5feb8b7e9ddca2bde7e31513",
                     "name": "Mist Veiled",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e32",
+                            "_id": "5feb8b7e9ddca2bde7e31514",
                             "name": "Mist Veiled Lead Elixir",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/mist_veiled_lead_elixir.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e33",
+                            "_id": "5feb8b7e9ddca2bde7e31515",
                             "name": "Mist Veiled Mercury Elixir",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/mist_veiled_mercury_elixir.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e34",
+                            "_id": "5feb8b7e9ddca2bde7e31516",
                             "name": "Mist Veiled Gold Elixir",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/mist_veiled_gold_elixir.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e35",
+                            "_id": "5feb8b7e9ddca2bde7e31517",
                             "name": "Mist Veiled Primo Elixir",
                             "type": "gold",
                             "number": 0,
@@ -1157,32 +1210,32 @@
                     ]
                 },
                 {
-                    "_id": "5fe1051554322c7bfd468e36",
+                    "_id": "5feb8b7e9ddca2bde7e31518",
                     "name": "Aerosiderite",
                     "matList": [
                         {
-                            "_id": "5fe1051554322c7bfd468e37",
+                            "_id": "5feb8b7e9ddca2bde7e31519",
                             "name": "Grain of Aerosiderite",
                             "type": "green",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/grain_of_aerosiderite.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e38",
+                            "_id": "5feb8b7e9ddca2bde7e3151a",
                             "name": "Piece of Aerosiderite",
                             "type": "blue",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/piece_of_aerosiderite.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e39",
+                            "_id": "5feb8b7e9ddca2bde7e3151b",
                             "name": "Bit of Aerosiderite",
                             "type": "purple",
                             "number": 0,
                             "imgPath": "/api/materials/weaponmat/bit_of_aerosiderite.png"
                         },
                         {
-                            "_id": "5fe1051554322c7bfd468e3a",
+                            "_id": "5feb8b7e9ddca2bde7e3151c",
                             "name": "Chunk of Aerosiderite",
                             "type": "gold",
                             "number": 0,
@@ -1191,68 +1244,81 @@
                     ]
                 }
             ],
-            "weaponExp": {
-                "_id": "5fe1051554322c7bfd468e3b",
-                "mat": [
-                    {
-                        "_id": "5fe1051554322c7bfd468e3c",
-                        "name": "Mystic Enhancement Ore",
-                        "type": "blue",
-                        "number": 0,
-                        "exp": 10000,
-                        "imgPath": "/api/materials/expmat/mystic_enhancement_ore.png"
-                    },
-                    {
-                        "_id": "5fe1051554322c7bfd468e3d",
-                        "name": "Fine Enhancement Ore",
-                        "type": "green",
-                        "number": 0,
-                        "exp": 2000,
-                        "imgPath": "/api/materials/expmat/fine_enhancement_ore.png"
-                    },
-                    {
-                        "_id": "5fe1051554322c7bfd468e3e",
-                        "name": "Enhancement Ore",
-                        "type": "white",
-                        "number": 0,
-                        "exp": 400,
-                        "imgPath": "/api/materials/expmat/enhancement_ore.png"
-                    }
-                ],
-                "wastedExp": 0
-            },
-            "charExp": {
-                "_id": "5fe1051554322c7bfd468e3f",
-                "mat": [
-                    {
-                        "_id": "5fe1051554322c7bfd468e40",
-                        "name": "Hero's Wit",
-                        "type": "purple",
-                        "number": 0,
-                        "exp": 20000,
-                        "imgPath": "/api/materials/expmat/hero_wit.png"
-                    },
-                    {
-                        "_id": "5fe1051554322c7bfd468e41",
-                        "name": "Adventurer's Experience",
-                        "type": "blue",
-                        "number": 0,
-                        "exp": 5000,
-                        "imgPath": "/api/materials/expmat/adventurer_experience.png"
-                    },
-                    {
-                        "_id": "5fe1051554322c7bfd468e42",
-                        "name": "Wanderer's Advice",
-                        "type": "green",
-                        "number": 0,
-                        "exp": 1000,
-                        "imgPath": "/api/materials/expmat/wanderer_advice.png"
-                    }
-                ],
-                "wastedExp": 0
-            },
-            "crownNum": 0,
-            "mora": 0
+            "weaponExp": [
+                {
+                    "_id": "5feb8b7e9ddca2bde7e3153c",
+                    "name": "Mystic Enhancement Ore",
+                    "type": "blue",
+                    "exp": 10000,
+                    "number": "0",
+                    "imgPath": "/api/materials/expmat/mystic_enhancement_ore.png"
+                },
+                {
+                    "_id": "5feb8b7e9ddca2bde7e3153d",
+                    "name": "Fine Enhancement Ore",
+                    "type": "green",
+                    "exp": 2000,
+                    "number": "0",
+                    "imgPath": "/api/materials/expmat/fine_enhancement_ore.png"
+                },
+                {
+                    "_id": "5feb8b7e9ddca2bde7e3153e",
+                    "name": "Enhancement Ore",
+                    "type": "white",
+                    "exp": 400,
+                    "number": "0",
+                    "imgPath": "/api/materials/expmat/enhancement_ore.png"
+                }
+            ],
+            "charExp": [
+                {
+                    "_id": "5feb8b7e9ddca2bde7e3153f",
+                    "name": "Hero's Wit",
+                    "type": "purple",
+                    "exp": 20000,
+                    "number": "0",
+                    "imgPath": "/api/materials/expmat/hero_wit.png"
+                },
+                {
+                    "_id": "5feb8b7e9ddca2bde7e31540",
+                    "name": "Adventurer's Experience",
+                    "type": "blue",
+                    "exp": 5000,
+                    "number": "0",
+                    "imgPath": "/api/materials/expmat/adventurer_experience.png"
+                },
+                {
+                    "_id": "5feb8b7e9ddca2bde7e31541",
+                    "name": "Wanderer's Advice",
+                    "type": "green",
+                    "exp": 1000,
+                    "number": "0",
+                    "imgPath": "/api/materials/expmat/wanderer_advice.png"
+                }
+            ],
+            "misc": [
+                {
+                    "_id": "5feb8b7e9ddca2bde7e31542",
+                    "name": "Crown of Insight",
+                    "type": "gold",
+                    "number": 0,
+                    "imgPath": "/api/materials/misc/crown_of_insight.png"
+                },
+                {
+                    "_id": "5feb8b7e9ddca2bde7e31543",
+                    "name": "Fragile Resin",
+                    "type": "None",
+                    "number": 0,
+                    "imgPath": "/api/materials/misc/fragile_resin.png"
+                },
+                {
+                    "_id": "5feb8b7e9ddca2bde7e31544",
+                    "name": "Mora",
+                    "type": "None",
+                    "number": 0,
+                    "imgPath": "/api/materials/misc/mora.png"
+                }
+            ]
         }
     }
 }
