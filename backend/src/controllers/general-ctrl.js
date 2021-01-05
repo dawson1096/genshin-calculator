@@ -52,176 +52,177 @@ function getMatNameType(name, matType, type = null) {
     return null;
 }
 
-// Returns an object of talent and ascension requirements for a character at each ascension/talent level
-function getGenCharReq(name) {
-    let char = searchArray(name, generalData.charList);
-    let charReq = {
-        name: char.name,
-        stars: char.stars,
-        ascenReq: [],
-        talentReq: [],
-    };
+// Deprecated. May use if I need to display geneeral data to front end
+// // Returns an object of talent and ascension requirements for a character at each ascension/talent level
+// function getGenCharReq(name) {
+//     let char = searchArray(name, generalData.charList);
+//     let charReq = {
+//         name: char.name,
+//         stars: char.stars,
+//         ascenReq: [],
+//         talentReq: [],
+//     };
 
-    let levels = miscData.charAscenLevels;
+//     let levels = miscData.charAscenLevels;
 
-    for (let i=0; i<levels.length; i++) {
-        let ascenLevelReq = searchArray(levels[i], generalData.charAscension);
-        let calcReq = {
-            level: null,
-            eleCrys: null,
-            eleCrysType: null,
-            eleCrysNum: null,
-            eleMat: null,
-            eleMatType: null,
-            eleMatNum: null,
-            locSpec: null,
-            locSpecType: null,
-            locSpecNum: null,
-            comMat: null,
-            comMatType: null,
-            comMatNum:null,
-            mora: null
-        };
+//     for (let i=0; i<levels.length; i++) {
+//         let ascenLevelReq = searchArray(levels[i], generalData.charAscension);
+//         let calcReq = {
+//             level: null,
+//             eleCrys: null,
+//             eleCrysType: null,
+//             eleCrysNum: null,
+//             eleMat: null,
+//             eleMatType: null,
+//             eleMatNum: null,
+//             locSpec: null,
+//             locSpecType: null,
+//             locSpecNum: null,
+//             comMat: null,
+//             comMatType: null,
+//             comMatNum:null,
+//             mora: null
+//         };
 
-        calcReq["level"] = levels[i];
-        let eleCrys = getMatNameType(char.eleCrys,"eleCrys", ascenLevelReq.eleCrysType);
-        calcReq["eleCrys"] = eleCrys.name;
-        calcReq["eleCrysType"] = eleCrys.type;
-        calcReq["eleCrysNum"] = ascenLevelReq.eleCrysNum;
-        let eleMat = getMatNameType(char.eleMat, "eleMat");
-        calcReq["eleMat"] = eleMat ? eleMat.name : null;
-        calcReq["eleMatType"] = eleMat ? eleMat.type : null;
-        calcReq["eleMatNum"] = eleMat ? ascenLevelReq.eleMatNum : 0;
-        let locSpec = getMatNameType(char.locSpec, "locSpec");
-        calcReq["locSpec"] = locSpec.name;
-        calcReq["locSpecType"] = locSpec.type;
-        calcReq["locSpecNum"] = ascenLevelReq.locSpecNum;
-        let comMat = getMatNameType(char.comMat,"comMat", ascenLevelReq.comMatType);
-        calcReq["comMat"] = comMat.name;
-        calcReq["comMatType"] = comMat.type;
-        calcReq["comMatNum"] = ascenLevelReq.comMatNum;
-        calcReq["mora"] = ascenLevelReq.mora;
+//         calcReq["level"] = levels[i];
+//         let eleCrys = getMatNameType(char.eleCrys,"eleCrys", ascenLevelReq.eleCrysType);
+//         calcReq["eleCrys"] = eleCrys.name;
+//         calcReq["eleCrysType"] = eleCrys.type;
+//         calcReq["eleCrysNum"] = ascenLevelReq.eleCrysNum;
+//         let eleMat = getMatNameType(char.eleMat, "eleMat");
+//         calcReq["eleMat"] = eleMat ? eleMat.name : null;
+//         calcReq["eleMatType"] = eleMat ? eleMat.type : null;
+//         calcReq["eleMatNum"] = eleMat ? ascenLevelReq.eleMatNum : 0;
+//         let locSpec = getMatNameType(char.locSpec, "locSpec");
+//         calcReq["locSpec"] = locSpec.name;
+//         calcReq["locSpecType"] = locSpec.type;
+//         calcReq["locSpecNum"] = ascenLevelReq.locSpecNum;
+//         let comMat = getMatNameType(char.comMat,"comMat", ascenLevelReq.comMatType);
+//         calcReq["comMat"] = comMat.name;
+//         calcReq["comMatType"] = comMat.type;
+//         calcReq["comMatNum"] = ascenLevelReq.comMatNum;
+//         calcReq["mora"] = ascenLevelReq.mora;
 
-        charReq["ascenReq"].push(calcReq);
-    }
+//         charReq["ascenReq"].push(calcReq);
+//     }
 
-    let talentLevels = miscData.talentLevels;
+//     let talentLevels = miscData.talentLevels;
 
-    let travTalentMat;
-    let isTravelerTalentNum = 1;
-    let curTalent = ["autoAttack", "eleSkill", "eleBurst"];
-    if (char.isTraveler) {
-        let ele = char.name.split(' ')[1].toLowerCase();
-        travTalentMat = miscData.traveler[ele];
-        isTravelerTalentNum = 3;
-        charReq.talentReq = {
-            autoAttack: [],
-            eleSkill: [],
-            eleBurst: [],
-        };
-    }
+//     let travTalentMat;
+//     let isTravelerTalentNum = 1;
+//     let curTalent = ["autoAttack", "eleSkill", "eleBurst"];
+//     if (char.isTraveler) {
+//         let ele = char.name.split(' ')[1].toLowerCase();
+//         travTalentMat = miscData.traveler[ele];
+//         isTravelerTalentNum = 3;
+//         charReq.talentReq = {
+//             autoAttack: [],
+//             eleSkill: [],
+//             eleBurst: [],
+//         };
+//     }
 
-    for (let j=0; j<isTravelerTalentNum; j++) {
-        for (let i=0; i<talentLevels.length; i++) {
-            let talentReq = searchArray(talentLevels[i], generalData.talents);
-            let calcReq = {
-                level: null,
-                talentMat: null,
-                talentMatType: null,
-                talentMatNum: null,
-                comMat: null,
-                comMatType: null,
-                comMatNum: null,
-                bossMat: null,
-                bossMatType: null,
-                bossMatNum: null,
-                // crown: null,
-                // crownType: null,
-                crownNum: null,
-                mora: null,
-            }
+//     for (let j=0; j<isTravelerTalentNum; j++) {
+//         for (let i=0; i<talentLevels.length; i++) {
+//             let talentReq = searchArray(talentLevels[i], generalData.talents);
+//             let calcReq = {
+//                 level: null,
+//                 talentMat: null,
+//                 talentMatType: null,
+//                 talentMatNum: null,
+//                 comMat: null,
+//                 comMatType: null,
+//                 comMatNum: null,
+//                 bossMat: null,
+//                 bossMatType: null,
+//                 bossMatNum: null,
+//                 // crown: null,
+//                 // crownType: null,
+//                 crownNum: null,
+//                 mora: null,
+//             }
 
-            calcReq["level"] = talentLevels[i];
-            calcReq["crownNum"] = talentReq.crownNum;
-            calcReq["mora"] = talentReq.mora;
-            let talentMat = getMatNameType(char.talentMat, "talentMat", talentReq.talentMatType);
-            calcReq["talentMatType"] = talentReq.talentMatType
-            calcReq["talentMatNum"] = talentReq.talentMatNum;
-            let comMat = getMatNameType(char.comMat, "comMat", talentReq.comMatType);
-            calcReq["comMatType"] = talentReq.comMatType
-            calcReq["comMatNum"] = talentReq.comMatNum;
-            let bossMat = getMatNameType(char.bossMat, "bossMat");
-            calcReq["bossMatType"] = "gold";
-            calcReq["bossMatNum"] = talentReq.bossMatNum;
+//             calcReq["level"] = talentLevels[i];
+//             calcReq["crownNum"] = talentReq.crownNum;
+//             calcReq["mora"] = talentReq.mora;
+//             let talentMat = getMatNameType(char.talentMat, "talentMat", talentReq.talentMatType);
+//             calcReq["talentMatType"] = talentReq.talentMatType
+//             calcReq["talentMatNum"] = talentReq.talentMatNum;
+//             let comMat = getMatNameType(char.comMat, "comMat", talentReq.comMatType);
+//             calcReq["comMatType"] = talentReq.comMatType
+//             calcReq["comMatNum"] = talentReq.comMatNum;
+//             let bossMat = getMatNameType(char.bossMat, "bossMat");
+//             calcReq["bossMatType"] = "gold";
+//             calcReq["bossMatNum"] = talentReq.bossMatNum;
 
-            if (char.isTraveler) {
-                calcReq["talentMat"] = travTalentMat[curTalent[j]].talentMat[i%3];
-                calcReq["comMat"] = travTalentMat[curTalent[j]].comMat;
-                calcReq["bossMat"] = travTalentMat[curTalent[j]].bossMat;
-                charReq["talentReq"][curTalent[j]].push(calcReq);
-            } else {
-                calcReq["talentMat"] = talentMat.name;
-                calcReq["comMat"] = comMat.name;
-                calcReq["bossMat"] = bossMat.name;
-                charReq["talentReq"].push(calcReq)
-            }
+//             if (char.isTraveler) {
+//                 calcReq["talentMat"] = travTalentMat[curTalent[j]].talentMat[i%3];
+//                 calcReq["comMat"] = travTalentMat[curTalent[j]].comMat;
+//                 calcReq["bossMat"] = travTalentMat[curTalent[j]].bossMat;
+//                 charReq["talentReq"][curTalent[j]].push(calcReq);
+//             } else {
+//                 calcReq["talentMat"] = talentMat.name;
+//                 calcReq["comMat"] = comMat.name;
+//                 calcReq["bossMat"] = bossMat.name;
+//                 charReq["talentReq"].push(calcReq)
+//             }
 
             
-        }
-    }
+//         }
+//     }
 
-    return charReq;
-}
+//     return charReq;
+// }
 
-// Returns an object of ascension requirements for a weapon at each ascension level
-function getGenWeaponReq(name) {
-    let weapon = searchArray(name, generalData.weaponList);
-    let weaponReq = {
-        name: weapon.name,
-        stars: weapon.stars,
-        type: weapon.type,
-        ascenReq: [],
-    };
+// // Returns an object of ascension requirements for a weapon at each ascension level
+// function getGenWeaponReq(name) {
+//     let weapon = searchArray(name, generalData.weaponList);
+//     let weaponReq = {
+//         name: weapon.name,
+//         stars: weapon.stars,
+//         type: weapon.type,
+//         ascenReq: [],
+//     };
 
-    let starAscenArray = searchArray(weapon.stars, generalData.weaponAscension).weaponStarAscen;
-    let levels = searchArray(weapon.stars, miscData.weaponStars).weaponAscenLevels;
+//     let starAscenArray = searchArray(weapon.stars, generalData.weaponAscension).weaponStarAscen;
+//     let levels = searchArray(weapon.stars, miscData.weaponStars).weaponAscenLevels;
 
-    for(let i=0; i<levels.length; i++) {
-        let ascenLevelReq = searchArray(levels[i], starAscenArray);
-        let calcReq = {
-            level: null,
-            weaponMat: null,
-            weaponMatType: null,
-            weaponMatNum: null,
-            eliteMat: null,
-            eliteMatType: null,
-            eliteMatNum:null,
-            comMat: null,
-            comMatType: null,
-            comMatNum:null,
-            mora: null
-        };
+//     for(let i=0; i<levels.length; i++) {
+//         let ascenLevelReq = searchArray(levels[i], starAscenArray);
+//         let calcReq = {
+//             level: null,
+//             weaponMat: null,
+//             weaponMatType: null,
+//             weaponMatNum: null,
+//             eliteMat: null,
+//             eliteMatType: null,
+//             eliteMatNum:null,
+//             comMat: null,
+//             comMatType: null,
+//             comMatNum:null,
+//             mora: null
+//         };
 
-        calcReq["level"] = levels[i];
-        let weaponMat = getMatNameType(weapon.weaponMat, "weaponMat", ascenLevelReq.weaponMatType);
-        calcReq["weaponMat"] = weaponMat.name;
-        calcReq["weaponMatType"] = weaponMat.type;
-        calcReq["weaponMatNum"] = ascenLevelReq.weaponMatNum;
-        let eliteMat = getMatNameType(weapon.eliteMat, "eliteMat", ascenLevelReq.eliteMatType);
-        calcReq["eliteMat"] = eliteMat.name;
-        calcReq["eliteMatType"] = eliteMat.type;
-        calcReq["eliteMatNum"] = ascenLevelReq.eliteMatNum;
-        let comMat = getMatNameType(weapon.comMat, "comMat", ascenLevelReq.comMatType);
-        calcReq["comMat"] = comMat.name;
-        calcReq["comMatType"] = comMat.type;
-        calcReq["comMatNum"] = ascenLevelReq.comMatNum;
-        calcReq["mora"] = ascenLevelReq.mora;
+//         calcReq["level"] = levels[i];
+//         let weaponMat = getMatNameType(weapon.weaponMat, "weaponMat", ascenLevelReq.weaponMatType);
+//         calcReq["weaponMat"] = weaponMat.name;
+//         calcReq["weaponMatType"] = weaponMat.type;
+//         calcReq["weaponMatNum"] = ascenLevelReq.weaponMatNum;
+//         let eliteMat = getMatNameType(weapon.eliteMat, "eliteMat", ascenLevelReq.eliteMatType);
+//         calcReq["eliteMat"] = eliteMat.name;
+//         calcReq["eliteMatType"] = eliteMat.type;
+//         calcReq["eliteMatNum"] = ascenLevelReq.eliteMatNum;
+//         let comMat = getMatNameType(weapon.comMat, "comMat", ascenLevelReq.comMatType);
+//         calcReq["comMat"] = comMat.name;
+//         calcReq["comMatType"] = comMat.type;
+//         calcReq["comMatNum"] = ascenLevelReq.comMatNum;
+//         calcReq["mora"] = ascenLevelReq.mora;
 
-        weaponReq["ascenReq"].push(calcReq);
-    }
+//         weaponReq["ascenReq"].push(calcReq);
+//     }
 
-    return weaponReq;
-}
+//     return weaponReq;
+// }
 
 // This will return an object of exp materials requied for exp given an array of expMat
 function calcExpMatReq(exp, type) {
@@ -282,7 +283,7 @@ function calcExpMatReq(exp, type) {
 
 // This will return and object of the weapon exp materials required to reach reqLvl from curLvl and the mora required including ascension costs
 function getWeaponExpMatReq(stars, curLvl, reqLvl, number = 1) {
-    let levels = searchArray(stars, generalData.weaponLevel).weaponStarLevel;
+    let levels = searchArray(stars, generalData.weapons.weaponLevel).weaponStarLevel;
     let curLvlStats = searchArray(Math.floor(curLvl), levels);
     let reqLvlStats = searchArray(Math.floor(reqLvl), levels);
     let ascenLevels = searchArray(stars, miscData.weaponStars).weaponAscenLevels;
@@ -333,7 +334,7 @@ function getWeaponExpMatReq(stars, curLvl, reqLvl, number = 1) {
 
 // This will return and object of the character exp materials required to reach reqLvl from curLvl and the mora required including ascension costs
 function getCharExpMatReq(curLvl, reqLvl) {
-    let levels = generalData.charLevel;
+    let levels = generalData.characters.charLevel;
     let curLvlStats = searchArray(Math.floor(curLvl), levels);
     let reqLvlStats = searchArray(Math.floor(reqLvl), levels);
     let ascenLevels = miscData.charAscenLevels;
@@ -384,8 +385,8 @@ function getCharExpMatReq(curLvl, reqLvl) {
 // Returns an object of total material requirements to reach character level reqLvl
 function getCharReq(name, curLvl, reqLvl) {
     let expMat = getCharExpMatReq(curLvl, reqLvl);
-    let character = searchArray(name, generalData.charList);
-    let ascenReq = generalData.charAscension;
+    let character = searchArray(name, generalData.characters.charList);
+    let ascenReq = generalData.characters.charAscension;
     let mora = getMatNameType("Mora", "misc");
     let charReq = {
         name: character.name,
@@ -413,99 +414,59 @@ function getCharReq(name, curLvl, reqLvl) {
 
     for (let i=0; i<ascenReq.length; i++) {
         if (curLvl <= ascenReq[i].level && reqLvl > ascenReq[i].level) {
-            let eleCrys = getMatNameType(character.eleCrys, "eleCrys", ascenReq[i].eleCrysType);
-            if (charReq.eleCrys.length === 0) {
-                let insert = {
-                    name: character.eleCrys,
-                    matList: [
-                        {
-                            name: eleCrys.name,
-                            type: eleCrys.type,
-                            reqNum: ascenReq[i].eleCrysNum,
-                        },
-                    ],
-                };
-                charReq.eleCrys.push(insert);
-            } else {
-                let curEleCrys = searchArray(eleCrys.name, charReq.eleCrys);
-                if (curEleCrys === null) {
-                    let insert = {
-                        name: eleCrys.name,
-                        type: eleCrys.type,
-                        reqNum: ascenReq[i].eleCrysNum,
-                    };
-                    charReq.eleCrys[0].matList.push(insert);
-                } else {
-                    curEleCrys.reqNum += ascenReq[i].eleCrysNum;
+            for (let key in ascenReq[i]) {
+                if (key !== "level" && key !== "mora") {
+                    let mat = getMatNameType(character.materials[key], key, ascenReq[i][key].type);
+                    if (ascenReq[i][key].reqNum === 0 || mat === null) continue;
+                    let curMat = searchArray(character.materials[key], charReq[key]);
+                    if (curMat === null) {
+                        let insert = {};
+                        if (mat.name === character.materials[key]) {
+                            insert["name"] = mat.name;
+                            insert["type"] = mat.type;
+                            insert["reqNum"] = ascenReq[i][key].reqNum;
+                        } else {
+                            insert["name"] = character.materials[key];
+                            insert["matList"] = [
+                                {
+                                    name: mat.name,
+                                    type: mat.type,
+                                    reqNum: ascenReq[i][key].reqNum,
+                                },
+                            ];
+                        }
+                        charReq[key].push(insert);
+                    } else {
+                        if ("matList" in curMat) {
+                            let curMatSpes = searchArray(mat.name, curMat.matList);
+                            if (curMatSpes === null) {
+                                let insert = {
+                                    name: mat.name,
+                                    type: mat.type,
+                                    reqNum: ascenReq[i][key].reqNum,
+                                };
+                                curMat.matList.push(insert);
+                            } else {
+                                curMatSpes.reqNum += ascenReq[i][key].reqNum;
+                            }
+                        } else {
+                            curMat.reqNum += ascenReq[i][key].reqNum;
+                        }
+                    }
+                } else if (key === "mora") {
+                    charReq.misc[0].reqNum += ascenReq[i][key];
                 }
             }
-
-            if (!character.isTraveler) {
-                if (charReq.eleMat.length === 0) {
-                    let eleMat = getMatNameType(character.eleMat, "eleMat");
-                    let insert = {
-                        name: eleMat.name,
-                        type: eleMat.type,
-                        reqNum: ascenReq[i].eleMatNum,
-                    };
-                    charReq.eleMat.push(insert);
-                } else {
-                    charReq.eleMat[0].reqNum += ascenReq[i].eleMatNum;
-                }
-                
-            }
-
-            if (charReq.locSpec.length === 0) {
-                let locSpec = getMatNameType(character.locSpec, "locSpec");
-                let insert = {
-                    name: locSpec.name,
-                    type: locSpec.type,
-                    reqNum: ascenReq[i].locSpecNum,
-                };
-                charReq.locSpec.push(insert);
-            } else {
-                charReq.locSpec[0].reqNum += ascenReq[i].locSpecNum;
-            }
-
-            let comMat = getMatNameType(character.comMat, "comMat", ascenReq[i].comMatType);
-            if (charReq.comMat.length === 0) {
-                let insert = {
-                    name: character.comMat,
-                    matList: [
-                        {
-                            name: comMat.name,
-                            type: comMat.type,
-                            reqNum: ascenReq[i].comMatNum,
-                        },
-                    ],
-                };
-                charReq.comMat.push(insert);
-            } else {
-                let curComMat = searchArray(comMat.name, charReq.comMat);
-                if (curComMat === null) {
-                    let insert = {
-                        name: comMat.name,
-                        type: comMat.type,
-                        reqNum: ascenReq[i].comMatNum,
-                    };
-                    charReq.comMat[0].matList.push(insert);
-                } else {
-                    curComMat.reqNum += ascenReq[i].comMatNum;
-                }
-            }
-
-            charReq.misc[0].reqNum += ascenReq[i].mora;
         }
     }
-
     return charReq;
 }
 
 // Returns an object of total material requirements to reach weapon level reqLvl
 function getWeaponReq(name, curLvl, reqLvl, number = 1) {
-    let weapon = searchArray(name, generalData.weaponList);
+    let weapon = searchArray(name, generalData.weapons.weaponList);
     let expMat = getWeaponExpMatReq(weapon.stars, curLvl, reqLvl, number);
-    let ascenReq = searchArray(weapon.stars, generalData.weaponAscension).weaponStarAscen;
+    let ascenReq = searchArray(weapon.stars, generalData.weapons.weaponAscension).weaponStarAscen;
     let mora = getMatNameType("Mora", "misc");
     let weaponReq = {
         name: weapon.name,
@@ -533,102 +494,52 @@ function getWeaponReq(name, curLvl, reqLvl, number = 1) {
 
     for (let i=0; i<ascenReq.length; i++) {
         if (curLvl <= ascenReq[i].level && reqLvl > ascenReq[i].level) {
-            let weaponMat = getMatNameType(weapon.weaponMat, "weaponMat", ascenReq[i].weaponMatType);
-            if (weaponReq.weaponMat.length === 0) {
-                let insert = {
-                    name: weapon.weaponMat,
-                    matList: [
-                        {
-                            name: weaponMat.name,
-                            type: weaponMat.type,
-                            reqNum: ascenReq[i].weaponMatNum,
-                        },
-                    ],
-                };
-                weaponReq.weaponMat.push(insert);
-            } else {
-                let curWeaponMat = searchArray(weaponMat.name, weaponReq.weaponMat);
-                if (curWeaponMat === null) {
-                    let insert = {
-                        name: weaponMat.name,
-                        type: weaponMat.type,
-                        reqNum: ascenReq[i].weaponMatNum,
-                    };
-                    weaponReq.weaponMat[0].matList.push(insert);
-                } else {
-                    curWeaponMat.reqNum += ascenReq[i].weaponMatNum;
+            for (let key in ascenReq[i]) {
+                if (key !== "level" && key !== "mora") {
+                    if (ascenReq[i][key].reqNum === 0) continue;
+                    let mat = getMatNameType(weapon.materials[key], key, ascenReq[i][key].type);
+                    let curMat = searchArray(weapon.materials[key], weaponReq[key]);
+                    if (curMat === null) {
+                        let insert = {
+                            name: weapon.materials[key],
+                            matList: [
+                                {
+                                    name: mat.name,
+                                    type: mat.type,
+                                    reqNum: ascenReq[i][key].reqNum,
+                                }
+                            ]
+                        };
+                        weaponReq[key].push(insert);
+                    } else {
+                        let curMatSpes = searchArray(mat.name, curMat.matList);
+                        if (curMatSpes === null) {
+                            let insert = {
+                                name: mat.name,
+                                type: mat.type,
+                                reqNum: ascenReq[i][key].reqNum,
+                            };
+                            curMat.matList.push(insert);
+                        } else {
+                            curMatSpes.reqNum += ascenReq[i][key].reqNum;
+                        }
+                    }
+                } else if (key === "mora") {
+                    weaponReq.misc[0].reqNum += ascenReq[i][key];
                 }
             }
-
-            let eliteMat = getMatNameType(weapon.eliteMat, "eliteMat", ascenReq[i].eliteMatType);
-            if (weaponReq.eliteMat.length === 0) {
-                let insert = {
-                    name: weapon.eliteMat,
-                    matList: [
-                        {
-                            name: eliteMat.name,
-                            type: eliteMat.type,
-                            reqNum: ascenReq[i].eliteMatNum,
-                        },
-                    ],
-                };
-                weaponReq.eliteMat.push(insert);
-            } else {
-                let curEliteMat = searchArray(eliteMat.name, weaponReq.eliteMat);
-                if (curEliteMat === null) {
-                    let insert = {
-                        name: eliteMat.name,
-                        type: eliteMat.type,
-                        reqNum: ascenReq[i].eliteMatNum,
-                    };
-                    weaponReq.eliteMat[0].matList.push(insert);
-                } else {
-                    curEliteMat.reqNum += ascenReq[i].eliteMatNum;
-                }
-            }
-
-            let comMat = getMatNameType(weapon.comMat, "comMat", ascenReq[i].comMatType);
-            if (weaponReq.comMat.length === 0) {
-                let insert = {
-                    name: weapon.comMat,
-                    matList: [
-                        {
-                            name: comMat.name,
-                            type: comMat.type,
-                            reqNum: ascenReq[i].comMatNum,
-                        },
-                    ],
-                };
-                weaponReq.comMat.push(insert);
-            } else {
-                let curComMat = searchArray(comMat.name, weaponReq.comMat);
-                if (curComMat === null) {
-                    let insert = {
-                        name: comMat.name,
-                        type: comMat.type,
-                        reqNum: ascenReq[i].comMatNum,
-                    };
-                    weaponReq.comMat[0].matList.push(insert);
-                } else {
-                    curComMat.reqNum += ascenReq[i].comMatNum;
-                }
-            }
-
-            weaponReq.misc[0].reqNum += ascenReq[i].mora;
         }
     }
-
     return weaponReq;
 }
-console.log(getTalentReq("Amber", 1, 10, "autoAttack"))
+
 // Returns an object of total material and mora requirements reach talent level reqLvl
 function getTalentReq(name, curLvl, reqLvl, talent = null) {
-    let character = searchArray(name, generalData.charList);
-    let talents = character.isTraveler ? getGenCharReq(name).talentReq[talent] : generalData.talents;
-    console.log(talents)
+    let character = searchArray(name, generalData.characters.charList);
+    let talents = generalData.characters.talents;
     let ele = character.isTraveler ? character.name.split(' ')[1].toLowerCase() : '';
-    character.comMat = character.isTraveler ? miscData.traveler[ele][talent].comMat : character.comMat;
-    character.bossMat = character.isTraveler ? miscData.traveler[ele][talent].bossMat : character.bossMat;
+    character.materials.comMat = character.isTraveler ? miscData.traveler[ele][talent].comMat : character.materials.comMat;
+    character.materials.bossMat = character.isTraveler ? miscData.traveler[ele][talent].bossMat : character.materials.bossMat;
     let mora = getMatNameType("Mora", "misc");
     let crown = getMatNameType("Crown of Insight", "misc");
 
@@ -641,87 +552,71 @@ function getTalentReq(name, curLvl, reqLvl, talent = null) {
                 name: mora.name,
                 type: mora.type,
                 reqNum: 0,
-            },
-            {
-                name: crown.name,
-                type: crown.type,
-                reqNum: 0,
-            }
+            }, 
         ]
     }
 
     for (let i=0; i<talents.length; i++) {
         if (curLvl < talents[i].level && reqLvl >= talents[i].level) {
-            let curTalentName = character.isTraveler ? talents[i].talentMat : character.talentMat;
-            let curTalentMat = searchArray(curTalentName, talentReq.talentMat);
-            if (curTalentMat === null) {
-                let insert = {
-                    name: curTalentName,
-                    matList: [],
-                }
-                let talentTypes = searchArray(curTalentName, generalData.materials.talentMat);
-                for (let i=0; i<rarTypes.length; i++) {
-                    if (talentTypes[rarTypes[i]] !== null) {
-                        let mat = {
-                            name: talentTypes[rarTypes[i]],
-                            type: rarTypes[i],
-                            reqNum: talents[i].talentMatType === rarTypes[i] ? talents[i].talentMatNum : 0,
+            for (let key in talents[i]) {
+                if (key !== "level" && key !== "mora" && key !== "crownNum") {
+                    if (talents[i][key].reqNum === 0) continue;
+                    let talentMatName = character.isTraveler ? miscData.traveler[ele][talent].talentMat[i%3] : character.materials[key];
+                    let name = key === "talentMat" ? talentMatName : character.materials[key];
+                    let mat = getMatNameType(name, key, talents[i][key].type);
+                    let curMat = searchArray(name, talentReq[key]);
+                    if (curMat === null) {
+                        let insert = {};
+                        if (mat.name === name) {
+                            insert["name"] = mat.name;
+                            insert["type"] = mat.type;
+                            insert["reqNum"] = talents[i][key].reqNum;
+                        } else {
+                            insert["name"] = name,
+                            insert["matList"] = [
+                                {
+                                    name: mat.name,
+                                    type: mat.type,
+                                    reqNum: talents[i][key].reqNum,
+                                },
+                            ];
                         }
-                        insert.matList.push(mat);
+                        talentReq[key].push(insert);
+                    } else {
+                        if ("matList" in curMat) {
+                            let curMatSpes = searchArray(mat.name, curMat.matList);
+                            if (curMatSpes === null) {
+                                let insert = {
+                                    name: mat.name,
+                                    type: mat.type,
+                                    reqNum: talents[i][key].reqNum,
+                                };
+                                curMat.matList.push(insert);
+                            } else {
+                                curMatSpes.reqNum += talents[i][key].reqNum;
+                            }
+                        } else {
+                            curMat.reqNum += talents[i][key].reqNum;
+                        }
+                    }
+                } else if (key === "mora") {
+                    talentReq.misc[0].reqNum += talents[i][key];
+                } else if (key === "crownNum" && talents[i].crownNum > 0) {
+                    let curCrown = searchArray("Crown of Insight", talentReq.misc);
+                    if (curCrown === null) {
+                        let insert = { 
+                            name: crown.name,
+                            type: crown.type,
+                            reqNum: talents[i].crownNum,
+                        }
+                        talentReq.misc.push(insert);
+                    } else {
+                        curCrown.reqNum += talents[i].crownNum;
                     }
                 }
-                talentReq.talentMat.push(insert);
-            } else {
-                let talentName = getMatNameType(curTalentName, "talentMat", talents[i].talentMatType).name;
-                let curTalentObj = searchArray(talentName, curTalentMat.matList);
-                curTalentObj.reqNum += talents[i].talentMatNum;
-
             }
-            
-            let comMat = getMatNameType(character.comMat, "comMat", talents[i].comMatType);
-            if (talentReq.comMat.length === 0) {
-                let insert = {
-                    name: character.comMat,
-                    matList: [
-                        {
-                            name: comMat.name,
-                            type: comMat.type,
-                            reqNum: talents[i].comMatNum,
-                        },
-                    ],
-                };
-                talentReq.comMat.push(insert);
-            } else {
-                let curComMat = searchArray(comMat.name, talentReq.comMat);
-                if (curComMat === null) {
-                    let insert = {
-                        name: comMat.name,
-                        type: comMat.type,
-                        reqNum: talents[i].comMatNum,
-                    };
-                    talentReq.comMat[0].matList.push(insert);
-                } else {
-                    curComMat.reqNum += talents[i].comMatNum;
-                }
-            }
-
-            if (talentReq.bossMat.length === 0) {
-                let bossMat = getMatNameType(character.bossMat, "locSpec");
-                let insert = {
-                    name: bossMat.name,
-                    type: bossMat.type,
-                    reqNum: talents[i].bossMatNum,
-                };
-                talentReq.bossMat.push(insert);
-            } else {
-                talentReq.bossMat[0].reqNum += talents[i].bossMatNum;
-            }
-
-            talentReq.misc[0].reqNum += talents[i].mora;
-            talentReq.misc[1].reqNum += talents[i].crownNum;
         }
     }
-
     return talentReq;
 }
 
@@ -910,7 +805,6 @@ module.exports = {
     generalData,
     searchArray,
     getMatNameType,
-    getGenCharReq,
     getCharReq,
     getWeaponReq,
     getTalentReq,

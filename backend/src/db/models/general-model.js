@@ -1,29 +1,43 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const Characters = new Schema({
+    charList: [Character],
+    charAscension: [CharAscension],
+    charLevel: [CharLevel],
+    talents: [Talent],
+});
+
 const Character = new Schema({
     name: { type: String, required: true },
     stars: { type: Number, required: true },
-    eleCrys: { type: String, required: true },
-    eleMat: { type: String, required: true },
-    locSpec: { type: String, required: true },
-    comMat: { type: String, required: true },
-    talBook: { type: String, required: true },
-    bossMat: { type: String, required: true },
-    autoAttack: { type: String, required: true },
-    eleSkill: { type: String, required: true },
-    eleBurst: { type: String, required: true },
+    materials: {
+        eleCrys: { type: String, required: true },
+        eleMat: { type: String, required: true },
+        locSpec: { type: String, required: true },
+        comMat: { type: String, required: true },
+        talBook: { type: String, required: true },
+        bossMat: { type: String, required: true },
+    },
+    talents: {
+        autoAttack: { type: String, required: true },
+        eleSkill: { type: String, required: true },
+        eleBurst: { type: String, required: true },
+    },
     isTraveler: { type: Boolean, required: true },
+});
+
+const ReqMat = new Schema({
+    type: { type: String, required: true },
+    reqNum: { type: String, required: true },
 });
 
 const CharAscension = new Schema({
     level: { type: Number, required: true },
-    eleCrysType: { type: String, required: true },
-    eleCrysNum: { type: Number, required: true },
-    eleMatNum: { type: Number, required: true },
-    locSpecNum: { type: Number, required: true },
-    comMatType: { type: String, required: true },
-    comMatNum: { type: Number, required: true },
+    eleCrys: ReqMat,
+    eleMat: ReqMat,
+    locSpec: ReqMat,
+    comMat: ReqMat,
     mora: { type: Number, required: true },
 });
 
@@ -35,31 +49,35 @@ const CharLevel = new Schema({
 
 const Talent = new Schema({
     level: { type: Number, required: true },
-    talentMatType: { type: String, required: true },
-    talentMatNum: {type: Number, required: true },
-    comMatType: { type: String, required: true },
-    comMatNum: { type: Number, required: true },
-    bossNum: { type: Number, required: true },
-    crownNum: { type: Number, required: true},
+    talentMat: ReqMat,
+    comMat: ReqMat,
+    bossMat: ReqMat,
+    crownNum: { type: Number, required: true },
     mora: { type: Number, required: true },
+});
+
+const Weapons = new Schema({
+    weaponList: [Weapon],
+    weaponAscension: [WeaponAscension],
+    weaponLevel: [WeaponLevel],
 });
 
 const Weapon = new Schema({
     name: { type: String, required: true },
     stars: { type: Number, required: true },
-    weaponMat: { type: String, required: true },
-    comMat: { type: String, required: true },
-    eliteMat: { type: String, required: true },
+    type: { type: String, required: true },
+    materials: {
+        weaponMat: { type: String, required: true },
+        comMat: { type: String, required: true },
+        eliteMat: { type: String, required: true },
+    },
 });
 
 const WeaponStarAscen = new Schema({
     level: { type: Number, required: true },
-    weaponMatType: { type: String, required: true },
-    weaponMatNum: { type: Number, required: true },
-    eliteMatType: { type: String, required: true },
-    eliteMatNum: { type: Number, required: true },
-    comMatType: { type: String, required: true },
-    comMatNum: { type: Number, required: true },
+    weaponMat: ReqMat,
+    eliteMat: ReqMat,
+    comMat: ReqMat,
     mora: { type: Number, required: true },
 });
 
@@ -159,13 +177,8 @@ const MiscData = new Schema({
 
 const General = new Schema({
     name: { type: String, required: true },
-    charList: [Character],
-    charAscension: [CharAscension],
-    charLevel: [CharLevel],
-    talents: [Talent],
-    weaponList: [Weapon],
-    weaponAscension: [WeaponAscension],
-    weaponLevel: [WeaponLevel],
+    characters: Characters,
+    weapons: Weapons,
     dropRates: [AR],
     materials: Materials,
     img: [Image],

@@ -53,7 +53,16 @@
                 "imgPath": "/api/characters/amber.png"
             }
         ],
-        "weaponList": [],
+        "weaponList": [
+            {
+                "name": "Skyward Blade",
+                "stars": 5,
+                "number": 1,
+                "curLvl": 1,
+                "reqLvl": 40.5,
+                "imgPath": "/api/characters/amber.png"
+            }
+        ],
         "materials": {
             "_id": "5feb8b7b9ddca2bde7e3148d",
             "eleCrys": [

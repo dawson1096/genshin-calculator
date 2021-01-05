@@ -17,6 +17,5 @@ userRouter.get("/character/:name", UserCtrl.checkToken, UserCtrl.getCalcCharReq)
 userRouter.get("/character/:name/talent", UserCtrl.checkToken, UserCtrl.getCalcTalentReq);
 userRouter.get("/weapon", UserCtrl.checkToken, UserCtrl.getCalcAllWeaponReq);
 userRouter.get("/weapon/:name", UserCtrl.checkToken, UserCtrl.getCalcWeaponReq);
-userRouter.get("/image", UserCtrl.getImgPath);
 
 module.exports = userRouter;
