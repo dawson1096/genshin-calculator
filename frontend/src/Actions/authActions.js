@@ -1,5 +1,5 @@
 import axios from "axios";
-import setAuthToken from "../Utils/setAuthToken";
+import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import {
     GET_ERRORS,
@@ -12,12 +12,16 @@ export const registerUser = (userData, history) => dispatch => {
     axios
         .post("/api/register", userData)
         .then(res => history.push("/login")) // re-direct to login on successful register
-        .catch(err =>
+        .catch(err => {
+            let payload = err.response.data;
+            if (err.response.status === 500) {
+                payload = { "internalError": "Could not connect to server"};
+            }
             dispatch({
                 type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
+                payload: payload
+            });
+        });
 };
 
 // Login - get user token
@@ -28,7 +32,6 @@ export const loginUser = userData => dispatch => {
             // Save to localStorage
             // Set token to localStorage
             const { token } = res.data;
-            console.log(res.data)
             localStorage.setItem("jwtToken", token);
             // Set token to Auth header
             setAuthToken(token);
@@ -38,10 +41,14 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
         })
         .catch(err => {
+            let payload = err.response.data;
+            if (err.response.status === 500) {
+                payload = { "internalError": "Could not connect to server"};
+            }
             dispatch({
                 type: GET_ERRORS,
-                payload: err.response.data
-            })
+                payload: payload
+            });
         });
 };
 
