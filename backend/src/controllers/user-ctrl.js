@@ -15,47 +15,26 @@ function validateRegisterInput(data) {
     data.confirmPass = !isEmpty(data.confirmPass) ? data.confirmPass : "";
     // Name checks
     if (Validator.isEmpty(data.username)) {
-        errors.username = "Username field is required";
+        errors.username = "Username is required";
     }
     // Email checks
     if (Validator.isEmpty(data.email)) {
-        errors.email = "Email field is required";
+        errors.email = "Email is required";
     } else if (!Validator.isEmail(data.email)) {
-        errors.email = "Email is invalid";
+        errors.email = "Invalid email";
     }
     // Password checks
     if (Validator.isEmpty(data.password)) {
-        errors.password = "Password field is required";
+        errors.password = "Password is required";
     }
     if (Validator.isEmpty(data.confirmPass)) {
-        errors.confirmPass = "Confirm password field is required";
+        errors.confirmPass = "Confirm password is required";
     }
     if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
         errors.password = "Password must be at least 6 characters";
     }
     if (!Validator.equals(data.password, data.confirmPass)) {
         errors.confirmPass = "Passwords must match";
-    }
-    return {
-        errors,
-        isValid: isEmpty(errors)
-    };
-}
-
-function validateLoginInput(data) {
-    let errors = {};
-    // Convert empty fields to an empty string so we can use validator functions
-    data.email = !isEmpty(data.email) ? data.email : "";
-    data.password = !isEmpty(data.password) ? data.password : "";
-    // Email checks
-    if (Validator.isEmpty(data.email)) {
-        errors.email = "Email field is required";
-    } else if (!Validator.isEmail(data.email)) {
-        errors.email = "Email is invalid";
-    }
-    // Password checks
-    if (Validator.isEmpty(data.password)) {
-        errors.password = "Password field is required";
     }
     return {
         errors,
@@ -184,7 +163,7 @@ createUser = (req, res) => {
     }
     User.findOne({ email: req.body.email }).then(user => {
         if (user) {
-            return res.status(400).json({ email: "Email already exists" });
+            return res.status(400).json({ existingAcc: "Email already exists" });
         }
         let data = {
             charList: [],
@@ -212,18 +191,13 @@ createUser = (req, res) => {
 }
 
 loginUser = (req, res) => {
-    const { errors, isValid } = validateLoginInput(req.body);
-    // Check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
     const email = req.body.email;
     const password = req.body.password;
     // Find user by email
     User.findOne({ email }).then(user => {
         // Check if user exists
         if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
+            return res.status(404).json({ invalidLogin: "Email or password is incorrect" });
         }
         // Check password
         bcrypt.compare(password, user.password).then(async isMatch => {
@@ -342,7 +316,7 @@ loginUser = (req, res) => {
             } else {
                 return res
                     .status(400)
-                    .json({ passwordincorrect: "Password incorrect" });
+                    .json({ invalidLogin: "Email or password is incorrect" });
             }
         }).catch(err => res.json({error: err}));
     }).catch(err => res.json({error: err}));
