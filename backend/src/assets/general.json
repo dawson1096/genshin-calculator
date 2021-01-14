@@ -389,7 +389,7 @@
                     "locSpec": "Cecilia",
                     "comMat": "Slime",
                     "talentMat": "Ballad",
-                    "bossMat": "Tail of Boreas"    
+                    "bossMat": "Tail of Boreas"
                 },
                 "talents": {
                     "autoAttack": "Divine Marksmanship",
@@ -1080,7 +1080,7 @@
                 "cumulMora": 1672000,
                 "cumulExp": 8362650
             }
-          ],
+        ],
         "talents": [
             {
                 "level": 2,
@@ -1926,7 +1926,7 @@
                 "materials": {
                     "weaponMat": "Guyun",
                     "eliteMat": "Sacrificial Knife",
-                    "comMat": "Scroll"   
+                    "comMat": "Scroll"
                 }
             },
             {
@@ -4745,7 +4745,7 @@
                 "purple": "Shivada Jade Chunk",
                 "gold": "Shivada Jade Gemstone"
             },
-        	{
+            {
                 "name": "Vajrada Amethyst",
                 "white": null,
                 "green": "Vajrada Amethyst Silver",
@@ -5083,7 +5083,7 @@
                 "name": "Dvalin's Sigh",
                 "type": "gold"
             },
-        	{
+            {
                 "name": "Tail of Boreas",
                 "type": "gold"
             },
@@ -5158,7 +5158,7 @@
         ]
     },
     "img": [
-    	{
+        {
             "name": "Albedo",
             "imgPath": "/api/characters/albedo.png"
         },
@@ -5261,6 +5261,14 @@
         {
             "name": "Zhongli",
             "imgPath": "/api/characters/zhongli.png"
+        },
+        {
+            "name": "Traveler Geo",
+            "imgPath": "/api/characters/traveler.png"
+        },
+        {
+            "name": "Traveler Anemo",
+            "imgPath": "/api/characters/traveler.png"
         },
         {
             "name": "Amos' Bow",
@@ -6581,135 +6589,63 @@
     ],
     "miscData": {
         "traveler": {
-            "anemo" : {
+            "anemo": {
                 "autoAttack": {
-                    "talentMat": [
-                        "Freedom",
-                        "Resistance",
-                        "Ballad"
-                    ],
+                    "talentMat": ["Freedom", "Resistance", "Ballad"],
                     "comMat": "Scroll",
                     "bossMat": "Dvalin's Sigh"
                 },
                 "eleSkill": {
-                    "talentMat": [
-                        "Freedom",
-                        "Resistance",
-                        "Ballad"
-                    ],
+                    "talentMat": ["Freedom", "Resistance", "Ballad"],
                     "comMat": "Scroll",
                     "bossMat": "Dvalin's Sigh"
                 },
                 "eleBurst": {
-                    "talentMat": [
-                        "Freedom",
-                        "Resistance",
-                        "Ballad"
-                    ],
+                    "talentMat": ["Freedom", "Resistance", "Ballad"],
                     "comMat": "Scroll",
                     "bossMat": "Dvalin's Sigh"
                 }
             },
             "geo": {
                 "autoAttack": {
-                    "talentMat": [
-                        "Freedom",
-                        "Resistance",
-                        "Ballad"
-                    ],
+                    "talentMat": ["Freedom", "Resistance", "Ballad"],
                     "comMat": "Scroll",
                     "bossMat": "Dvalin's Sigh"
                 },
                 "eleSkill": {
-                    "talentMat": [
-                        "Prosperity",
-                        "Diligence",
-                        "Gold"
-                    ],
+                    "talentMat": ["Prosperity", "Diligence", "Gold"],
                     "comMat": "Arrowhead",
                     "bossMat": "Tail of Boreas"
                 },
                 "eleBurst": {
-                    "talentMat": [
-                        "Prosperity",
-                        "Diligence",
-                        "Gold"
-                    ],
+                    "talentMat": ["Prosperity", "Diligence", "Gold"],
                     "comMat": "Arrowhead",
                     "bossMat": "Tail of Boreas"
                 }
             }
         },
-        "charAscenLevels": [
-            20,
-            40,
-            50,
-            60,
-            70,
-            80
-        ],
-        "talentLevels": [
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10
-        ],
+        "charAscenLevels": [20, 40, 50, 60, 70, 80],
+        "talentLevels": [2, 3, 4, 5, 6, 7, 8, 9, 10],
         "weaponStars": [
             {
                 "stars": 5,
-                "weaponAscenLevels": [
-                    20,
-                    40,
-                    50,
-                    60,
-                    70,
-                    80
-                ]
+                "weaponAscenLevels": [20, 40, 50, 60, 70, 80]
             },
             {
                 "stars": 4,
-                "weaponAscenLevels": [
-                    20,
-                    40,
-                    50,
-                    60,
-                    70,
-                    80
-                ]
+                "weaponAscenLevels": [20, 40, 50, 60, 70, 80]
             },
             {
                 "stars": 3,
-                "weaponAscenLevels": [
-                    20,
-                    40,
-                    50,
-                    60,
-                    70,
-                    80
-                ]
+                "weaponAscenLevels": [20, 40, 50, 60, 70, 80]
             },
             {
                 "stars": 2,
-                "weaponAscenLevels": [
-                    20,
-                    40,
-                    50,
-                    60
-                ]
+                "weaponAscenLevels": [20, 40, 50, 60]
             },
             {
                 "stars": 1,
-                "weaponAscenLevels": [
-                    20,
-                    40,
-                    50,
-                    60
-                ]
+                "weaponAscenLevels": [20, 40, 50, 60]
             }
         ],
         "matType": {
@@ -6720,20 +6656,9 @@
                 "talentMat",
                 "weaponMat"
             ],
-            "singleType": [
-                "eleMat",
-                "locSpec",
-                "bossMat",
-                "misc"
-            ]
+            "singleType": ["eleMat", "locSpec", "bossMat", "misc"]
         },
-        "rarType": [
-            "white",
-            "green",
-            "blue",
-            "purple",
-            "gold"
-        ],
+        "rarType": ["white", "green", "blue", "purple", "gold"],
         "shortNames": {
             "eleCrys": [
                 "Agnidus Agate",

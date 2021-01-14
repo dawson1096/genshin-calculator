@@ -1,46 +1,8 @@
 const User = require("../db/models/user-model");
 const GeneralCtrl = require("./general-ctrl");
-const Validator = require("validator");
-const isEmpty = require("is-empty");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { secretOrKey } = require("../config/config");
-
-function validateRegisterInput(data) {
-    let errors = {};
-    // Convert empty fields to an empty string so we can use validator functions
-    data.username = !isEmpty(data.username) ? data.username : "";
-    data.email = !isEmpty(data.email) ? data.email : "";
-    data.password = !isEmpty(data.password) ? data.password : "";
-    data.confirmPass = !isEmpty(data.confirmPass) ? data.confirmPass : "";
-    // Name checks
-    if (Validator.isEmpty(data.username)) {
-        errors.username = "Username is required";
-    }
-    // Email checks
-    if (Validator.isEmpty(data.email)) {
-        errors.email = "Email is required";
-    } else if (!Validator.isEmail(data.email)) {
-        errors.email = "Invalid email";
-    }
-    // Password checks
-    if (Validator.isEmpty(data.password)) {
-        errors.password = "Password is required";
-    }
-    if (Validator.isEmpty(data.confirmPass)) {
-        errors.confirmPass = "Confirm password is required";
-    }
-    if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-        errors.password = "Password must be at least 6 characters";
-    }
-    if (!Validator.equals(data.password, data.confirmPass)) {
-        errors.confirmPass = "Passwords must match";
-    }
-    return {
-        errors,
-        isValid: isEmpty(errors)
-    };
-}
 
 function convertToName(name) {
     conName = name.replace("%27", "'");
@@ -156,11 +118,6 @@ function conUserData(allReq, user) {
 // }
 
 createUser = (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
-    // Check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
     User.findOne({ email: req.body.email }).then(user => {
         if (user) {
             return res.status(400).json({ existingAcc: "Email already exists" });
@@ -296,7 +253,7 @@ loginUser = (req, res) => {
                             }
                         }
                     }
-                    
+
                 }
                 await User.updateOne({ email: user.email }, { $set: { "userData.materials": userData } });
                 // User matched
@@ -380,26 +337,33 @@ updateUserData = (req, res) => {
 // Get user data
 getUserData = (req, res) => {
     if (req.token === "Unauthorized") {
-        return res.status(401).json({ error: "Unauthorized"});
+        res.status(401).json({ error: "Unauthorized"});
     }
     jwt.verify(req.token, secretOrKey, (err, data) => {
         if (err) {
             console.log("ERROR: Could not connect to the protected route");
-            return res.status(500).json({ error: "Could not connect"});
+            res.status(500).json({ error: "Could not connect"});
         }
         User.findOne({ email: data.email }).then(user => {
-            return res.json({ userData: user.userData });
-        }).catch(err => res.json({error: err }));
-    }).catch(err => res.json({error: err }));
+            res.json({ userData: user.userData });
+        }).catch(err => console.log(err));
+    });
 }
 
 // Get list of characters, materials, weapons
 getGeneralData = (req, res) => {
     let generalData = GeneralCtrl.generalData;
+    let charList = generalData.characters.charList;
+    for (let i=0; i<charList.length; i++) {
+        charList[i]["imgPath"] = GeneralCtrl.searchArray(charList[i].name, GeneralCtrl.generalData.img).imgPath;
+        charList[i].talents["aaImgPath"] = GeneralCtrl.searchArray(charList[i].talents.autoAttack, GeneralCtrl.generalData.img).imgPath;
+        charList[i].talents["esImgPath"] = GeneralCtrl.searchArray(charList[i].talents.eleSkill, GeneralCtrl.generalData.img).imgPath;
+        charList[i].talents["ebImgPath"] = GeneralCtrl.searchArray(charList[i].talents.eleBurst, GeneralCtrl.generalData.img).imgPath;
+    }
     let send = {
-        charList: generalData.characters.charList,
+        charList: charList,
         weaponList: generalData.weapons.weaponList,
-        materials: generalData.materials, 
+        materials: generalData.materials,
     }
     res.json(send);
 }
@@ -419,7 +383,7 @@ getAllReq = (req, res) => {
             let weaponReq = GeneralCtrl.getAllWeaponReq(user.userData.weaponList);
             let talentReq = GeneralCtrl.getAllTalentReq(user.userData.charList);
             let allReq = addObjects(charReq, weaponReq, talentReq);
-            allReq = conUserData(allReq, user);            
+            allReq = conUserData(allReq, user);
             return res.json(allReq);
         }).catch(err => res.json({ error: err }));
     });

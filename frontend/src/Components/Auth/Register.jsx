@@ -12,12 +12,8 @@ import {
     Button,
     withStyles,
 } from "@material-ui/core";
-import {
-    Alert,
-} from "@material-ui/lab";
-import {
-    ArrowBack,
-} from "@material-ui/icons";
+import { Alert } from "@material-ui/lab";
+import { ArrowBack } from "@material-ui/icons";
 
 const styles = (theme) => ({
     root: {
@@ -27,7 +23,7 @@ const styles = (theme) => ({
         alignItems: "center",
     },
     form: {
-        width: '100%',
+        width: "100%",
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -35,10 +31,10 @@ const styles = (theme) => ({
         padding: theme.spacing(3, 0, 2),
     },
     textDiv: {
-        display: 'flex',
-        alignItems: 'center',
+        display: "flex",
+        alignItems: "center",
         flexWrap: "wrap",
-    }
+    },
 });
 
 class Register extends Component {
@@ -60,15 +56,15 @@ class Register extends Component {
         }
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
+    static getDerivedStateFromProps(props, state) {
+        if (props.errors.existingAcc) {
+            state.errors = props.errors;
+            return state;
         }
-    };
-    
-    onChange = e => {
+        return null;
+    }
+
+    onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
         let error;
         let map = {
@@ -76,13 +72,17 @@ class Register extends Component {
             username: "Username",
             password: "Password",
             confirmPass: "Confirm password",
-        }
-        if (!e.target.value) {
+        };
+        if (!e.target.value && e.target.id !== "confirmPass") {
             error = `${map[e.target.id]} is required`;
         } else {
-            switch(e.target.id) {
+            switch (e.target.id) {
                 case "email":
-                    if (!e.target.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+                    if (
+                        !e.target.value.match(
+                            /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i
+                        )
+                    ) {
                         error = "Invalid email";
                     }
                     break;
@@ -93,33 +93,37 @@ class Register extends Component {
                     break;
                 case "confirmPass":
                     if (this.state.password !== e.target.value) {
-                        error = "Passwords must match"
+                        error = "Passwords must match";
                     }
                     break;
                 default:
                     break;
             }
         }
-        this.setState( prevState => ({ errors: {
-            ...prevState.errors,
-            [e.target.id]: error,
-        }}));
+        this.setState((prevState) => ({
+            errors: {
+                ...prevState.errors,
+                [e.target.id]: error,
+            },
+        }));
     };
 
-    onSubmit = e => {
+    onSubmit = (e) => {
         e.preventDefault();
         const newUser = {
-            "username": this.state.username,
-            "email": this.state.email,
-            "password": this.state.password,
-            "confirmPass": this.state.confirmPass
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            confirmPass: this.state.confirmPass,
         };
         let errors = {};
         let valid = true;
         if (this.state.email === "") {
             errors.email = "Email is required";
             valid = false;
-        } else if (!this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+        } else if (
+            !this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+        ) {
             errors.email = "Invalid email";
             valid = false;
         } else if (this.state.username === "") {
@@ -130,9 +134,6 @@ class Register extends Component {
             valid = false;
         } else if (this.state.password.length < 6) {
             errors.password = "Password must be at least 6 characters";
-            valid = false;
-        } else if (this.state.confirmPass === "") {
-            errors.confirmPass = "Confirm password is required";
             valid = false;
         } else if (this.state.password !== this.state.confirmPass) {
             errors.confirmPass = "Passwords must match";
@@ -149,30 +150,30 @@ class Register extends Component {
         const { classes } = this.props;
         return (
             <Container maxWidth="xs">
-                <div className={ classes.root }>
-                    <Grid container >
-                        <Link
-                            component={ RouterLink }
-                            to="/"
-                        >
+                <div className={classes.root}>
+                    <Grid container>
+                        <Link component={RouterLink} to="/">
                             <Grid container alignItems="center">
                                 <ArrowBack />
                                 Back to home
                             </Grid>
                         </Link>
                     </Grid>
-                    <Typography variant="h3">
-                        Register
-                    </Typography>
-                    <form noValidate className={ classes.form } onSubmit={this.onSubmit}>
-                        { errors.existingAcc &&
-                            <Alert severity="warning">{ errors.existingAcc }</Alert>
-                        }
-                        {
-                            errors.email ? 
+                    <Typography variant="h3">Register</Typography>
+                    <form
+                        noValidate
+                        className={classes.form}
+                        onSubmit={this.onSubmit}
+                    >
+                        {errors.existingAcc && (
+                            <Alert severity="warning">
+                                {errors.existingAcc}
+                            </Alert>
+                        )}
+                        {errors.email ? (
                             <TextField
                                 error
-                                helperText={ errors.email }
+                                helperText={errors.email}
                                 variant="filled"
                                 margin="normal"
                                 required
@@ -182,9 +183,10 @@ class Register extends Component {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
-                                value={ this.state.email }
-                                onChange={ this.onChange }
-                            /> :
+                                value={this.state.email}
+                                onChange={this.onChange}
+                            />
+                        ) : (
                             <TextField
                                 variant="filled"
                                 margin="normal"
@@ -195,15 +197,14 @@ class Register extends Component {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
-                                value={ this.state.email }
-                                onChange={ this.onChange }
+                                value={this.state.email}
+                                onChange={this.onChange}
                             />
-                        }
-                        {
-                            errors.username ? 
+                        )}
+                        {errors.username ? (
                             <TextField
                                 error
-                                helperText={ errors.username }
+                                helperText={errors.username}
                                 variant="filled"
                                 margin="normal"
                                 required
@@ -211,9 +212,10 @@ class Register extends Component {
                                 id="username"
                                 label="Username"
                                 name="username"
-                                value={ this.state.username }
-                                onChange={ this.onChange }
-                            /> :
+                                value={this.state.username}
+                                onChange={this.onChange}
+                            />
+                        ) : (
                             <TextField
                                 variant="filled"
                                 margin="normal"
@@ -222,15 +224,14 @@ class Register extends Component {
                                 id="username"
                                 label="Username"
                                 name="username"
-                                value={ this.state.username }
-                                onChange={ this.onChange }
+                                value={this.state.username}
+                                onChange={this.onChange}
                             />
-                        }
-                        {
-                            errors.password ? 
+                        )}
+                        {errors.password ? (
                             <TextField
                                 error
-                                helperText={ errors.password }
+                                helperText={errors.password}
                                 variant="filled"
                                 margin="normal"
                                 required
@@ -240,9 +241,10 @@ class Register extends Component {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
-                                value={ this.state.password }
-                                onChange={ this.onChange }
-                            /> :
+                                value={this.state.password}
+                                onChange={this.onChange}
+                            />
+                        ) : (
                             <TextField
                                 variant="filled"
                                 margin="normal"
@@ -252,15 +254,14 @@ class Register extends Component {
                                 label="Password"
                                 type="password"
                                 id="password"
-                                value={ this.state.password }
-                                onChange={ this.onChange }
+                                value={this.state.password}
+                                onChange={this.onChange}
                             />
-                        }
-                        {
-                            errors.confirmPass ? 
+                        )}
+                        {errors.confirmPass ? (
                             <TextField
                                 error
-                                helperText={ errors.confirmPass }
+                                helperText={errors.confirmPass}
                                 variant="filled"
                                 margin="normal"
                                 required
@@ -269,9 +270,10 @@ class Register extends Component {
                                 label="Confirm Password"
                                 type="password"
                                 id="confirmPass"
-                                value={ this.state.confirmPass }
-                                onChange={ this.onChange }
-                            /> :
+                                value={this.state.confirmPass}
+                                onChange={this.onChange}
+                            />
+                        ) : (
                             <TextField
                                 variant="filled"
                                 margin="normal"
@@ -281,22 +283,26 @@ class Register extends Component {
                                 label="Confirm Password"
                                 type="password"
                                 id="confirmPass"
-                                value={ this.state.confirmPass }
-                                onChange={ this.onChange }
+                                value={this.state.confirmPass}
+                                onChange={this.onChange}
                             />
-                        }
+                        )}
                         <Button
                             type="submit"
                             variant="contained"
                             color="primary"
-                            className={ classes.submit }
+                            className={classes.submit}
                             fullWidth
                         >
                             Register
                         </Button>
                         <Grid container>
                             <Grid item>
-                                <Link component={ RouterLink } to="/login" variant="body2">
+                                <Link
+                                    component={RouterLink}
+                                    to="/login"
+                                    variant="body2"
+                                >
                                     Already have an account? Log in
                                 </Link>
                             </Grid>
@@ -311,15 +317,14 @@ class Register extends Component {
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     auth: state.auth,
-    errors: state.errors
+    errors: state.errors,
 });
 
-export default connect(
-    mapStateToProps,
-    { registerUser }
-)(withRouter(withStyles(styles, { withTheme: true })(Register)));
+export default connect(mapStateToProps, { registerUser })(
+    withRouter(withStyles(styles, { withTheme: true })(Register))
+);
