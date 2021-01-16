@@ -9,16 +9,14 @@ import {
   Modal,
   Backdrop,
   Fade,
-  Grid,
   Button,
   TextField,
-  ButtonGroup,
   Checkbox,
 } from '@material-ui/core';
-import { Clear, StarBorder, Star } from '@material-ui/icons';
-import { removeChar } from '../../actions/userActions';
+import { Clear, StarBorder, Star, Add, Remove } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeChar } from '../../actions/userActions';
 
 const styles = (theme) => ({
   root: {
@@ -112,7 +110,30 @@ const styles = (theme) => ({
     marginRight: theme.spacing(4),
   },
   buttonGroup: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: theme.spacing(2),
+  },
+  buttonLeft: {
+    color: 'grey',
+    borderStyle: 'solid',
+    borderWidth: '1px 0 1px 1px',
+    borderRadius: theme.spacing(1, 0, 0, 1),
     height: theme.spacing(6),
+    maxWidth: theme.spacing(7),
+    minWidth: theme.spacing(7),
+    padding: 0,
+  },
+  buttonRight: {
+    color: 'grey',
+    borderStyle: 'solid',
+    borderWidth: '1px 1px 1px 0',
+    borderRadius: theme.spacing(0, 1, 1, 0),
+    height: theme.spacing(6),
+    maxWidth: theme.spacing(7),
+    minWidth: theme.spacing(7),
+    padding: 0,
   },
   input: {
     height: theme.spacing(2),
@@ -134,6 +155,7 @@ const styles = (theme) => ({
   },
   textField: {
     '& fieldset': {
+      borderColor: 'grey',
       borderRadius: 0,
     },
   },
@@ -188,6 +210,7 @@ const styles = (theme) => ({
 class CharacterCard extends Component {
   constructor(props) {
     super(props);
+    const { char } = props;
     this.state = {
       raised: false,
       curLvl: null,
@@ -195,27 +218,28 @@ class CharacterCard extends Component {
       modalOpen: false,
       errors: {},
       charLevels: {
-        curLvl: this.props.char.curLvl,
-        reqLvl: this.props.char.reqLvl,
+        curLvl: char.curLvl,
+        reqLvl: char.reqLvl,
         autoAttack: {
-          curLvl: this.props.char.autoAttack.curLvl,
-          reqLvl: this.props.char.autoAttack.reqLvl,
+          curLvl: char.autoAttack.curLvl,
+          reqLvl: char.autoAttack.reqLvl,
         },
         eleSkill: {
-          curLvl: this.props.char.eleSkill.curLvl,
-          reqLvl: this.props.char.eleSkill.reqLvl,
+          curLvl: char.eleSkill.curLvl,
+          reqLvl: char.eleSkill.reqLvl,
         },
         eleBurst: {
-          curLvl: this.props.char.eleBurst.curLvl,
-          reqLvl: this.props.char.eleBurst.reqLvl,
+          curLvl: char.eleBurst.curLvl,
+          reqLvl: char.eleBurst.reqLvl,
         },
       },
     };
   }
 
   componentDidMount() {
-    let curLvl = this.props.char.curLvl;
-    let reqLvl = this.props.char.reqLvl;
+    let {
+      char: { curLvl, reqLvl },
+    } = this.props;
     if (curLvl % 1 !== 0) {
       curLvl = `${Math.floor(curLvl)}+`;
     }
@@ -223,8 +247,8 @@ class CharacterCard extends Component {
       reqLvl = `${Math.floor(reqLvl)}+`;
     }
     this.setState({
-      curLvl: curLvl,
-      reqLvl: reqLvl,
+      curLvl,
+      reqLvl,
     });
   }
 
@@ -240,20 +264,23 @@ class CharacterCard extends Component {
     });
   };
 
-  handleChange = (e, type) => {
-    let value = e.target.value === '' ? '' : parseInt(e.target.value);
+  setLevel = (value, type, lvl, talent = null) => {
+    const { charLevels, errors } = this.state;
+    const newLvl = value === '' ? '' : parseInt(value, 10);
+    // eslint-disable-next-line
+    const talentLvl = charLevels[talent];
     switch (type) {
       case 'level':
-        if ((value >= 0 && value <= 90) || value === '') {
-          if (e.target.id === 'curLvl' && value > this.state.charLevels.reqLvl) {
+        if ((newLvl >= 0 && newLvl <= 90) || newLvl === '') {
+          if (lvl === 'curLvl' && newLvl > charLevels.reqLvl) {
             this.setState({
               charLevels: {
-                ...this.state.charLevels,
-                reqLvl: value,
-                curLvl: value,
+                ...charLevels,
+                reqLvl: newLvl,
+                curLvl: newLvl,
               },
               errors: {
-                ...this.state.errors,
+                ...errors,
                 curLvl: undefined,
               },
             });
@@ -261,24 +288,24 @@ class CharacterCard extends Component {
             this.setState(
               {
                 charLevels: {
-                  ...this.state.charLevels,
-                  [e.target.id]: value,
+                  ...charLevels,
+                  [lvl]: newLvl,
                 },
               },
               () => {
-                if (value === '') {
-                  let map = {
+                if (newLvl === '') {
+                  const map = {
                     curLvl: 'Current Level',
                     reqLvl: 'Required Level',
                   };
                   this.setState((prevState) => ({
                     errors: {
                       ...prevState.errors,
-                      [e.target.id]: `${map[e.target.id]} is required`,
+                      [lvl]: `${map[lvl]} is required`,
                     },
                   }));
-                } else if (value < this.state.charLevels.curLvl) {
-                  this.setState((prevState) => ({
+                } else if (lvl === 'reqLvl' && newLvl < charLevels.curLvl) {
+                  this.setState(() => ({
                     errors: {
                       reqLvl: 'Required Level cannot be lower than Current Level',
                     },
@@ -287,7 +314,7 @@ class CharacterCard extends Component {
                   this.setState((prevState) => ({
                     errors: {
                       ...prevState.errors,
-                      [e.target.id]: undefined,
+                      [lvl]: undefined,
                     },
                   }));
                 }
@@ -296,72 +323,118 @@ class CharacterCard extends Component {
           }
         }
         break;
+      case 'talent':
+        break;
       default:
         break;
     }
   };
 
   ascIsValid = (lvl) => {
-    let arr = [20, 40, 50, 60, 70, 80];
+    const arr = [20, 40, 50, 60, 70, 80];
     return arr.includes(Math.floor(lvl));
   };
 
-  toggleRaised = () => this.setState({ raised: !this.state.raised });
+  toggleRaised = () => {
+    const { raised } = this.state;
+    this.setState({ raised: !raised });
+  };
+
+  toggleCheck = (lvl) => {
+    const { charLevels } = this.state;
+    const newLvl = charLevels[lvl] % 1 === 0 ? charLevels[lvl] + 0.5 : charLevels[lvl] - 0.5;
+    this.setState({
+      charLevels: {
+        ...charLevels,
+        [lvl]: newLvl,
+      },
+    });
+  };
 
   render() {
-    const { char, classes } = this.props;
-    const { charLevels, errors } = this.state;
+    const { char, classes, removeCharConnect } = this.props;
+    const { charLevels, errors, raised, curLvl, reqLvl, modalOpen } = this.state;
     return (
       <>
-        <Card onMouseOver={this.toggleRaised} onMouseOut={this.toggleRaised} raised={this.state.raised} className={classes.root}>
+        <Card
+          onMouseOver={this.toggleRaised}
+          onMouseOut={this.toggleRaised}
+          raised={raised}
+          className={classes.root}
+        >
           <ButtonBase onClick={this.handleOpen} className={classes.buttonBase}>
             <div className={classes.imgCard}>
               <div className={classes.imgBack}>
-                <CardMedia className={classes.media} component="img" image={char.imgPath} title={char.name} />
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  image={char.imgPath}
+                  title={char.name}
+                />
               </div>
               <Typography className={classes.name}>{char.name}</Typography>
             </div>
             <div>
               <div className={classes.levels}>
+                {/* eslint-disable */}
                 <Typography className={classes.mainLvl}>
-                  Lv. <span className={classes.lvlNumber}>{this.state.curLvl}</span> to Lv.{' '}
-                  <span className={classes.lvlNumber}>{this.state.reqLvl}</span>
+                  Lv. <span className={classes.lvlNumber}>{curLvl}</span> to Lv.{' '}
+                  <span className={classes.lvlNumber}>{reqLvl}</span>
                 </Typography>
+                {/* eslint-enable */}
               </div>
               <div className={classes.levels}>
-                <CardMedia className={classes.talentImg} component="img" image={char.autoAttack.imgPath} />
+                <CardMedia
+                  className={classes.talentImg}
+                  component="img"
+                  image={char.autoAttack.imgPath}
+                />
+                {/* eslint-disable */}
                 <Typography>
                   Lv. <span className={classes.lvlNumber}>{char.autoAttack.curLvl}</span> to Lv.{' '}
                   <span className={classes.lvlNumber}>{char.autoAttack.reqLvl}</span>
                 </Typography>
+                {/* eslint-enable */}
               </div>
               <div className={classes.levels}>
-                <CardMedia className={classes.talentImg} component="img" image={char.eleSkill.imgPath} />
+                <CardMedia
+                  className={classes.talentImg}
+                  component="img"
+                  image={char.eleSkill.imgPath}
+                />
+                {/* eslint-disable */}
                 <Typography>
                   Lv. <span className={classes.lvlNumber}>{char.eleSkill.curLvl}</span> to Lv.{' '}
                   <span className={classes.lvlNumber}>{char.eleSkill.reqLvl}</span>
                 </Typography>
+                {/* eslint-enable */}
               </div>
               <div className={classes.levels}>
-                <CardMedia className={classes.talentImg} component="img" image={char.eleBurst.imgPath} />
+                <CardMedia
+                  className={classes.talentImg}
+                  component="img"
+                  image={char.eleBurst.imgPath}
+                />
+                {/* eslint-disable */}
                 <Typography>
                   Lv. <span className={classes.lvlNumber}>{char.eleBurst.curLvl}</span> to Lv.{' '}
                   <span className={classes.lvlNumber}>{char.eleBurst.reqLvl}</span>
                 </Typography>
+                {/* eslint-enable */}
               </div>
             </div>
-            <div className={classes.delete}>
-              <IconButton onClick={() => this.props.removeChar(char.name)} size="small">
-                <Clear className={classes.deleteSize} />
-              </IconButton>
-            </div>
           </ButtonBase>
+          <div className={classes.delete}>
+            <IconButton onClick={() => removeCharConnect(char.name)} size="small">
+              <Clear className={classes.deleteSize} />
+            </IconButton>
+          </div>
         </Card>
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
           className={classes.modal}
-          open={this.state.modalOpen}
+          open={modalOpen}
           onClose={this.handleClose}
           closeAfterTransition
           BackdropComponent={Backdrop}
@@ -369,11 +442,16 @@ class CharacterCard extends Component {
             timeout: 500,
           }}
         >
-          <Fade in={this.state.modalOpen}>
+          <Fade in={modalOpen}>
             <div className={classes.paper}>
               <div className={classes.imgCard}>
                 <div className={classes.imgBack}>
-                  <CardMedia className={classes.media} component="img" image={char.imgPath} title={char.name} />
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    image={char.imgPath}
+                    title={char.name}
+                  />
                 </div>
                 <Typography className={classes.name}>{char.name}</Typography>
               </div>
@@ -383,107 +461,167 @@ class CharacterCard extends Component {
                     <div className={classes.modalLevels}>
                       <Typography className={classes.modalText}>Current Level</Typography>
                       <div className={classes.buttonCheck}>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.setLevel(charLevels.curLvl - 1, 'level', 'curLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             error={errors.curLvl}
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
                             id="curLvl"
                             name="curLvl"
-                            onChange={(e) => this.handleChange(e, 'level')}
-                            value={charLevels.curLvl !== '' ? Math.floor(charLevels.curLvl) : charLevels.curLvl}
+                            onChange={(e) => this.setLevel(e.target.value, 'level', e.target.id)}
+                            value={
+                              charLevels.curLvl !== ''
+                                ? Math.floor(charLevels.curLvl)
+                                : charLevels.curLvl
+                            }
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
-                        {this.ascIsValid(charLevels.curLvl) ? (
-                          charLevels.curLvl % 1 !== 0 ? (
-                            <Checkbox checked className={classes.checkbox} icon={<StarBorder />} checkedIcon={<Star />} />
-                          ) : (
-                            <Checkbox className={classes.checkbox} icon={<StarBorder />} checkedIcon={<Star />} />
-                          )
-                        ) : (
-                          <Checkbox disabled className={classes.checkbox} icon={<StarBorder />} checkedIcon={<Star />} />
-                        )}
+                          <IconButton
+                            onClick={() => this.setLevel(charLevels.curLvl + 1, 'level', 'curLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
+                        <Checkbox
+                          onClick={() => this.toggleCheck('curLvl')}
+                          disabled={!this.ascIsValid(charLevels.curLvl)}
+                          checked={charLevels.curLvl % 1 !== 0}
+                          className={classes.checkbox}
+                          icon={<StarBorder />}
+                          checkedIcon={<Star />}
+                        />
                         <div className={classes.errors}>{errors.curLvl}</div>
                       </div>
                     </div>
                     <div className={classes.modalLevels}>
                       <Typography className={classes.modalText}>Required Level</Typography>
                       <div className={classes.buttonCheck}>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.onClick(-1, 'level', 'reqLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             error={errors.reqLvl}
+                            helperText={errors.reqLvl}
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
                             id="reqLvl"
                             name="reqLvl"
-                            onChange={(e) => this.handleChange(e, 'level')}
-                            value={charLevels.reqLvl !== '' ? Math.floor(charLevels.reqLvl) : charLevels.reqLvl}
+                            onChange={(e) => this.setLevel(e.target.value, 'level', e.target.id)}
+                            value={
+                              charLevels.reqLvl !== ''
+                                ? Math.floor(charLevels.reqLvl)
+                                : charLevels.reqLvl
+                            }
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
-                        {this.ascIsValid(charLevels.reqLvl) ? (
-                          charLevels.reqLvl % 1 !== 0 ? (
-                            <Checkbox checked className={classes.checkbox} icon={<StarBorder />} checkedIcon={<Star />} />
-                          ) : (
-                            <Checkbox className={classes.checkbox} icon={<StarBorder />} checkedIcon={<Star />} />
-                          )
-                        ) : (
-                          <Checkbox disabled className={classes.checkbox} icon={<StarBorder />} checkedIcon={<Star />} />
-                        )}
+                          <IconButton
+                            onClick={() => this.onClick(1, 'level', 'reqLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
+                        <Checkbox
+                          onClick={() => this.toggleCheck('reqLvl')}
+                          disabled={!this.ascIsValid(charLevels.reqLvl)}
+                          checked={charLevels.reqLvl % 1 !== 0}
+                          className={classes.checkbox}
+                          icon={<StarBorder />}
+                          checkedIcon={<Star />}
+                        />
                       </div>
                     </div>
                   </div>
                   <div className={classes.modalTalents}>
                     <div className={classes.talentTitle}>
-                      <CardMedia className={classes.talentImg} component="img" image={char.autoAttack.imgPath} />
+                      <CardMedia
+                        className={classes.talentImg}
+                        component="img"
+                        image={char.autoAttack.imgPath}
+                      />
                       <Typography className={classes.modalText}>{char.autoAttack.name}</Typography>
                     </div>
                     <div className={classes.talentLevels}>
                       <div className={classes.talentLevel}>
                         <Typography align="center">Current Level</Typography>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.onClick(-1, 'autoAttack', 'curLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
-                            id="curLvl"
-                            value={char.autoAttack.curLvl}
+                            id="autoAttack-curLvl"
+                            value={charLevels.autoAttack.curLvl}
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
+                          <IconButton
+                            onClick={() => this.onClick(1, 'autoAttack', 'curLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
                       </div>
                       <div className={classes.talentLevel}>
                         <Typography align="center">Required Level</Typography>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.onClick(-1, 'autoAttack', 'reqLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
                             id="curLvl"
-                            value={char.autoAttack.reqLvl}
+                            value={charLevels.autoAttack.reqLvl}
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
+                          <IconButton
+                            onClick={() => this.onClick(1, 'autoAttack', 'reqLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className={classes.modalTalents}>
                     <div className={classes.talentTitle}>
-                      <CardMedia className={classes.talentImg} component="img" image={char.eleSkill.imgPath} />
+                      <CardMedia
+                        className={classes.talentImg}
+                        component="img"
+                        image={char.eleSkill.imgPath}
+                      />
                       <Typography className={classes.modalText}>{char.eleSkill.name}</Typography>
                     </div>
                     <div className={classes.talentLevels}>
                       <div className={classes.talentLevel}>
                         <Typography align="center">Current Level</Typography>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.onClick(-1, 'eleSkil', 'curLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
@@ -491,13 +629,23 @@ class CharacterCard extends Component {
                             value={char.eleSkill.curLvl}
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
+                          <IconButton
+                            onClick={() => this.onClick(1, 'eleSkill', 'curLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
                       </div>
                       <div className={classes.talentLevel}>
                         <Typography align="center">Required Level</Typography>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.onClick(-1, 'eleSkill', 'reqLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
@@ -505,21 +653,35 @@ class CharacterCard extends Component {
                             value={char.eleSkill.reqLvl}
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
+                          <IconButton
+                            onClick={() => this.onClick(1, 'eleSkill', 'reqLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className={classes.modalTalents}>
                     <div className={classes.talentTitle}>
-                      <CardMedia className={classes.talentImg} component="img" image={char.eleBurst.imgPath} />
+                      <CardMedia
+                        className={classes.talentImg}
+                        component="img"
+                        image={char.eleBurst.imgPath}
+                      />
                       <Typography className={classes.modalText}>{char.eleBurst.name}</Typography>
                     </div>
                     <div className={classes.talentLevels}>
                       <div className={classes.talentLevel}>
                         <Typography align="center">Current Level</Typography>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.onClick(-1, 'eleBurst', 'curLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
@@ -527,13 +689,23 @@ class CharacterCard extends Component {
                             value={char.eleBurst.curLvl}
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
+                          <IconButton
+                            onClick={() => this.onClick(1, 'eleBurst', 'curLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
                       </div>
                       <div className={classes.talentLevel}>
                         <Typography align="center">Required Level</Typography>
-                        <ButtonGroup className={classes.buttonGroup}>
-                          <Button>-</Button>
+                        <div className={classes.buttonGroup}>
+                          <IconButton
+                            onClick={() => this.onClick(-1, 'eleBurst', 'reqLvl')}
+                            className={classes.buttonLeft}
+                          >
+                            <Remove fontSize="small" />
+                          </IconButton>
                           <TextField
                             className={classes.textField}
                             InputProps={{ classes: { input: classes.input } }}
@@ -541,8 +713,13 @@ class CharacterCard extends Component {
                             value={char.eleBurst.reqLvl}
                             variant="outlined"
                           />
-                          <Button>+</Button>
-                        </ButtonGroup>
+                          <IconButton
+                            onClick={() => this.onClick(1, 'eleBurst', 'reqLvl')}
+                            className={classes.buttonRight}
+                          >
+                            <Add fontSize="small" />
+                          </IconButton>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -559,8 +736,13 @@ class CharacterCard extends Component {
   }
 }
 
+/* eslint-disable react/forbid-prop-types */
 CharacterCard.propTypes = {
-  removeChar: PropTypes.func.isRequired,
+  removeCharConnect: PropTypes.func.isRequired,
+  char: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
-export default connect(null, { removeChar })(withStyles(styles, { withTheme: true })(CharacterCard));
+export default connect(null, { removeCharConnect: removeChar })(
+  withStyles(styles, { withTheme: true })(CharacterCard)
+);

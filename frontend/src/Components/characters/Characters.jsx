@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles, Typography, Button, Container, Grid, Card, Modal, Backdrop, Fade } from '@material-ui/core';
+import {
+  withStyles,
+  Typography,
+  Button,
+  Container,
+  Grid,
+  Card,
+  Modal,
+  Backdrop,
+  Fade,
+} from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
 import CharacterCard from './CharacterCard';
 import { addChar } from '../../actions/userActions';
@@ -39,10 +49,22 @@ const styles = (theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4, 4, 3),
+    maxHeight: '80%',
     maxWidth: '80%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
+  },
+  addCharList: {
+    backgroundColor: 'white',
+    borderRadius: theme.spacing(2),
+    maxHeight: '80%',
+    overflow: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: theme.spacing(2, 0, 4),
   },
   imgCard: {
     display: 'flex',
@@ -99,19 +121,18 @@ class Characters extends Component {
     this.state = {
       genCharList: null,
       charList: null,
-      materials: null,
+      // materials: null,
       raised: false,
       maxChar: false,
-      addModalOpen: false,
-      charModalOpen: false,
-      addChar: [],
+      modalOpen: false,
+      addCharList: [],
     };
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props) {
     // Change to only run on props change
     if (props.userData.isLoaded && props.genData.isLoaded) {
-      let genCharList = props.genData.genCharList.filter((item) => {
+      const genCharList = props.genData.genCharList.filter((item) => {
         for (let i = 0; i < props.userData.charList.length; i++) {
           if (item.name === props.userData.charList[i].name) {
             return false;
@@ -120,10 +141,10 @@ class Characters extends Component {
         return true;
       });
       return {
-        genCharList: genCharList,
+        genCharList,
         charList: props.userData.charList,
         materials: props.userData.materials,
-        maxChar: props.userData.charList.length === props.genData.genCharList.length ? true : false,
+        maxChar: props.userData.charList.length === props.genData.genCharList.length,
       };
     }
     return null;
@@ -131,38 +152,39 @@ class Characters extends Component {
 
   handleAddOpen = () => {
     this.setState({
-      addModalOpen: true,
+      modalOpen: true,
     });
   };
 
   handleAddClose = () => {
     this.setState({
-      addModalOpen: false,
-      addChar: [],
+      modalOpen: false,
+      addCharList: [],
     });
   };
 
   isSelected = (name) => {
-    for (let i = 0; i < this.state.addChar.length; i++) {
-      if (name === this.state.addChar[i].name) {
+    const { addCharList } = this.state;
+    for (let i = 0; i < addCharList.length; i++) {
+      if (name === addCharList[i].name) {
         return true;
       }
     }
     return false;
   };
 
-  addChar = (char) => {
-    let addChar = this.state.addChar;
+  addCharButton = (char) => {
+    const { addCharList } = this.state;
     let flag = true;
-    for (let i = 0; i < addChar.length; i++) {
-      if (char.name === addChar[i].name) {
+    for (let i = 0; i < addCharList.length; i++) {
+      if (char.name === addCharList[i].name) {
         flag = false;
-        addChar.splice(i, 1);
+        addCharList.splice(i, 1);
         break;
       }
     }
     if (flag) {
-      let insert = {
+      const insert = {
         name: char.name,
         stars: char.stars,
         curLvl: 1,
@@ -187,38 +209,44 @@ class Characters extends Component {
         },
         imgPath: char.imgPath,
       };
-      addChar.push(insert);
+      addCharList.push(insert);
     }
     this.setState({
-      addChar: addChar,
+      addCharList,
     });
   };
 
-  toggleRaised = () => this.setState({ raised: !this.state.raised });
+  toggleRaised = () => {
+    const { raised } = this.state;
+    this.setState({ raised: !raised });
+  };
 
   render() {
-    if (!this.state.charList) {
+    const { classes, addCharConnect } = this.props;
+    const { charList, maxChar, raised, modalOpen, genCharList, addCharList } = this.state;
+
+    if (!charList) {
       return <div />;
     }
-    const { classes } = this.props;
+
     return (
       <Container maxWidth="md">
         <div className={classes.root}>
           <Typography variant="h5">Characters</Typography>
           <Grid className={classes.cards} container spacing={3}>
-            {this.state.charList.map((char) => (
+            {charList.map((char) => (
               <Grid key={char.name} item>
                 <CharacterCard char={char} />
               </Grid>
             ))}
-            {!this.state.maxChar && (
+            {!maxChar && (
               <Grid item>
                 <Card
                   component={Button}
                   className={classes.addCard}
                   onMouseOver={this.toggleRaised}
                   onMouseOut={this.toggleRaised}
-                  raised={this.state.raised}
+                  raised={raised}
                   onClick={this.handleAddOpen}
                 >
                   <AddCircle fontSize="large" />
@@ -227,7 +255,7 @@ class Characters extends Component {
                   aria-labelledby="transition-modal-title"
                   aria-describedby="transition-modal-description"
                   className={classes.modal}
-                  open={this.state.addModalOpen}
+                  open={modalOpen}
                   onClose={this.handleAddClose}
                   closeAfterTransition
                   BackdropComponent={Backdrop}
@@ -235,31 +263,38 @@ class Characters extends Component {
                     timeout: 500,
                   }}
                 >
-                  <Fade in={this.state.addModalOpen}>
-                    <Grid container className={classes.paper}>
-                      {this.state.genCharList.map((char) => (
-                        <Grid key={char.name} onClick={() => this.addChar(char)} item>
-                          <div className={this.isSelected(char.name) ? classes.imgCardSelected : classes.imgCard}>
-                            <div className={classes.imgBack}>
-                              <img className={classes.media} src={char.imgPath} alt={char.name} />
+                  <Fade in={modalOpen}>
+                    <div className={classes.paper}>
+                      <Typography variant="h5">Select Characters</Typography>
+                      <Grid container className={classes.addCharList}>
+                        {genCharList.map((char) => (
+                          <Grid key={char.name} onClick={() => this.addCharButton(char)} item>
+                            <div
+                              className={
+                                this.isSelected(char.name)
+                                  ? classes.imgCardSelected
+                                  : classes.imgCard
+                              }
+                            >
+                              <div className={classes.imgBack}>
+                                <img className={classes.media} src={char.imgPath} alt={char.name} />
+                              </div>
+                              <Typography className={classes.name}>{char.name}</Typography>
                             </div>
-                            <Typography className={classes.name}>{char.name}</Typography>
-                          </div>
-                        </Grid>
-                      ))}
-                      <Grid className={classes.button} item xs={12}>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          onClick={() => {
-                            this.props.addChar(this.state.addChar);
-                            this.handleAddClose();
-                          }}
-                        >
-                          Ok
-                        </Button>
+                          </Grid>
+                        ))}
                       </Grid>
-                    </Grid>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => {
+                          addCharConnect(addCharList);
+                          this.handleAddClose();
+                        }}
+                      >
+                        Ok
+                      </Button>
+                    </div>
                   </Fade>
                 </Modal>
               </Grid>
@@ -272,10 +307,12 @@ class Characters extends Component {
   }
 }
 
+/* eslint-disable react/forbid-prop-types */
 Characters.propTypes = {
   userData: PropTypes.object.isRequired,
   genData: PropTypes.object.isRequired,
-  addChar: PropTypes.func.isRequired,
+  addCharConnect: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -283,4 +320,6 @@ const mapStateToProps = (state) => ({
   genData: state.genData,
 });
 
-export default connect(mapStateToProps, { addChar })(withStyles(styles, { withTheme: true })(Characters));
+export default connect(mapStateToProps, { addCharConnect: addChar })(
+  withStyles(styles, { withTheme: true })(Characters)
+);

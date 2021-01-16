@@ -1,6 +1,4 @@
-import {
-  LOAD_GEN_DATA,
-} from '../actions/types';
+import { LOAD_GEN_DATA } from '../actions/types';
 
 const initialState = {
   genCharList: [],

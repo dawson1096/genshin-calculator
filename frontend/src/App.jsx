@@ -15,9 +15,9 @@ import Characters from './components/characters/Characters';
 
 class App extends Component {
   componentDidMount() {
-    const { loadUser, loadGenData } = this.props;
-    loadUser();
-    loadGenData();
+    const { loadUserConnect, loadGenDataConnect } = this.props;
+    loadUserConnect();
+    loadGenDataConnect();
   }
 
   render() {
@@ -37,8 +37,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  loadUser: PropTypes.func.isRequired,
-  loadGenData: PropTypes.func.isRequired,
+  loadUserConnect: PropTypes.func.isRequired,
+  loadGenDataConnect: PropTypes.func.isRequired,
 };
 
-export default connect(null, { loadUser, loadGenData })(App);
+export default connect(null, { loadUserConnect: loadUser, loadGenDataConnect: loadGenData })(App);

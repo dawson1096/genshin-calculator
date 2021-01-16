@@ -1,9 +1,5 @@
 import axios from 'axios';
-import {
-  LOAD_USER,
-  ADD_CHAR,
-  REMOVE_CHAR,
-} from './types';
+import { LOAD_USER, ADD_CHAR, REMOVE_CHAR } from './types';
 
 export const loadUser = () => (dispatch) => {
   axios
@@ -14,7 +10,7 @@ export const loadUser = () => (dispatch) => {
         payload: res.data.userData,
       });
     })
-    .catch((err) => {
+    .catch(() => {
       const payload = {
         charList: [],
         weaponList: [],

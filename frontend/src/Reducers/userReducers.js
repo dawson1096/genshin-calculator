@@ -1,8 +1,4 @@
-import {
-  ADD_CHAR,
-  LOAD_USER,
-  REMOVE_CHAR,
-} from '../actions/types';
+import { ADD_CHAR, LOAD_USER, REMOVE_CHAR } from '../actions/types';
 
 const initialState = {
   charList: [],

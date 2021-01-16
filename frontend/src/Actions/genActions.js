@@ -1,8 +1,5 @@
 import axios from 'axios';
-import {
-  GET_ERRORS,
-  LOAD_GEN_DATA,
-} from './types';
+import { GET_ERRORS, LOAD_GEN_DATA } from './types';
 
 export const loadGenData = () => (dispatch) => {
   axios
@@ -14,7 +11,6 @@ export const loadGenData = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      console.log(err);
       const payload = err.response.data;
       dispatch({
         type: GET_ERRORS,
@@ -22,3 +18,5 @@ export const loadGenData = () => (dispatch) => {
       });
     });
 };
+
+export const test = 5;
