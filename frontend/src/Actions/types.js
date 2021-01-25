@@ -6,3 +6,5 @@ export const LOAD_USER = 'LOAD_USER';
 export const LOAD_GEN_DATA = 'LOAD_GEN_DATA';
 export const ADD_CHAR = 'ADD_CHAR';
 export const REMOVE_CHAR = 'REMOVE_CHAR';
+export const EDIT_LEVELS = 'EDIT_LEVELS';
+export const GET_ALL_CHAR_REQ = 'GET_ALL_CHAR_REQ';

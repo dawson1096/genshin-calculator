@@ -167,7 +167,7 @@ class Register extends Component {
           <form noValidate className={classes.form} onSubmit={this.onSubmit}>
             {errors.existingAcc && <Alert severity="warning">{errors.existingAcc}</Alert>}
             <TextField
-              error={errors.email}
+              error={!!errors.email}
               helperText={errors.email}
               variant="filled"
               margin="normal"
@@ -182,7 +182,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             <TextField
-              error={errors.username}
+              error={!!errors.username}
               helperText={errors.username}
               variant="filled"
               margin="normal"
@@ -195,7 +195,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             <TextField
-              error={errors.password}
+              error={!!errors.password}
               helperText={errors.password}
               variant="filled"
               margin="normal"
@@ -210,7 +210,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             <TextField
-              error={errors.confirmPass}
+              error={!!errors.confirmPass}
               helperText={errors.confirmPass}
               variant="filled"
               margin="normal"
@@ -252,7 +252,7 @@ Register.propTypes = {
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  history: PropTypes.objectOf(PropTypes.func).isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

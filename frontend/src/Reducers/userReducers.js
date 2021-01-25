@@ -1,4 +1,4 @@
-import { ADD_CHAR, LOAD_USER, REMOVE_CHAR } from '../actions/types';
+import { ADD_CHAR, EDIT_LEVELS, LOAD_USER, REMOVE_CHAR } from '../actions/types';
 
 const initialState = {
   charList: [],
@@ -8,31 +8,31 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  const { charList } = state;
-
   switch (action.type) {
     case LOAD_USER:
+      /* eslint-disable */
+      const loadCharList = action.payload.charList.sort((a, b) => (a.name > b.name ? 1 : -1));
+      const loadWeaponList = action.payload.weaponList.sort((a, b) => (a.name > b.name ? 1 : -1));
       return {
-        charList: action.payload.charList,
-        weaponList: action.payload.weaponList,
+        charList: loadCharList,
+        weaponList: loadWeaponList,
         materials: action.payload.materials,
         isLoaded: true,
       };
     case ADD_CHAR:
       return {
         ...state,
-        charList: [...action.payload, ...state.charList],
+        charList: action.payload,
       };
     case REMOVE_CHAR:
-      for (let i = 0; i < charList.length; i++) {
-        if (action.payload === charList[i].name) {
-          charList.splice(i, 1);
-          break;
-        }
-      }
       return {
         ...state,
-        charList,
+        charList: action.payload,
+      };
+    case EDIT_LEVELS:
+      return {
+        ...state,
+        charList: action.payload,
       };
     default:
       return state;

@@ -48,12 +48,9 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const {
-      auth: { isAuthenticated },
-      history,
-    } = this.state;
+    const { auth, history } = this.props;
     // If logged in and user navigates to Register page, should redirect them to dashboard
-    if (isAuthenticated) {
+    if (auth.isAuthenticated) {
       history.push('/dashboard');
     }
   }
@@ -141,7 +138,7 @@ class Login extends Component {
           <form noValidate className={classes.form} onSubmit={this.onSubmit}>
             {errors.invalidLogin && <Alert severity="error">{errors.invalidLogin}</Alert>}
             <TextField
-              error={errors.email}
+              error={!!errors.email}
               helperText={errors.email}
               variant="filled"
               margin="normal"
@@ -156,7 +153,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             <TextField
-              error={errors.password}
+              error={!!errors.password}
               helperText={errors.password}
               variant="filled"
               margin="normal"
@@ -204,7 +201,7 @@ Login.propTypes = {
   errors: PropTypes.object.isRequired,
   loginUserConnect: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
-  history: PropTypes.objectOf(PropTypes.func).isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -25,9 +25,19 @@ export const logoutUser = () => (dispatch) => {
 };
 
 // Register User
-export const registerUser = (userData, history) => (dispatch) => {
+export const registerUser = (user, history) => (dispatch, getState) => {
+  const { userData } = getState();
+  const sendData = {
+    ...user,
+    userData: {
+      charList: userData.charList,
+      weaponList: userData.weaponList,
+      materials: userData.materials,
+    },
+  };
+
   axios
-    .post('/api/register', userData)
+    .post('/api/register', sendData)
     .then(() => history.push('/login')) // re-direct to login on successful register
     .catch((err) => {
       let payload = err.response.data;

@@ -11,10 +11,15 @@ import {
   Modal,
   Backdrop,
   Fade,
+  CircularProgress,
 } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
+import isEqual from 'lodash.isequal';
+
 import CharacterCard from './CharacterCard';
 import { addChar } from '../../actions/userActions';
+import { getAllCharReq } from '../../actions/calcActions';
+import Materials from '../materials/Materials';
 
 const styles = (theme) => ({
   root: {
@@ -29,8 +34,8 @@ const styles = (theme) => ({
     alignItems: 'center',
   },
   addCard: {
-    height: '321.5px',
-    width: '143.58px',
+    height: '320.66px',
+    width: '154px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -113,6 +118,12 @@ const styles = (theme) => ({
     justifyContent: 'center',
     margin: theme.spacing(4, 0, 2),
   },
+  spinner: {
+    height: '80vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 class Characters extends Component {
@@ -121,7 +132,6 @@ class Characters extends Component {
     this.state = {
       genCharList: null,
       charList: null,
-      // materials: null,
       raised: false,
       maxChar: false,
       modalOpen: false,
@@ -129,21 +139,24 @@ class Characters extends Component {
     };
   }
 
-  static getDerivedStateFromProps(props) {
+  static getDerivedStateFromProps(props, state) {
     // Change to only run on props change
-    if (props.userData.isLoaded && props.genData.isLoaded) {
-      const genCharList = props.genData.genCharList.filter((item) => {
-        for (let i = 0; i < props.userData.charList.length; i++) {
-          if (item.name === props.userData.charList[i].name) {
-            return false;
-          }
+    const genCharList = props.genData.genCharList.filter((item) => {
+      for (let i = 0; i < props.userData.charList.length; i++) {
+        if (item.name === props.userData.charList[i].name) {
+          return false;
         }
-        return true;
-      });
+      }
+      return true;
+    });
+    if (
+      (!isEqual(props.userData.charList, state.charList) && props.userData.isLoaded) ||
+      (!isEqual(genCharList, state.genCharList) && props.genData.isLoaded)
+    ) {
+      props.getAllCharReqConnect();
       return {
         genCharList,
         charList: props.userData.charList,
-        materials: props.userData.materials,
         maxChar: props.userData.charList.length === props.genData.genCharList.length,
       };
     }
@@ -222,11 +235,15 @@ class Characters extends Component {
   };
 
   render() {
-    const { classes, addCharConnect } = this.props;
+    const { classes, addCharConnect, reqMat } = this.props;
     const { charList, maxChar, raised, modalOpen, genCharList, addCharList } = this.state;
 
     if (!charList) {
-      return <div />;
+      return (
+        <div className={classes.spinner}>
+          <CircularProgress size={80} />
+        </div>
+      );
     }
 
     return (
@@ -300,7 +317,8 @@ class Characters extends Component {
               </Grid>
             )}
           </Grid>
-          <Button variant="contained">Calculate</Button>
+          <Typography variant="h5">Required Materials</Typography>
+          <Materials mat={reqMat.allCharReq} />
         </div>
       </Container>
     );
@@ -310,16 +328,20 @@ class Characters extends Component {
 /* eslint-disable react/forbid-prop-types */
 Characters.propTypes = {
   userData: PropTypes.object.isRequired,
+  reqMat: PropTypes.object.isRequired,
   genData: PropTypes.object.isRequired,
   addCharConnect: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
+  getAllCharReqConnect: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   userData: state.userData,
   genData: state.genData,
+  reqMat: state.reqMat,
 });
 
-export default connect(mapStateToProps, { addCharConnect: addChar })(
-  withStyles(styles, { withTheme: true })(Characters)
-);
+export default connect(mapStateToProps, {
+  addCharConnect: addChar,
+  getAllCharReqConnect: getAllCharReq,
+})(withStyles(styles, { withTheme: true })(Characters));
