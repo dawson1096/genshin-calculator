@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
-import { Typography, withStyles, Grid, Card } from '@material-ui/core';
+import React from 'react';
+import { Typography, Grid, Card, CircularProgress, makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import MaterialCard from './MaterialCard';
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
+  totalGrid: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -23,36 +28,105 @@ const styles = (theme) => ({
   card: {
     padding: theme.spacing(2),
     backgroundColor: '#ebeeff',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
   },
-});
+  spinner: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: theme.spacing(4),
+  },
+}));
 
-class Materials extends Component {
-  constructor(props) {
-    super(props);
-    const { mat } = props;
-    this.state = {
-      mat,
-    };
-  }
-
-  static getDerivedStateFromProps(props) {
-    // Change to only run on props change
-    return {
-      mat: props.mat,
-    };
-  }
-
-  render() {
-    // eslint-disable-next-line
-    const { mat } = this.state;
-    const { classes } = this.props;
+function Materials({ total, mat, loading }) {
+  const classes = useStyles();
+  if (loading) {
     return (
-      <div className={classes.root}>
-        <Grid container>
-          <Grid className={classes.matGroup} item>
-            <Card className={classes.card}>
+      <div className={classes.spinner}>
+        <CircularProgress size={40} />
+      </div>
+    );
+  }
+  return (
+    <>
+      {total ? (
+        <Grid className={classes.totalGrid} container>
+          {mat.eleMat &&
+            mat.eleMat.length !== 0 &&
+            mat.eleMat.map((i) => (
+              <Grid item key={i.name}>
+                <MaterialCard curMat={i} />
+              </Grid>
+            ))}
+          {mat.eleCrys &&
+            mat.eleCrys.length !== 0 &&
+            mat.eleCrys.map((crys) =>
+              crys.matList.map((i) => (
+                <Grid item key={i.name}>
+                  <MaterialCard curMat={i} />
+                </Grid>
+              ))
+            )}
+          {mat.comMat &&
+            mat.comMat.length !== 0 &&
+            mat.comMat.map((com) =>
+              com.matList.map((i) => (
+                <Grid item key={i.name}>
+                  <MaterialCard curMat={i} />
+                </Grid>
+              ))
+            )}
+          {mat.locSpec &&
+            mat.locSpec.length !== 0 &&
+            mat.locSpec.map((i) => (
+              <Grid item key={i.name}>
+                <MaterialCard curMat={i} />
+              </Grid>
+            ))}
+          {mat.talentMat &&
+            mat.talentMat.length !== 0 &&
+            mat.talentMat.map((tal) =>
+              tal.matList.map((i) => (
+                <Grid item key={i.name}>
+                  <MaterialCard curMat={i} />
+                </Grid>
+              ))
+            )}
+          {mat.bossMat &&
+            mat.bossMat.length !== 0 &&
+            mat.bossMat.map((i) => (
+              <Grid item key={i.name}>
+                <MaterialCard curMat={i} />
+              </Grid>
+            ))}
+          {mat.charExp &&
+            mat.charExp.matList.length !== 0 &&
+            mat.charExp.matList.map((i) => (
+              <Grid item key={i.name}>
+                <MaterialCard curMat={i} />
+              </Grid>
+            ))}
+          {mat.misc && mat.misc[1] && (
+            <Grid item>
+              <MaterialCard curMat={mat.misc[1]} />
+            </Grid>
+          )}
+          {mat.misc && mat.misc[0] && (
+            <Grid item>
+              <MaterialCard curMat={mat.misc[0]} />
+            </Grid>
+          )}
+        </Grid>
+      ) : (
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
               {mat.eleMat && mat.eleMat.length !== 0 && (
-                <div>
+                <Card className={classes.card}>
                   <Typography>Elemental Materials</Typography>
                   <Grid className={classes.matList} container>
                     {mat.eleMat.map((i) => (
@@ -61,19 +135,33 @@ class Materials extends Component {
                       </Grid>
                     ))}
                   </Grid>
-                </div>
+                </Card>
               )}
-            </Card>
-          </Grid>
-          <Grid className={classes.matGroup} item>
-            <Card className={classes.card}>
+            </Grid>
+            <Grid item xs={6}>
               {mat.eleCrys && mat.eleCrys.length !== 0 && (
-                <div>
+                <Card className={classes.card}>
                   <Typography>Elemental Crystals</Typography>
-
                   {mat.eleCrys.map((crys) => (
-                    <Grid className={classes.matList} container>
+                    <Grid key={crys.name} className={classes.matList} container>
                       {crys.matList.map((i) => (
+                        <Grid item key={i.name}>
+                          <MaterialCard curMat={i} />
+                        </Grid>
+                      ))}
+                    </Grid>
+                  ))}
+                </Card>
+              )}
+            </Grid>
+            <Grid item xs={6}>
+              {mat.comMat && mat.comMat.length !== 0 && (
+                <div>
+                  <Typography>Common Materials</Typography>
+
+                  {mat.comMat.map((com) => (
+                    <Grid key={com.name} className={classes.matList} container>
+                      {com.matList.map((i) => (
                         <Grid item key={i.name}>
                           <MaterialCard curMat={i} />
                         </Grid>
@@ -82,84 +170,65 @@ class Materials extends Component {
                   ))}
                 </div>
               )}
-            </Card>
-          </Grid>
-          <Grid className={classes.matGroup} item>
-            {mat.comMat && mat.comMat.length !== 0 && (
-              <div>
-                <Typography>Common Materials</Typography>
-
-                {mat.comMat.map((com) => (
+            </Grid>
+            <Grid item xs={6}>
+              {mat.locSpec && mat.locSpec.length !== 0 && (
+                <div>
+                  <Typography>Local Specialty</Typography>
                   <Grid className={classes.matList} container>
-                    {com.matList.map((i) => (
+                    {mat.locSpec.map((i) => (
                       <Grid item key={i.name}>
                         <MaterialCard curMat={i} />
                       </Grid>
                     ))}
                   </Grid>
-                ))}
-              </div>
-            )}
-          </Grid>
-          <Grid className={classes.matGroup} item>
-            {mat.locSpec && mat.locSpec.length !== 0 && (
-              <div>
-                <Typography>Local Specialty</Typography>
-                <Grid className={classes.matList} container>
-                  {mat.locSpec.map((i) => (
-                    <Grid item key={i.name}>
-                      <MaterialCard curMat={i} />
+                </div>
+              )}
+            </Grid>
+            <Grid item xs={6}>
+              {mat.talentMat && mat.talentMat.length !== 0 && (
+                <div>
+                  <Typography>Talent Books</Typography>
+                  {mat.talentMat.map((tal) => (
+                    <Grid key={tal.name} className={classes.matList} container>
+                      {tal.matList.map((i) => (
+                        <Grid item key={i.name}>
+                          <MaterialCard curMat={i} />
+                        </Grid>
+                      ))}
                     </Grid>
                   ))}
-                </Grid>
-              </div>
-            )}
-          </Grid>
-          <Grid className={classes.matGroup} item>
-            {mat.talentMat && mat.talentMat.length !== 0 && (
-              <div>
-                <Typography>Talent Books</Typography>
-                {mat.talentMat.map((tal) => (
+                </div>
+              )}
+            </Grid>
+            <Grid item xs={6}>
+              {mat.bossMat && mat.bossMat.length !== 0 && (
+                <div>
+                  <Typography>Boss Materials</Typography>
                   <Grid className={classes.matList} container>
-                    {tal.matList.map((i) => (
+                    {mat.bossMat.map((i) => (
                       <Grid item key={i.name}>
                         <MaterialCard curMat={i} />
                       </Grid>
                     ))}
                   </Grid>
-                ))}
-              </div>
-            )}
-          </Grid>
-          <Grid className={classes.matGroup} item>
-            {mat.bossMat && mat.bossMat.length !== 0 && (
-              <div>
-                <Typography>Boss Materials</Typography>
-                <Grid className={classes.matList} container>
-                  {mat.bossMat.map((i) => (
-                    <Grid item key={i.name}>
-                      <MaterialCard curMat={i} />
-                    </Grid>
-                  ))}
-                </Grid>
-              </div>
-            )}
-          </Grid>
-          <Grid className={classes.matGroup} item>
-            {mat.charExp && mat.charExp.matList.length !== 0 && (
-              <div>
-                <Typography>Character Exp</Typography>
-                <Grid className={classes.matList} container>
-                  {mat.charExp.matList.map((i) => (
-                    <Grid item key={i.name}>
-                      <MaterialCard curMat={i} />
-                    </Grid>
-                  ))}
-                </Grid>
-              </div>
-            )}
-          </Grid>
-          <Grid className={classes.matGroup} item>
+                </div>
+              )}
+            </Grid>
+            <Grid item xs={6}>
+              {mat.charExp && mat.charExp.matList.length !== 0 && (
+                <div>
+                  <Typography>Character Exp</Typography>
+                  <Grid className={classes.matList} container>
+                    {mat.charExp.matList.map((i) => (
+                      <Grid item key={i.name}>
+                        <MaterialCard curMat={i} />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </div>
+              )}
+            </Grid>
             {mat.misc && mat.misc[0] && (
               <div>
                 <Typography>Mora</Typography>
@@ -170,8 +239,6 @@ class Materials extends Component {
                 </Grid>
               </div>
             )}
-          </Grid>
-          <Grid className={classes.matGroup} item>
             {mat.misc && mat.misc[1] && (
               <div>
                 <Typography>Crown of Insight</Typography>
@@ -183,16 +250,22 @@ class Materials extends Component {
               </div>
             )}
           </Grid>
-        </Grid>
-      </div>
-    );
-  }
+        </div>
+      )}
+    </>
+  );
 }
 
 /* eslint-disable react/forbid-prop-types */
 Materials.propTypes = {
-  mat: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
+  mat: PropTypes.object,
+  total: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Materials);
+Materials.defaultProps = {
+  total: false,
+  mat: {},
+};
+
+export default Materials;

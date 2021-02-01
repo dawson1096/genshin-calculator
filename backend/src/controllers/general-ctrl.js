@@ -672,6 +672,7 @@ function getAllCharReq(charList) {
   };
 
   for (let i = 0; i < charList.length; i++) {
+    if (charList[i].hidden) continue;
     let curChar = getCharReq(
       charList[i].name,
       charList[i].curLvl,
@@ -706,8 +707,15 @@ function getAllCharReq(charList) {
           allCharReq.charExp = curChar.charExp;
         } else {
           for (let i = 0; i < curChar.charExp.matList.length; i++) {
-            allCharReq.charExp.matList[i].reqNum +=
-              curChar.charExp.matList[i].reqNum;
+            let curExpMat = searchArray(
+              curChar.charExp.matList[i].name,
+              allCharReq.charExp.matList
+            );
+            if (curExpMat === null) {
+              allCharReq.charExp.matList.push(curChar.charExp.matList[i]);
+            } else {
+              curExpMat.reqNum += curChar.charExp.matList[i].reqNum;
+            }
           }
           allCharReq.charExp.wastedExp += curChar.charExp.wastedExp;
         }
@@ -742,6 +750,7 @@ function getAllWeaponReq(weaponList) {
   };
 
   for (let i = 0; i < weaponList.length; i++) {
+    if (weaponList[i].hidden) continue;
     let curWeapon = getWeaponReq(
       weaponList[i].name,
       weaponList[i].curLvl,
@@ -815,6 +824,7 @@ function getAllTalentReq(charList) {
   };
 
   for (let i = 0; i < charList.length; i++) {
+    if (charList[i].hidden) continue;
     for (let talent in charList[i]) {
       if (
         talent === "autoAttack" ||

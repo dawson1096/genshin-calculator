@@ -7,29 +7,39 @@ import {
   Button,
   Container,
   Grid,
-  Card,
   Modal,
   Backdrop,
   Fade,
   CircularProgress,
+  FormControlLabel,
 } from '@material-ui/core';
-import { AddCircle } from '@material-ui/icons';
 import isEqual from 'lodash.isequal';
 
 import CharacterCard from './CharacterCard';
 import { addChar } from '../../actions/userActions';
 import { getAllCharReq } from '../../actions/calcActions';
 import Materials from '../materials/Materials';
+import Switch from './Switch';
+import AddCharCard from './AddCharCard';
 
 const styles = (theme) => ({
   root: {
-    marginTop: theme.spacing(16),
+    marginTop: theme.spacing(6),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
+  title: {
+    margin: theme.spacing(4),
+  },
+  cardCont: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: theme.spacing(4),
+  },
   cards: {
-    margin: theme.spacing(2, 0, 2),
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -51,11 +61,12 @@ const styles = (theme) => ({
   },
   paper: {
     backgroundColor: '#ebeeff',
-    border: '2px solid #000',
+    outline: 0,
+    borderRadius: theme.spacing(4),
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4, 4, 3),
-    maxHeight: '80%',
-    maxWidth: '80%',
+    width: '75%',
+    height: '75%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -64,53 +75,12 @@ const styles = (theme) => ({
   addCharList: {
     backgroundColor: 'white',
     borderRadius: theme.spacing(2),
-    maxHeight: '80%',
+    height: '80%',
     overflow: 'auto',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     margin: theme.spacing(2, 0, 4),
-  },
-  imgCard: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: theme.spacing(1),
-    border: 'solid white',
-    borderRadius: theme.spacing(1),
-    width: 'auto',
-    '&:hover': {
-      border: 'solid grey',
-      borderRadius: theme.spacing(1),
-    },
-  },
-  imgCardSelected: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: theme.spacing(1),
-    border: 'solid blue',
-    borderRadius: theme.spacing(1),
-    width: 'auto',
-    '&:hover': {
-      border: 'solid grey',
-      borderRadius: theme.spacing(1),
-    },
-  },
-  name: {
-    backgroundColor: 'white',
-    width: theme.spacing(25),
-    textAlign: 'center',
-    fontSize: theme.spacing(3.5),
-  },
-  imgBack: {
-    backgroundColor: 'purple',
-  },
-  media: {
-    width: theme.spacing(25),
-    height: 'auto',
   },
   button: {
     display: 'flex',
@@ -119,10 +89,22 @@ const styles = (theme) => ({
     margin: theme.spacing(4, 0, 2),
   },
   spinner: {
-    height: '80vh',
+    height: '50vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttons: {
+    margin: theme.spacing(2, 0, 2),
+  },
+  addButton: {
+    marginRight: theme.spacing(2),
+  },
+  switchLabel: {
+    marginLeft: theme.spacing(2),
+  },
+  switch: {
+    marginRight: theme.spacing(2),
   },
 });
 
@@ -132,10 +114,10 @@ class Characters extends Component {
     this.state = {
       genCharList: null,
       charList: null,
-      raised: false,
       maxChar: false,
       modalOpen: false,
       addCharList: [],
+      showLevels: false,
     };
   }
 
@@ -150,8 +132,8 @@ class Characters extends Component {
       return true;
     });
     if (
-      (!isEqual(props.userData.charList, state.charList) && props.userData.isLoaded) ||
-      (!isEqual(genCharList, state.genCharList) && props.genData.isLoaded)
+      (!isEqual(props.userData.charList, state.charList) && !props.userData.loading) ||
+      (!isEqual(genCharList, state.genCharList) && !props.genData.loading)
     ) {
       props.getAllCharReqConnect();
       return {
@@ -186,6 +168,13 @@ class Characters extends Component {
     return false;
   };
 
+  toggleLevel = () => {
+    const { showLevels } = this.state;
+    this.setState({
+      showLevels: !showLevels,
+    });
+  };
+
   addCharButton = (char) => {
     const { addCharList } = this.state;
     let flag = true;
@@ -199,6 +188,9 @@ class Characters extends Component {
     if (flag) {
       const insert = {
         name: char.name,
+        hidden: false,
+        inventory: true,
+        talentTotal: true,
         stars: char.stars,
         curLvl: 1,
         reqLvl: 90,
@@ -229,45 +221,55 @@ class Characters extends Component {
     });
   };
 
-  toggleRaised = () => {
-    const { raised } = this.state;
-    this.setState({ raised: !raised });
-  };
-
   render() {
-    const { classes, addCharConnect, reqMat } = this.props;
-    const { charList, maxChar, raised, modalOpen, genCharList, addCharList } = this.state;
-
-    if (!charList) {
-      return (
-        <div className={classes.spinner}>
-          <CircularProgress size={80} />
-        </div>
-      );
-    }
+    const { classes, addCharConnect, reqMat, userData, genData } = this.props;
+    const { charList, maxChar, modalOpen, genCharList, addCharList, showLevels } = this.state;
 
     return (
       <Container maxWidth="md">
         <div className={classes.root}>
-          <Typography variant="h5">Characters</Typography>
-          <Grid className={classes.cards} container spacing={3}>
-            {charList.map((char) => (
-              <Grid key={char.name} item>
-                <CharacterCard char={char} />
-              </Grid>
-            ))}
-            {!maxChar && (
-              <Grid item>
-                <Card
-                  component={Button}
-                  className={classes.addCard}
-                  onMouseOver={this.toggleRaised}
-                  onMouseOut={this.toggleRaised}
-                  raised={raised}
-                  onClick={this.handleAddOpen}
-                >
-                  <AddCircle fontSize="large" />
-                </Card>
+          <Typography className={classes.title} variant="h4">
+            Characters
+          </Typography>
+          <div className={classes.buttons}>
+            <Button
+              disabled={maxChar}
+              variant="contained"
+              color="primary"
+              className={classes.addButton}
+              onClick={this.handleAddOpen}
+            >
+              Add Character
+            </Button>
+            {/* eslint-disable */}
+            <FormControlLabel
+              className={classes.switchLabel}
+              control={
+                <Switch
+                  className={classes.switch}
+                  onChange={this.toggleLevel}
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+              }
+              label={<span style={{ fontSize: '0.9rem' }}>Show Levels</span>}
+            />
+          </div>
+          {userData.loading ? (
+            <div className={classes.spinner}>
+              <CircularProgress size={80} />
+            </div>
+          ) : (
+            <>
+              <div className={classes.cardCont}>
+                <Grid className={classes.cards} container spacing={3}>
+                  {charList.map((char) => (
+                    <Grid className={classes.card} key={char.name} item>
+                      <CharacterCard showLevels={showLevels} char={char} />
+                    </Grid>
+                  ))}
+                </Grid>
+              </div>
+              {!maxChar && (
                 <Modal
                   aria-labelledby="transition-modal-title"
                   aria-describedby="transition-modal-description"
@@ -283,23 +285,18 @@ class Characters extends Component {
                   <Fade in={modalOpen}>
                     <div className={classes.paper}>
                       <Typography variant="h5">Select Characters</Typography>
-                      <Grid container className={classes.addCharList}>
-                        {genCharList.map((char) => (
-                          <Grid key={char.name} onClick={() => this.addCharButton(char)} item>
-                            <div
-                              className={
-                                this.isSelected(char.name)
-                                  ? classes.imgCardSelected
-                                  : classes.imgCard
-                              }
-                            >
-                              <div className={classes.imgBack}>
-                                <img className={classes.media} src={char.imgPath} alt={char.name} />
-                              </div>
-                              <Typography className={classes.name}>{char.name}</Typography>
-                            </div>
-                          </Grid>
-                        ))}
+                      <Grid container className={classes.addCharList} spacing={2}>
+                        {genData.loading ? (
+                          <div className={classes.modalSpinner}>
+                            <CircularProgress size={60} />
+                          </div>
+                        ) : (
+                          genCharList.map((char) => (
+                            <Grid key={char.name} onClick={() => this.addCharButton(char)} item>
+                              <AddCharCard char={char} isSelected={this.isSelected(char.name)} />
+                            </Grid>
+                          ))
+                        )}
                       </Grid>
                       <Button
                         variant="contained"
@@ -314,11 +311,10 @@ class Characters extends Component {
                     </div>
                   </Fade>
                 </Modal>
-              </Grid>
-            )}
-          </Grid>
-          <Typography variant="h5">Required Materials</Typography>
-          <Materials mat={reqMat.allCharReq} />
+              )}
+              <Materials mat={reqMat.allCharReq.mat} loading={reqMat.allCharReq.loading} />
+            </>
+          )}
         </div>
       </Container>
     );

@@ -1,7 +1,11 @@
 import axios from 'axios';
-import { GET_ERRORS, LOAD_GEN_DATA } from './types';
+import { GET_GEN_ERRORS, LOADING_GEN_DATA, LOAD_GEN_DATA } from './types';
 
 export const loadGenData = () => (dispatch) => {
+  dispatch({
+    type: LOADING_GEN_DATA,
+  });
+
   axios
     .get('/api/data')
     .then((res) => {
@@ -11,10 +15,12 @@ export const loadGenData = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      const payload = err.response.data;
       dispatch({
-        type: GET_ERRORS,
-        payload,
+        type: GET_GEN_ERRORS,
+        payload: {
+          field: 'all',
+          error: err,
+        },
       });
     });
 };

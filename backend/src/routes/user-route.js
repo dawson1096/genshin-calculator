@@ -13,12 +13,12 @@ userRouter.get("/data", UserCtrl.getGeneralData);
 
 userRouter.get("/all-req", UserCtrl.checkToken, UserCtrl.getAllReq);
 userRouter.post("/character", UserCtrl.checkToken, UserCtrl.getCalcAllCharReq);
-userRouter.get(
+userRouter.post(
   "/character/:name",
   UserCtrl.checkToken,
   UserCtrl.getCalcCharReq
 );
-userRouter.get(
+userRouter.post(
   "/character/:name/talent",
   UserCtrl.checkToken,
   UserCtrl.getCalcTalentReq

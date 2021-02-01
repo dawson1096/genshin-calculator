@@ -47,7 +47,7 @@ function addObjects(...objs) {
   return retObj;
 }
 
-function conUserData(allReq, materials) {
+function conUserData(allReq, materials, con = true) {
   for (let key in allReq) {
     if (key !== "name" && key !== "stars" && key !== "type") {
       if (key === "weaponExp" || key === "charExp") {
@@ -64,11 +64,13 @@ function conUserData(allReq, materials) {
             ).imgPath;
             continue;
           }
-          if (allReq[key].matList[i].reqNum <= userMat.number) {
-            allReq[key].matList.splice(i, 1);
-            continue;
-          } else {
-            allReq[key].matList[i].reqNum -= userMat.number;
+          if (con) {
+            if (allReq[key].matList[i].reqNum <= userMat.number) {
+              allReq[key].matList.splice(i, 1);
+              continue;
+            } else {
+              allReq[key].matList[i].reqNum -= userMat.number;
+            }
           }
           allReq[key].matList[i]["imgPath"] = userMat.imgPath;
         }
@@ -97,11 +99,13 @@ function conUserData(allReq, materials) {
                 ).imgPath;
                 continue;
               }
-              if (allReq[key][i].matList[j].reqNum <= userInnerMat.number) {
-                allReq[key][i].matList.splice(j, 1);
-                continue;
-              } else {
-                allReq[key][i].matList[j].reqNum -= userInnerMat.number;
+              if (con) {
+                if (allReq[key][i].matList[j].reqNum <= userInnerMat.number) {
+                  allReq[key][i].matList.splice(j, 1);
+                  continue;
+                } else {
+                  allReq[key][i].matList[j].reqNum -= userInnerMat.number;
+                }
               }
               allReq[key][i].matList[j]["imgPath"] = userInnerMat.imgPath;
             }
@@ -116,11 +120,13 @@ function conUserData(allReq, materials) {
               ).imgPath;
               continue;
             }
-            if (allReq[key][i].reqNum <= userMat.number) {
-              allReq[key].splice(i, 1);
-              continue;
-            } else {
-              allReq[key][i].reqNum -= userMat.number;
+            if (con) {
+              if (allReq[key][i].reqNum <= userMat.number) {
+                allReq[key].splice(i, 1);
+                continue;
+              } else {
+                allReq[key][i].reqNum -= userMat.number;
+              }
             }
             allReq[key][i]["imgPath"] = userMat.imgPath;
           }
@@ -364,7 +370,6 @@ updateUserData = (req, res) => {
       console.log("ERROR: Could not connect to the protected route");
       return res.status(500).json({ error: "Could not connect" });
     }
-
     User.updateOne({ email: data.email }, { $set: { userData: req.body } })
       .then(() => res.json({ success: true }))
       .catch(() => res.json({ error: "Could not update user data" }));
@@ -460,22 +465,18 @@ getCalcAllCharReq = (req, res) => {
   return res.json(allCharReq);
 };
 
-// Gets all requirements for single character and all character's talents
+// Gets all level requirements for single character
 getCalcCharReq = (req, res) => {
   const { char, materials } = req.body;
-  if (char === null) {
-    return res.json({ error: "Character not in userData" });
-  }
   let charReq = GeneralCtrl.getCharReq(char.name, char.curLvl, char.reqLvl);
-  let talentReq = GeneralCtrl.getAllTalentReq([char]);
-  charReq = addObjects(charReq, talentReq);
-  charReq = conUserData(charReq, materials);
+  charReq = conUserData(charReq, materials, char.inventory);
   return res.json(charReq);
 };
 
-// Gets all requirements for each of a character's single talent
+// Gets total or individual talent requirements for a single character
 getCalcTalentReq = (req, res) => {
   const { char, materials } = req.body;
+
   let talentReq = {
     autoAttack: null,
     eleSkill: null,
@@ -488,8 +489,19 @@ getCalcTalentReq = (req, res) => {
       char[talent].reqLvl,
       talent
     );
-    curReq = conUserData(curReq, materials);
+    curReq = conUserData(curReq, materials, char.inventory);
     talentReq[talent] = curReq;
+  }
+  if (char.talentTotal) {
+    let total = addObjects(
+      talentReq.autoAttack,
+      talentReq.eleSkill,
+      talentReq.eleBurst
+    );
+    talentReq.total = total;
+    delete talentReq.autoAttack;
+    delete talentReq.eleSkill;
+    delete talentReq.eleBurst;
   }
   return res.json(talentReq);
 };
