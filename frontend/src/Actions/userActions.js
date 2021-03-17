@@ -5,6 +5,7 @@ import {
   LOAD_USER,
   UPDATE_CHARLIST,
   UPDATE_WEAPONLIST,
+  UPDATE_MATERIAL,
 } from './types';
 
 export const loadUser = () => (dispatch, getState) => {
@@ -413,5 +414,60 @@ export const editWeaponLvl = (weaponLevels) => (dispatch, getState) => {
       type: UPDATE_WEAPONLIST,
       payload: userData.weaponList,
     });
+  }
+};
+
+export const editMatNum = (curMat, matInfo) => (dispatch, getState) => {
+  dispatch({
+    type: LOADING_USER,
+    payload: 'loadingMat',
+  });
+
+  const {
+    userData,
+    auth: { isAuthenticated },
+  } = getState();
+
+  if ('matType' in matInfo) {
+    for (let i = 0; i < userData.materials[matInfo.matGroup].length; i++) {
+      if (userData.materials[matInfo.matGroup][i].name === matInfo.matType) {
+        for (let j = 0; j < userData.materials[matInfo.matGroup][i].matList.length; j++) {
+          if (userData.materials[matInfo.matGroup][i].matList[j].name === curMat.name) {
+            userData.materials[matInfo.matGroup][i].matList[j].number = curMat.number;
+          }
+        }
+      }
+    }
+  } else {
+    for (let i = 0; i < userData.materials[matInfo.matGroup].length; i++) {
+      if (userData.materials[matInfo.matGroup][i].name === curMat.name) {
+        userData.materials[matInfo.matGroup][i].number = curMat.number;
+      }
+    }
+  }
+
+  if (isAuthenticated) {
+    const sendData = {
+      charList: userData.charList,
+      weaponList: userData.weaponList,
+      materials: userData.materials,
+    };
+    axios
+      .post('/api/user', sendData)
+      .then(() =>
+        dispatch({
+          type: UPDATE_MATERIAL,
+          payload: userData.materials,
+        })
+      )
+      .catch((err) => {
+        dispatch({
+          type: GET_USER_ERRORS,
+          payload: {
+            field: 'materials',
+            error: err,
+          },
+        });
+      });
   }
 };

@@ -3,6 +3,7 @@ import {
   LOADING_USER,
   LOAD_USER,
   UPDATE_CHARLIST,
+  UPDATE_MATERIAL,
   UPDATE_WEAPONLIST,
 } from '../actions/types';
 
@@ -14,6 +15,7 @@ const initialState = {
   loading: false,
   loadingChar: false,
   loadingWeapon: false,
+  loadingMat: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -53,6 +55,12 @@ const userReducer = (state = initialState, action) => {
         ...state,
         weaponList: action.payload,
         loadingWeapon: false,
+      };
+    case UPDATE_MATERIAL:
+      return {
+        ...state,
+        materials: action.payload,
+        loadingMat: false,
       };
     default:
       return state;
