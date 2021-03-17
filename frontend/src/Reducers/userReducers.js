@@ -1,4 +1,10 @@
-import { GET_USER_ERRORS, LOADING_USER, LOAD_USER, UPDATE_CHARLIST } from '../actions/types';
+import {
+  GET_USER_ERRORS,
+  LOADING_USER,
+  LOAD_USER,
+  UPDATE_CHARLIST,
+  UPDATE_WEAPONLIST,
+} from '../actions/types';
 
 const initialState = {
   charList: [],
@@ -7,6 +13,7 @@ const initialState = {
   errors: {},
   loading: false,
   loadingChar: false,
+  loadingWeapon: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -40,6 +47,12 @@ const userReducer = (state = initialState, action) => {
         ...state,
         charList: action.payload,
         loadingChar: false,
+      };
+    case UPDATE_WEAPONLIST:
+      return {
+        ...state,
+        weaponList: action.payload,
+        loadingWeapon: false,
       };
     default:
       return state;

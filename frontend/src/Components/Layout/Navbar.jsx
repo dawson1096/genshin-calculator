@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles, IconButton, Button, ButtonGroup, AppBar, Toolbar } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import { withStyles, Button, ButtonGroup, AppBar, Toolbar } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
+import { logoutUser } from '../../actions/authActions';
 
 const styles = (theme) => ({
   root: {
@@ -15,7 +15,7 @@ const styles = (theme) => ({
   },
 });
 
-function Navbar({ classes, auth }) {
+function Navbar({ classes, auth, logoutUserConnect }) {
   return (
     <div>
       <AppBar position="static">
@@ -34,9 +34,12 @@ function Navbar({ classes, auth }) {
             )}
           </ButtonGroup>
           {auth.isAuthenticated ? (
-            <IconButton component={RouterLink} to="/profile">
-              <AccountCircle fontSize="large" />
-            </IconButton>
+            // <IconButton component={RouterLink} to="/profile">
+            //   <AccountCircle fontSize="large" />
+            // </IconButton>
+            <Button className={classes.button} variant="outlined" onClick={logoutUserConnect}>
+              Logout
+            </Button>
           ) : (
             <div>
               <Button
@@ -68,10 +71,13 @@ function Navbar({ classes, auth }) {
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  logoutUserConnect: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(withStyles(styles, { withTheme: true })(Navbar));
+export default connect(mapStateToProps, { logoutUserConnect: logoutUser })(
+  withStyles(styles, { withTheme: true })(Navbar)
+);

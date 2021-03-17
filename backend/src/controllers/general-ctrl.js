@@ -524,7 +524,7 @@ function getWeaponReq(name, curLvl, reqLvl, number = 1) {
                 {
                   name: mat.name,
                   type: mat.type,
-                  reqNum: ascenReq[i][key].reqNum,
+                  reqNum: ascenReq[i][key].reqNum * number,
                 },
               ],
             };
@@ -535,15 +535,15 @@ function getWeaponReq(name, curLvl, reqLvl, number = 1) {
               let insert = {
                 name: mat.name,
                 type: mat.type,
-                reqNum: ascenReq[i][key].reqNum,
+                reqNum: ascenReq[i][key].reqNum * number,
               };
               curMat.matList.push(insert);
             } else {
-              curMatSpes.reqNum += ascenReq[i][key].reqNum;
+              curMatSpes.reqNum += ascenReq[i][key].reqNum * number;
             }
           }
         } else if (key === "mora") {
-          weaponReq.misc[0].reqNum += ascenReq[i][key];
+          weaponReq.misc[0].reqNum += ascenReq[i][key] * number;
         }
       }
     }
@@ -764,16 +764,20 @@ function getAllWeaponReq(weaponList) {
           if (curMat === null) {
             allWeaponReq[key].push(curWeapon[key][i]);
           } else {
-            for (let j = 0; j < curWeapon[key][i].matList.length; j++) {
-              let curMatList = searchArray(
-                curWeapon[key][i].matList[j].name,
-                curMat.matList
-              );
-              if (curMatList === null) {
-                curMat.matList.push(curWeapon[key][i].matList[j]);
-              } else {
-                curMatList.reqNum += curWeapon[key][i].matList[j].reqNum;
+            if ("matList" in curMat) {
+              for (let j = 0; j < curWeapon[key][i].matList.length; j++) {
+                let curMatList = searchArray(
+                  curWeapon[key][i].matList[j].name,
+                  curMat.matList
+                );
+                if (curMatList === null) {
+                  curMat.matList.push(curWeapon[key][i].matList[j]);
+                } else {
+                  curMatList.reqNum += curWeapon[key][i].matList[j].reqNum;
+                }
               }
+            } else {
+              curMat.reqNum += curWeapon[key][i].reqNum;
             }
           }
         }

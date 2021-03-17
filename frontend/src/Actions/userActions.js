@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { GET_USER_ERRORS, LOADING_USER, LOAD_USER, UPDATE_CHARLIST } from './types';
+import {
+  GET_USER_ERRORS,
+  LOADING_USER,
+  LOAD_USER,
+  UPDATE_CHARLIST,
+  UPDATE_WEAPONLIST,
+} from './types';
 
 export const loadUser = () => (dispatch, getState) => {
   dispatch({
@@ -219,6 +225,193 @@ export const editLvl = (charLevels) => (dispatch, getState) => {
     dispatch({
       type: UPDATE_CHARLIST,
       payload: userData.charList,
+    });
+  }
+};
+
+export const addWeapon = (addList) => (dispatch, getState) => {
+  dispatch({
+    type: LOADING_USER,
+  });
+
+  const {
+    userData,
+    auth: { isAuthenticated },
+  } = getState();
+  userData.weaponList = [...addList, ...userData.weaponList];
+  userData.weaponList.sort((a, b) => (a.name > b.name ? 1 : -1));
+
+  if (isAuthenticated) {
+    const sendData = {
+      charList: userData.charList,
+      weaponList: userData.weaponList,
+      materials: userData.materials,
+    };
+    axios
+      .post('/api/user', sendData)
+      .then(() =>
+        dispatch({
+          type: UPDATE_WEAPONLIST,
+          payload: userData.weaponList,
+        })
+      )
+      .catch((err) => {
+        dispatch({
+          type: GET_USER_ERRORS,
+          payload: {
+            field: 'weaponList',
+            error: err,
+          },
+        });
+      });
+  } else {
+    dispatch({
+      type: UPDATE_WEAPONLIST,
+      payload: userData.weaponList,
+    });
+  }
+};
+
+export const removeWeapon = (name) => (dispatch, getState) => {
+  dispatch({
+    type: LOADING_USER,
+  });
+
+  const {
+    userData,
+    auth: { isAuthenticated },
+  } = getState();
+  for (let i = 0; i < userData.weaponList.length; i++) {
+    if (name === userData.weaponList[i].name) {
+      userData.weaponList.splice(i, 1);
+      break;
+    }
+  }
+
+  if (isAuthenticated) {
+    const sendData = {
+      charList: userData.charList,
+      weaponList: userData.weaponList,
+      materials: userData.materials,
+    };
+    axios
+      .post('/api/user', sendData)
+      .then(() =>
+        dispatch({
+          type: UPDATE_WEAPONLIST,
+          payload: userData.weaponList,
+        })
+      )
+      .catch((err) => {
+        dispatch({
+          type: GET_USER_ERRORS,
+          payload: {
+            field: 'weaponList',
+            error: err,
+          },
+        });
+      });
+  } else {
+    dispatch({
+      type: UPDATE_WEAPONLIST,
+      payload: userData.weaponList,
+    });
+  }
+};
+
+export const toggleWeaponBool = (name, field) => (dispatch, getState) => {
+  dispatch({
+    type: LOADING_USER,
+    payload: 'loadingWeapon',
+  });
+
+  const {
+    userData,
+    auth: { isAuthenticated },
+  } = getState();
+  for (let i = 0; i < userData.weaponList.length; i++) {
+    if (name === userData.weaponList[i].name) {
+      userData.weaponList[i][field] = !userData.weaponList[i][field];
+    }
+  }
+
+  if (isAuthenticated) {
+    const sendData = {
+      charList: userData.charList,
+      weaponList: userData.weaponList,
+      materials: userData.materials,
+    };
+
+    axios
+      .post('/api/user', sendData)
+      .then(() =>
+        dispatch({
+          type: UPDATE_WEAPONLIST,
+          payload: userData.weaponList,
+        })
+      )
+      .catch((err) => {
+        dispatch({
+          type: GET_USER_ERRORS,
+          payload: {
+            field: 'weaponList',
+            error: err,
+          },
+        });
+      });
+  } else {
+    dispatch({
+      type: UPDATE_WEAPONLIST,
+      payload: userData.weaponList,
+    });
+  }
+};
+
+export const editWeaponLvl = (weaponLevels) => (dispatch, getState) => {
+  dispatch({
+    type: LOADING_USER,
+    payload: 'loadingWeapon',
+  });
+
+  const {
+    userData,
+    auth: { isAuthenticated },
+  } = getState();
+  for (let i = 0; i < userData.weaponList.length; i++) {
+    if (weaponLevels.name === userData.weaponList[i].name) {
+      userData.weaponList[i].curLvl = weaponLevels.curLvl;
+      userData.weaponList[i].reqLvl = weaponLevels.reqLvl;
+      userData.weaponList[i].number = weaponLevels.number;
+    }
+  }
+
+  if (isAuthenticated) {
+    const sendData = {
+      charList: userData.charList,
+      weaponList: userData.weaponList,
+      materials: userData.materials,
+    };
+    axios
+      .post('/api/user', sendData)
+      .then(() =>
+        dispatch({
+          type: UPDATE_WEAPONLIST,
+          payload: userData.weaponList,
+        })
+      )
+      .catch((err) => {
+        dispatch({
+          type: GET_USER_ERRORS,
+          payload: {
+            field: 'weaponList',
+            error: err,
+          },
+        });
+      });
+  } else {
+    dispatch({
+      type: UPDATE_WEAPONLIST,
+      payload: userData.weaponList,
     });
   }
 };

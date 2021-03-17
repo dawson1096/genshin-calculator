@@ -23,7 +23,11 @@ userRouter.post(
   UserCtrl.checkToken,
   UserCtrl.getCalcTalentReq
 );
-userRouter.get("/weapon", UserCtrl.checkToken, UserCtrl.getCalcAllWeaponReq);
-userRouter.get("/weapon/:name", UserCtrl.checkToken, UserCtrl.getCalcWeaponReq);
+userRouter.post("/weapon", UserCtrl.checkToken, UserCtrl.getCalcAllWeaponReq);
+userRouter.post(
+  "/weapon/:name",
+  UserCtrl.checkToken,
+  UserCtrl.getCalcWeaponReq
+);
 
 module.exports = userRouter;

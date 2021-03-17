@@ -35,11 +35,16 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.spacing(4),
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2),
-    maxWidth: '75%',
+    width: '60%',
     height: '75%',
     overflow: 'auto',
     display: 'flex',
     flexDirection: 'column',
+  },
+  contnet: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   imgCard: {
     marginTop: theme.spacing(2),
@@ -53,13 +58,24 @@ const useStyles = makeStyles((theme) => ({
     width: 100,
     overflow: 'hidden',
   },
-  imgBack: {
-    backgroundColor: 'purple',
+  imgBackFive: {
+    backgroundImage: theme.palette.stars.five,
+  },
+  imgBackFour: {
+    backgroundImage: theme.palette.stars.four,
   },
   name: {
     backgroundColor: 'white',
     textAlign: 'center',
     width: '100%',
+    height: 24,
+  },
+  nameSmall: {
+    backgroundColor: 'white',
+    textAlign: 'center',
+    width: '100%',
+    fontSize: theme.spacing(3.5),
+    height: 24,
   },
   media: {
     width: theme.spacing(25),
@@ -436,367 +452,391 @@ function CharacterModal({ char, modalOpen, onClose }) {
     >
       <Fade in={modalOpen}>
         <div className={classes.paper}>
-          <div>
-            <div className={classes.imgCard}>
-              <div className={classes.imgBack}>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  image={char.imgPath}
-                  title={char.name}
-                />
+          <div className={classes.content}>
+            <div>
+              <div className={classes.imgCard}>
+                <div className={char.stars === 5 ? classes.imgBackFive : classes.imgBackFour}>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    image={char.imgPath}
+                    title={char.name}
+                  />
+                </div>
+                <Typography className={char.name.length > 12 ? classes.nameSmall : classes.name}>
+                  {char.name}
+                </Typography>
               </div>
-              <Typography className={classes.name}>{char.name}</Typography>
             </div>
-          </div>
-          <div className={classes.buttonGroup}>
-            <Checkbox
-              onChange={() => handleToggle('hidden')}
-              checked={charLevels.hidden}
-              color="primary"
-              icon={<Block />}
-              checkedIcon={<Block />}
-            />
-            <IconButton className={classes.delete} onClick={deleteChar}>
-              <Delete />
-            </IconButton>
+            <div className={classes.buttonGroup}>
+              <Checkbox
+                onChange={() => handleToggle('hidden')}
+                checked={charLevels.hidden}
+                color="primary"
+                icon={<Block />}
+                checkedIcon={<Block />}
+              />
+              <IconButton className={classes.delete} onClick={deleteChar}>
+                <Delete />
+              </IconButton>
+              {/* eslint-disable */}
+              <FormControlLabel
+                className={classes.switchLabel}
+                control={
+                  <Switch
+                    className={classes.switch}
+                    checked={charLevels.inventory}
+                    onChange={() => handleToggle('inventory')}
+                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                  />
+                }
+                label={<span style={{ fontSize: '0.9rem' }}>Include Inventory</span>}
+              />
+            </div>
+            <div className={classes.levels}>
+              <div className={classes.level}>
+                <Typography className={classes.text}>Current Level</Typography>
+                <div className={classes.textDiv}>
+                  <span className={classes.text}>Lv. </span>
+                  <TextField
+                    error={!!errors.curLvl}
+                    className={classes.textField}
+                    InputProps={{ classes: { input: classes.input } }}
+                    id="curLvl"
+                    name="curLvl"
+                    onChange={(e) => setLevel(e.target.value, 'level', e.target.id)}
+                    value={
+                      charLevels.curLvl !== '' ? Math.floor(charLevels.curLvl) : charLevels.curLvl
+                    }
+                    variant="outlined"
+                  />
+                </div>
+                <div className={classes.buttonCheck}>
+                  <ButtonGroup className={classes.buttonGroup}>
+                    <Button
+                      onClick={() => setLevel(charLevels.curLvl - 1, 'level', 'curLvl')}
+                      className={classes.button}
+                    >
+                      <Remove fontSize="small" />
+                    </Button>
+                    <Button
+                      onClick={() => setLevel(charLevels.curLvl + 1, 'level', 'curLvl')}
+                      className={classes.button}
+                    >
+                      <Add fontSize="small" />
+                    </Button>
+                  </ButtonGroup>
+                  <Checkbox
+                    onClick={() => toggleCheck('curLvl')}
+                    disabled={!ascIsValid(charLevels.curLvl)}
+                    checked={checked.curLvl}
+                    className={classes.checkbox}
+                    icon={<StarBorder />}
+                    checkedIcon={<Star />}
+                  />
+                </div>
+              </div>
+              <div className={classes.level}>
+                <Typography className={classes.text}>Required Level</Typography>
+                <div className={classes.textDiv}>
+                  <span className={classes.text}>Lv. </span>
+                  <TextField
+                    error={!!errors.reqLvl}
+                    className={classes.textField}
+                    InputProps={{ classes: { input: classes.input } }}
+                    id="reqLvl"
+                    name="reqLvl"
+                    onChange={(e) => setLevel(e.target.value, 'level', e.target.id)}
+                    value={
+                      charLevels.reqLvl !== '' ? Math.floor(charLevels.reqLvl) : charLevels.reqLvl
+                    }
+                    variant="outlined"
+                  />
+                </div>
+                <div className={classes.buttonCheck}>
+                  <ButtonGroup className={classes.buttonGroup}>
+                    <Button
+                      onClick={() => setLevel(charLevels.reqLvl - 1, 'level', 'reqLvl')}
+                      className={classes.button}
+                    >
+                      <Remove fontSize="small" />
+                    </Button>
+
+                    <Button
+                      onClick={() => setLevel(charLevels.reqLvl + 1, 'level', 'reqLvl')}
+                      className={classes.button}
+                    >
+                      <Add fontSize="small" />
+                    </Button>
+                  </ButtonGroup>
+                  <Checkbox
+                    onClick={() => toggleCheck('reqLvl')}
+                    disabled={!ascIsValid(charLevels.reqLvl)}
+                    checked={checked.reqLvl}
+                    className={classes.checkbox}
+                    icon={<StarBorder />}
+                    checkedIcon={<Star />}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={classes.materials}>
+              {!reqMat.loading && <Materials total mat={charMat.mat} loading={charMat.loading} />}
+            </div>
+            <div className={wideScreen ? classes.talentLvls : classes.talentLvlsSmall}>
+              <div className={classes.talentLvl}>
+                <CardMedia
+                  className={classes.talentImg}
+                  component="img"
+                  image={char.autoAttack.imgPath}
+                />
+                <div className={classes.lvlsGroup}>
+                  <div className={classes.lvlGroup}>
+                    <div className={classes.lvlText}>
+                      {'Lv. '}
+                      {charLevels.autoAttack.curLvl}
+                    </div>
+                    <ButtonGroup className={classes.buttonGroup}>
+                      {/* eslint-disable */}
+                      <Button
+                        onClick={() =>
+                          setLevel(
+                            charLevels.autoAttack.curLvl - 1,
+                            'talent',
+                            'curLvl',
+                            'autoAttack'
+                          )
+                        }
+                        className={classes.button}
+                      >
+                        <Remove fontSize="small" />
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setLevel(
+                            charLevels.autoAttack.curLvl + 1,
+                            'talent',
+                            'curLvl',
+                            'autoAttack'
+                          )
+                        }
+                        className={classes.button}
+                      >
+                        <Add fontSize="small" />
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+                  <ArrowForwardIos fontSize="small" />
+                  <div className={classes.lvlGroup}>
+                    <div className={classes.lvlText}>
+                      {'Lv. '}
+                      {charLevels.autoAttack.reqLvl}
+                    </div>
+                    <ButtonGroup className={classes.buttonGroup}>
+                      <Button
+                        onClick={() =>
+                          setLevel(
+                            charLevels.autoAttack.reqLvl - 1,
+                            'talent',
+                            'reqLvl',
+                            'autoAttack'
+                          )
+                        }
+                        className={classes.button}
+                      >
+                        <Remove fontSize="small" />
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setLevel(
+                            charLevels.autoAttack.reqLvl + 1,
+                            'talent',
+                            'reqLvl',
+                            'autoAttack'
+                          )
+                        }
+                        className={classes.button}
+                      >
+                        <Add fontSize="small" />
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+                </div>
+              </div>
+              <div className={classes.talentLvl}>
+                <CardMedia
+                  className={classes.talentImg}
+                  component="img"
+                  image={char.eleSkill.imgPath}
+                />
+                <div className={classes.lvlsGroup}>
+                  <div className={classes.lvlGroup}>
+                    <div className={classes.lvlText}>
+                      {'Lv. '}
+                      {charLevels.eleSkill.curLvl}
+                    </div>
+                    <ButtonGroup className={classes.buttonGroup}>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleSkill.curLvl - 1, 'talent', 'curLvl', 'eleSkill')
+                        }
+                        className={classes.button}
+                      >
+                        <Remove fontSize="small" />
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleSkill.curLvl + 1, 'talent', 'curLvl', 'eleSkill')
+                        }
+                        className={classes.button}
+                      >
+                        <Add fontSize="small" />
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+                  <ArrowForwardIos fontSize="small" />
+                  <div className={classes.lvlGroup}>
+                    <div className={classes.lvlText}>
+                      {'Lv. '}
+                      {charLevels.eleSkill.reqLvl}
+                    </div>
+                    <ButtonGroup className={classes.buttonGroup}>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleSkill.reqLvl - 1, 'talent', 'reqLvl', 'eleSkill')
+                        }
+                        className={classes.button}
+                      >
+                        <Remove fontSize="small" />
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleSkill.reqLvl + 1, 'talent', 'reqLvl', 'eleSkill')
+                        }
+                        className={classes.button}
+                      >
+                        <Add fontSize="small" />
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+                </div>
+              </div>
+              <div className={classes.talentLvl}>
+                <CardMedia
+                  className={classes.talentImg}
+                  component="img"
+                  image={char.eleBurst.imgPath}
+                />
+                <div className={classes.lvlsGroup}>
+                  <div className={classes.lvlGroup}>
+                    <div className={classes.lvlText}>
+                      {'Lv. '}
+                      {charLevels.eleBurst.curLvl}
+                    </div>
+                    <ButtonGroup className={classes.buttonGroup}>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleBurst.curLvl - 1, 'talent', 'curLvl', 'eleBurst')
+                        }
+                        className={classes.button}
+                      >
+                        <Remove fontSize="small" />
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleBurst.curLvl + 1, 'talent', 'curLvl', 'eleBurst')
+                        }
+                        className={classes.button}
+                      >
+                        <Add fontSize="small" />
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+                  <ArrowForwardIos fontSize="small" />
+                  <div className={classes.lvlGroup}>
+                    <div className={classes.lvlText}>
+                      {'Lv. '}
+                      {charLevels.eleBurst.reqLvl}
+                    </div>
+                    <ButtonGroup className={classes.buttonGroup}>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleBurst.reqLvl - 1, 'talent', 'reqLvl', 'eleBurst')
+                        }
+                        className={classes.button}
+                      >
+                        <Remove fontSize="small" />
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setLevel(charLevels.eleBurst.reqLvl + 1, 'talent', 'reqLvl', 'eleBurst')
+                        }
+                        className={classes.button}
+                      >
+                        <Add fontSize="small" />
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* eslint-disable */}
             <FormControlLabel
               className={classes.switchLabel}
               control={
                 <Switch
                   className={classes.switch}
-                  checked={charLevels.inventory}
-                  onChange={() => handleToggle('inventory')}
+                  checked={charLevels.talentTotal}
+                  onChange={() => handleToggle('talentTotal')}
                   inputProps={{ 'aria-label': 'primary checkbox' }}
                 />
               }
-              label={<span style={{ fontSize: '0.9rem' }}>Include Inventory</span>}
+              label={<span style={{ fontSize: '0.9rem' }}>Show Total</span>}
             />
+            {!reqMat.loading && (
+              <div className={classes.materials}>
+                {charLevels.talentTotal ? (
+                  <Materials total mat={talentMat.mat.total} loading={talentMat.loading} />
+                ) : (
+                  <>
+                    <div className={classes.talentTitle}>
+                      <CardMedia
+                        className={classes.talentImg}
+                        component="img"
+                        image={char.autoAttack.imgPath}
+                      />
+                      <Typography className={classes.talentText}>{char.autoAttack.name}</Typography>
+                    </div>
+                    <div className={classes.talentMaterials}>
+                      <Materials total mat={talentMat.mat.autoAttack} loading={talentMat.loading} />
+                    </div>
+                    <div className={classes.talentTitle}>
+                      <CardMedia
+                        className={classes.talentImg}
+                        component="img"
+                        image={char.eleSkill.imgPath}
+                      />
+                      <Typography className={classes.talentText}>{char.eleSkill.name}</Typography>
+                    </div>
+                    <div className={classes.talentMaterials}>
+                      <Materials total mat={talentMat.mat.eleSkill} loading={talentMat.loading} />
+                    </div>
+                    <div className={classes.talentTitle}>
+                      <CardMedia
+                        className={classes.talentImg}
+                        component="img"
+                        image={char.eleBurst.imgPath}
+                      />
+                      <Typography className={classes.talentText}>{char.eleBurst.name}</Typography>
+                    </div>
+                    <div className={classes.talentMaterials}>
+                      <Materials total mat={talentMat.mat.eleBurst} loading={talentMat.loading} />
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
           </div>
-          <div className={classes.levels}>
-            <div className={classes.level}>
-              <Typography className={classes.text}>Current Level</Typography>
-              <div className={classes.textDiv}>
-                <span className={classes.text}>Lv. </span>
-                <TextField
-                  error={!!errors.curLvl}
-                  className={classes.textField}
-                  InputProps={{ classes: { input: classes.input } }}
-                  id="curLvl"
-                  name="curLvl"
-                  onChange={(e) => setLevel(e.target.value, 'level', e.target.id)}
-                  value={
-                    charLevels.curLvl !== '' ? Math.floor(charLevels.curLvl) : charLevels.curLvl
-                  }
-                  variant="outlined"
-                />
-              </div>
-              <div className={classes.buttonCheck}>
-                <ButtonGroup className={classes.buttonGroup}>
-                  <Button
-                    onClick={() => setLevel(charLevels.curLvl - 1, 'level', 'curLvl')}
-                    className={classes.button}
-                  >
-                    <Remove fontSize="small" />
-                  </Button>
-                  <Button
-                    onClick={() => setLevel(charLevels.curLvl + 1, 'level', 'curLvl')}
-                    className={classes.button}
-                  >
-                    <Add fontSize="small" />
-                  </Button>
-                </ButtonGroup>
-                <Checkbox
-                  onClick={() => toggleCheck('curLvl')}
-                  disabled={!ascIsValid(charLevels.curLvl)}
-                  checked={checked.curLvl}
-                  className={classes.checkbox}
-                  icon={<StarBorder />}
-                  checkedIcon={<Star />}
-                />
-              </div>
-            </div>
-            <div className={classes.level}>
-              <Typography className={classes.text}>Required Level</Typography>
-              <div className={classes.textDiv}>
-                <span className={classes.text}>Lv. </span>
-                <TextField
-                  error={!!errors.reqLvl}
-                  className={classes.textField}
-                  InputProps={{ classes: { input: classes.input } }}
-                  id="reqLvl"
-                  name="reqLvl"
-                  onChange={(e) => setLevel(e.target.value, 'level', e.target.id)}
-                  value={
-                    charLevels.reqLvl !== '' ? Math.floor(charLevels.reqLvl) : charLevels.reqLvl
-                  }
-                  variant="outlined"
-                />
-              </div>
-              <div className={classes.buttonCheck}>
-                <ButtonGroup className={classes.buttonGroup}>
-                  <Button
-                    onClick={() => setLevel(charLevels.reqLvl - 1, 'level', 'reqLvl')}
-                    className={classes.button}
-                  >
-                    <Remove fontSize="small" />
-                  </Button>
-
-                  <Button
-                    onClick={() => setLevel(charLevels.reqLvl + 1, 'level', 'reqLvl')}
-                    className={classes.button}
-                  >
-                    <Add fontSize="small" />
-                  </Button>
-                </ButtonGroup>
-                <Checkbox
-                  onClick={() => toggleCheck('reqLvl')}
-                  disabled={!ascIsValid(charLevels.reqLvl)}
-                  checked={checked.reqLvl}
-                  className={classes.checkbox}
-                  icon={<StarBorder />}
-                  checkedIcon={<Star />}
-                />
-              </div>
-            </div>
-          </div>
-          <div className={classes.materials}>
-            {!reqMat.loading && <Materials total mat={charMat.mat} loading={charMat.loading} />}
-          </div>
-          <div className={wideScreen ? classes.talentLvls : classes.talentLvlsSmall}>
-            <div className={classes.talentLvl}>
-              <CardMedia
-                className={classes.talentImg}
-                component="img"
-                image={char.autoAttack.imgPath}
-              />
-              <div className={classes.lvlsGroup}>
-                <div className={classes.lvlGroup}>
-                  <div className={classes.lvlText}>
-                    {'Lv. '}
-                    {charLevels.autoAttack.curLvl}
-                  </div>
-                  <ButtonGroup className={classes.buttonGroup}>
-                    {/* eslint-disable */}
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.autoAttack.curLvl - 1, 'talent', 'curLvl', 'autoAttack')
-                      }
-                      className={classes.button}
-                    >
-                      <Remove fontSize="small" />
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.autoAttack.curLvl + 1, 'talent', 'curLvl', 'autoAttack')
-                      }
-                      className={classes.button}
-                    >
-                      <Add fontSize="small" />
-                    </Button>
-                  </ButtonGroup>
-                </div>
-                <ArrowForwardIos fontSize="small" />
-                <div className={classes.lvlGroup}>
-                  <div className={classes.lvlText}>
-                    {'Lv. '}
-                    {charLevels.autoAttack.reqLvl}
-                  </div>
-                  <ButtonGroup className={classes.buttonGroup}>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.autoAttack.reqLvl - 1, 'talent', 'reqLvl', 'autoAttack')
-                      }
-                      className={classes.button}
-                    >
-                      <Remove fontSize="small" />
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.autoAttack.reqLvl + 1, 'talent', 'reqLvl', 'autoAttack')
-                      }
-                      className={classes.button}
-                    >
-                      <Add fontSize="small" />
-                    </Button>
-                  </ButtonGroup>
-                </div>
-              </div>
-            </div>
-            <div className={classes.talentLvl}>
-              <CardMedia
-                className={classes.talentImg}
-                component="img"
-                image={char.eleSkill.imgPath}
-              />
-              <div className={classes.lvlsGroup}>
-                <div className={classes.lvlGroup}>
-                  <div className={classes.lvlText}>
-                    {'Lv. '}
-                    {charLevels.eleSkill.curLvl}
-                  </div>
-                  <ButtonGroup className={classes.buttonGroup}>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleSkill.curLvl - 1, 'talent', 'curLvl', 'eleSkill')
-                      }
-                      className={classes.button}
-                    >
-                      <Remove fontSize="small" />
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleSkill.curLvl + 1, 'talent', 'curLvl', 'eleSkill')
-                      }
-                      className={classes.button}
-                    >
-                      <Add fontSize="small" />
-                    </Button>
-                  </ButtonGroup>
-                </div>
-                <ArrowForwardIos fontSize="small" />
-                <div className={classes.lvlGroup}>
-                  <div className={classes.lvlText}>
-                    {'Lv. '}
-                    {charLevels.eleSkill.reqLvl}
-                  </div>
-                  <ButtonGroup className={classes.buttonGroup}>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleSkill.reqLvl - 1, 'talent', 'reqLvl', 'eleSkill')
-                      }
-                      className={classes.button}
-                    >
-                      <Remove fontSize="small" />
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleSkill.reqLvl + 1, 'talent', 'reqLvl', 'eleSkill')
-                      }
-                      className={classes.button}
-                    >
-                      <Add fontSize="small" />
-                    </Button>
-                  </ButtonGroup>
-                </div>
-              </div>
-            </div>
-            <div className={classes.talentLvl}>
-              <CardMedia
-                className={classes.talentImg}
-                component="img"
-                image={char.eleBurst.imgPath}
-              />
-              <div className={classes.lvlsGroup}>
-                <div className={classes.lvlGroup}>
-                  <div className={classes.lvlText}>
-                    {'Lv. '}
-                    {charLevels.eleBurst.curLvl}
-                  </div>
-                  <ButtonGroup className={classes.buttonGroup}>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleBurst.curLvl - 1, 'talent', 'curLvl', 'eleBurst')
-                      }
-                      className={classes.button}
-                    >
-                      <Remove fontSize="small" />
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleBurst.curLvl + 1, 'talent', 'curLvl', 'eleBurst')
-                      }
-                      className={classes.button}
-                    >
-                      <Add fontSize="small" />
-                    </Button>
-                  </ButtonGroup>
-                </div>
-                <ArrowForwardIos fontSize="small" />
-                <div className={classes.lvlGroup}>
-                  <div className={classes.lvlText}>
-                    {'Lv. '}
-                    {charLevels.eleBurst.reqLvl}
-                  </div>
-                  <ButtonGroup className={classes.buttonGroup}>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleBurst.reqLvl - 1, 'talent', 'reqLvl', 'eleBurst')
-                      }
-                      className={classes.button}
-                    >
-                      <Remove fontSize="small" />
-                    </Button>
-                    <Button
-                      onClick={() =>
-                        setLevel(charLevels.eleBurst.reqLvl + 1, 'talent', 'reqLvl', 'eleBurst')
-                      }
-                      className={classes.button}
-                    >
-                      <Add fontSize="small" />
-                    </Button>
-                  </ButtonGroup>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* eslint-disable */}
-          <FormControlLabel
-            className={classes.switchLabel}
-            control={
-              <Switch
-                className={classes.switch}
-                checked={charLevels.talentTotal}
-                onChange={() => handleToggle('talentTotal')}
-                inputProps={{ 'aria-label': 'primary checkbox' }}
-              />
-            }
-            label={<span style={{ fontSize: '0.9rem' }}>Show Total</span>}
-          />
-          {!reqMat.loading && (
-            <div className={classes.materials}>
-              {charLevels.talentTotal ? (
-                <Materials total mat={talentMat.mat.total} loading={talentMat.loading} />
-              ) : (
-                <>
-                  <div className={classes.talentTitle}>
-                    <CardMedia
-                      className={classes.talentImg}
-                      component="img"
-                      image={char.autoAttack.imgPath}
-                    />
-                    <Typography className={classes.talentText}>{char.autoAttack.name}</Typography>
-                  </div>
-                  <div className={classes.talentMaterials}>
-                    <Materials total mat={talentMat.mat.autoAttack} loading={talentMat.loading} />
-                  </div>
-                  <div className={classes.talentTitle}>
-                    <CardMedia
-                      className={classes.talentImg}
-                      component="img"
-                      image={char.eleSkill.imgPath}
-                    />
-                    <Typography className={classes.talentText}>{char.eleSkill.name}</Typography>
-                  </div>
-                  <div className={classes.talentMaterials}>
-                    <Materials total mat={talentMat.mat.eleSkill} loading={talentMat.loading} />
-                  </div>
-                  <div className={classes.talentTitle}>
-                    <CardMedia
-                      className={classes.talentImg}
-                      component="img"
-                      image={char.eleBurst.imgPath}
-                    />
-                    <Typography className={classes.talentText}>{char.eleBurst.name}</Typography>
-                  </div>
-                  <div className={classes.talentMaterials}>
-                    <Materials total mat={talentMat.mat.eleBurst} loading={talentMat.loading} />
-                  </div>
-                </>
-              )}
-            </div>
-          )}
         </div>
       </Fade>
     </Modal>

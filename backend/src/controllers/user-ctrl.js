@@ -137,6 +137,39 @@ function conUserData(allReq, materials, con = true) {
   return allReq;
 }
 
+function convertToArray(obj) {
+  let arr = [];
+  Object.keys(obj).forEach((key) => {
+    if (
+      key === "eleCrys" ||
+      key === "weaponMat" ||
+      key === "eliteMat" ||
+      key === "comMat" ||
+      key === "talentMat"
+    ) {
+      obj[key].forEach((curMat) => {
+        curMat.matList.forEach((curItem) => {
+          arr.push(curItem);
+        });
+      });
+    } else if (
+      key === "eleMat" ||
+      key === "locSpec" ||
+      key === "bossMat" ||
+      key === "misc"
+    ) {
+      obj[key].forEach((curMat) => {
+        arr.push(curMat);
+      });
+    } else if (key === "charExp" || key === "weaponExp") {
+      obj[key].matList.forEach((curMat) => {
+        arr.push(curMat);
+      });
+    }
+  });
+  return arr;
+}
+
 function updateData(user) {
   let materials = GeneralCtrl.generalData.materials;
   let userData = user.userData.materials;
@@ -470,7 +503,11 @@ getCalcCharReq = (req, res) => {
   const { char, materials } = req.body;
   let charReq = GeneralCtrl.getCharReq(char.name, char.curLvl, char.reqLvl);
   charReq = conUserData(charReq, materials, char.inventory);
-  return res.json(charReq);
+  let resData = {
+    arrMat: [],
+  };
+  resData.arrMat = convertToArray(charReq);
+  return res.json(resData);
 };
 
 // Gets total or individual talent requirements for a single character
@@ -498,10 +535,30 @@ getCalcTalentReq = (req, res) => {
       talentReq.eleSkill,
       talentReq.eleBurst
     );
-    talentReq.total = total;
+    let resData = {
+      arrMat: [],
+    };
+    resData.arrMat = convertToArray(total);
+    talentReq.total = resData;
     delete talentReq.autoAttack;
     delete talentReq.eleSkill;
     delete talentReq.eleBurst;
+  } else {
+    let resData = {
+      arrMat: [],
+    };
+    resData.arrMat = convertToArray(talentReq.autoAttack);
+    talentReq.autoAttack = resData;
+    resData = {
+      arrMat: [],
+    };
+    resData.arrMat = convertToArray(talentReq.eleBurst);
+    talentReq.eleBurst = resData;
+    resData = {
+      arrMat: [],
+    };
+    resData.arrMat = convertToArray(talentReq.eleSkill);
+    talentReq.eleSkill = resData;
   }
   return res.json(talentReq);
 };
@@ -527,7 +584,11 @@ getCalcWeaponReq = (req, res) => {
     weapon.number
   );
   weaponReq = conUserData(weaponReq, materials);
-  return res.json(weaponReq);
+  let resData = {
+    arrMat: [],
+  };
+  resData.arrMat = convertToArray(weaponReq);
+  return res.json(resData);
 };
 
 module.exports = {

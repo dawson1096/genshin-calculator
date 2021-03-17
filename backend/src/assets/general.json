@@ -5334,7 +5334,7 @@
     },
     {
       "name": "Bloodtainted Greatsword",
-      "imgPath": "/api/weapons/bloodtained_greatsword.png"
+      "imgPath": "/api/weapons/bloodtainted_greatsword.png"
     },
     {
       "name": "Compound Bow",
@@ -5398,7 +5398,7 @@
     },
     {
       "name": "Ferrous Shadow",
-      "imgPath": "/api/weapons/ferrous_shawdow.png"
+      "imgPath": "/api/weapons/ferrous_shadow.png"
     },
     {
       "name": "Fillet Blade",
@@ -5570,7 +5570,7 @@
     },
     {
       "name": "Skyward Harp",
-      "imgPath": "/api/weapons/skywawrd_harp.png"
+      "imgPath": "/api/weapons/skyward_harp.png"
     },
     {
       "name": "Skyward Pride",
@@ -5622,7 +5622,7 @@
     },
     {
       "name": "Thrilling Tales of Dragon Slayers",
-      "imgPath": "/api/weapons/thirlling_tales_of_dragon_slayers.png"
+      "imgPath": "/api/weapons/thrilling_tales_of_dragon_slayers.png"
     },
     {
       "name": "Traveler's Handy Sword",
@@ -6246,7 +6246,7 @@
     },
     {
       "name": "Tile of Decarabian's Tower",
-      "imgPath": "/api/materials/weaponmat/tile_of_the_decrabian_tower.png"
+      "imgPath": "/api/materials/weaponmat/tile_of_decarabian_tower.png"
     },
     {
       "name": "Adventurer's Experience",

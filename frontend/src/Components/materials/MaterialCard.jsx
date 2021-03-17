@@ -17,8 +17,40 @@ const styles = (theme) => ({
     width: 'auto',
     height: theme.spacing(8),
   },
-  imgBack: {
-    backgroundColor: 'white',
+  imgBackFive: {
+    backgroundImage: theme.palette.stars.five,
+    height: theme.spacing(10),
+    width: theme.spacing(12),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imgBackFour: {
+    backgroundImage: theme.palette.stars.four,
+    height: theme.spacing(10),
+    width: theme.spacing(12),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imgBackThree: {
+    backgroundImage: theme.palette.stars.three,
+    height: theme.spacing(10),
+    width: theme.spacing(12),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imgBackTwo: {
+    backgroundImage: theme.palette.stars.two,
+    height: theme.spacing(10),
+    width: theme.spacing(12),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imgBackOne: {
+    backgroundImage: theme.palette.stars.one,
     height: theme.spacing(10),
     width: theme.spacing(12),
     display: 'flex',
@@ -62,10 +94,28 @@ function toolTip(curMat) {
 }
 
 function MaterialCard({ classes, curMat }) {
+  const rarity = () => {
+    switch (curMat.type) {
+      case 'white':
+        return classes.imgBackOne;
+      case 'green':
+        return classes.imgBackTwo;
+      case 'blue':
+        return classes.imgBackThree;
+      case 'purple':
+        return classes.imgBackFour;
+      case 'gold':
+        return classes.imgBackFive;
+      default:
+        break;
+    }
+    return classes.imgBackThree;
+  };
+
   return (
     <Tooltip title={toolTip(curMat, classes)} arrow>
       <Card className={classes.root}>
-        <div className={classes.imgBack}>
+        <div className={rarity()}>
           <img className={classes.matImg} src={curMat.imgPath} alt={curMat.name} />
         </div>
         <Typography className={classes.reqNum}>{formatNum(curMat.reqNum)}</Typography>

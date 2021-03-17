@@ -17,26 +17,28 @@ const useStyles = makeStyles((theme) => ({
   name: {
     textAlign: 'center',
     width: '100%',
-    height: 24,
+    height: theme.spacing(10),
+    fontSize: theme.spacing(3.5),
   },
   nameSelected: {
     backgroundColor: theme.palette.primary.main,
     textAlign: 'center',
     width: '100%',
-    height: 24,
+    height: theme.spacing(10),
+    fontSize: theme.spacing(3.5),
   },
   nameSmall: {
     textAlign: 'center',
     width: '100%',
-    fontSize: theme.spacing(3.5),
-    height: 24,
+    height: theme.spacing(10),
+    fontSize: theme.spacing(3),
   },
   nameSelectedSmall: {
     backgroundColor: theme.palette.primary.main,
     textAlign: 'center',
     width: '100%',
-    fontSize: theme.spacing(3.5),
-    height: 24,
+    height: theme.spacing(10),
+    fontSize: theme.spacing(3),
   },
   imgBackFive: {
     backgroundImage: theme.palette.stars.five,
@@ -46,14 +48,45 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: theme.palette.stars.four,
     height: 100,
   },
+  imgBackThree: {
+    backgroundImage: theme.palette.stars.three,
+    height: 100,
+  },
+  imgBackTwo: {
+    backgroundImage: theme.palette.stars.two,
+    height: 100,
+  },
+  imgBackOne: {
+    backgroundImage: theme.palette.stars.one,
+    height: 100,
+  },
   media: {
     width: theme.spacing(25),
+    height: 'auto',
   },
 }));
 
-function AddCharCard({ char, isSelected }) {
+function AddWeaponCard({ weapon, isSelected }) {
   const classes = useStyles();
   const [raised, setRaised] = useState(false);
+
+  const rarity = () => {
+    switch (weapon.stars) {
+      case 1:
+        return classes.imgBackOne;
+      case 2:
+        return classes.imgBackTwo;
+      case 3:
+        return classes.imgBackThree;
+      case 4:
+        return classes.imgBackFour;
+      case 5:
+        return classes.imgBackFive;
+      default:
+        break;
+    }
+    return classes.imgBackNone;
+  };
 
   return (
     <div className={classes.parent}>
@@ -63,21 +96,21 @@ function AddCharCard({ char, isSelected }) {
         raised={raised}
         className={classes.imgCard}
       >
-        <div className={char.stars === 5 ? classes.imgBackFive : classes.imgBackFour}>
-          <img className={classes.media} src={char.imgPath} alt={char.name} />
+        <div className={rarity()}>
+          <img className={classes.media} src={weapon.imgPath} alt={weapon.name} />
         </div>
         <Typography
           className={
             isSelected
-              ? char.name.length > 12
+              ? weapon.name.length > 23
                 ? classes.nameSelectedSmall
                 : classes.nameSelected
-              : char.name.length > 12
+              : weapon.name.length > 23
               ? classes.nameSmall
               : classes.name
           }
         >
-          {char.name}
+          {weapon.name}
         </Typography>
       </Card>
     </div>
@@ -85,9 +118,9 @@ function AddCharCard({ char, isSelected }) {
 }
 
 /* eslint-disable react/forbid-prop-types */
-AddCharCard.propTypes = {
-  char: PropTypes.object.isRequired,
+AddWeaponCard.propTypes = {
+  weapon: PropTypes.object.isRequired,
   isSelected: PropTypes.bool.isRequired,
 };
 
-export default AddCharCard;
+export default AddWeaponCard;

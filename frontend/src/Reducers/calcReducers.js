@@ -1,8 +1,10 @@
 import {
   GET_ALL_CHAR_REQ,
+  GET_ALL_WEAPON_REQ,
   GET_CHAR_REQ,
   GET_REQ_ERRORS,
   GET_TALENT_REQ,
+  GET_WEAPON_REQ,
   LOADING_REQ,
 } from '../actions/types';
 
@@ -22,6 +24,14 @@ const initialState = {
       eleSkill: {},
       eleBurst: {},
     },
+    loading: false,
+  },
+  allWeaponReq: {
+    mat: {},
+    loading: false,
+  },
+  weaponReq: {
+    mat: {},
     loading: false,
   },
   errors: {},
@@ -90,7 +100,22 @@ const calcReducer = (state = initialState, action) => {
           loading: false,
         },
       };
-
+    case GET_ALL_WEAPON_REQ:
+      return {
+        ...state,
+        allWeaponReq: {
+          mat: action.payload,
+          loading: false,
+        },
+      };
+    case GET_WEAPON_REQ:
+      return {
+        ...state,
+        weaponReq: {
+          mat: action.payload,
+          loading: false,
+        },
+      };
     default:
       return state;
   }
