@@ -49,4 +49,8 @@ db.on("connected", function () {
 app.use("/api", userRouter);
 app.use("/api", express.static(__dirname + "/public"));
 
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
