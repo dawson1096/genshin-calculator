@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadUser } from './actions/userActions';
@@ -13,6 +13,7 @@ import PrivateRoute from './components/private-route/PrivateRoute';
 import Dashboard from './components/dashboard/Dashboard';
 import Characters from './components/characters/Characters';
 import Weapons from './components/weapons/Weapons';
+import NotFoundPage from './components/layout/NotFoundPage';
 
 class App extends Component {
   componentDidMount() {
@@ -33,6 +34,8 @@ class App extends Component {
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
+        <Route path="/404" component={NotFoundPage} />
+        <Redirect to="/404" />
       </Router>
     );
   }
