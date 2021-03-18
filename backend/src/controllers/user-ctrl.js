@@ -4,12 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { secretOrKey } = require("../config/config");
 
-function convertToName(name) {
-  conName = name.replace("%27", "'");
-  conName = conName.replace("_", " ");
-  return conName;
-}
-
 function addObjects(...objs) {
   let retObj = objs.reduce((req1, req2) => {
     for (key in req2) {

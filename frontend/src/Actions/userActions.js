@@ -8,34 +8,28 @@ import {
   UPDATE_MATERIAL,
 } from './types';
 
-export const loadUser = () => (dispatch, getState) => {
+export const loadUser = () => (dispatch) => {
   dispatch({
     type: LOADING_USER,
   });
 
-  const {
-    auth: { isAuthenticated },
-  } = getState();
-
-  if (isAuthenticated) {
-    axios
-      .get('/api/user')
-      .then((res) =>
-        dispatch({
-          type: LOAD_USER,
-          payload: res.data.userData,
-        })
-      )
-      .catch((err) => {
-        dispatch({
-          type: GET_USER_ERRORS,
-          payload: {
-            field: 'user',
-            error: err,
-          },
-        });
+  axios
+    .get('/api/user')
+    .then((res) =>
+      dispatch({
+        type: LOAD_USER,
+        payload: res.data.userData,
+      })
+    )
+    .catch((err) => {
+      dispatch({
+        type: GET_USER_ERRORS,
+        payload: {
+          field: 'user',
+          error: err,
+        },
       });
-  }
+    });
 };
 
 export const addChar = (addList) => (dispatch, getState) => {
