@@ -23,6 +23,20 @@ app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.get("/weapons", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
+app.get("/characters", function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+app.get("/login", function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+app.get("/register", function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+app.get("/dashboard", function (req, res) {
+  if (req.token !== "Unauthorized") {
+    res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+  }
+});
 
 db.on("error", console.error.bind(console, "MongoDB connection error"));
 db.on("connected", function () {
@@ -30,10 +44,6 @@ db.on("connected", function () {
     console.log(`MongoDB :: ${this.conn.name} ${col}.${method}()`);
   });
   console.log(`MongoDB :: connected ${this.name}`);
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
 });
 
 app.use("/api", userRouter);
