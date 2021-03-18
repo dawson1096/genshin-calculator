@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadUser } from './actions/userActions';
@@ -26,16 +26,15 @@ class App extends Component {
     return (
       <Router>
         <Navbar />
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/characters" component={Characters} />
-        <Route exact path="/weapons" component={Weapons} />
         <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/characters" component={Characters} />
+          <Route exact path="/weapons" component={Weapons} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
-        <Route path="/404" component={NotFoundPage} />
-        <Redirect to="/404" />
       </Router>
     );
   }
